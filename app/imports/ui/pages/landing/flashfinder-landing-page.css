@@ -1,0 +1,45 @@
+.middle-align {
+  height: 100%;
+}
+
+
+.headerbar {
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.landing-page-main {
+  background: url("http://cdn.thepointsguy.com/wp-content/uploads/2015/10/Hawaii-sunset-beach-featured-shutterstock-162636074.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 400px;
+}
+
+.landing-page-main-text {
+  text-align: center;
+  font-size: 100px;
+  color: white;
+}
+
+.infobar {
+  background-color: black;
+  height: 175px;
+}
+
+.infobar-text {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.footer {
+  background-color: #FEAF66;
+  height: 100px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+
+}

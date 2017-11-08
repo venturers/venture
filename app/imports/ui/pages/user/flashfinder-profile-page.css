@@ -1,0 +1,53 @@
+.middle-align {
+  height: 100%;
+}
+
+.headerbar {
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.profile-head {
+  background: url('http://img08.deviantart.net/f882/i/2015/004/3/e/hawaii_sunset_stock_low_angle_by_leeorr_stock-d8cm6ag.jpg') no-repeat center;
+  background-size: cover;
+  height: 200px;
+}
+
+.profile-image {
+  max-height: 100px;
+  max-width: 100px;
+  margin: 20px;
+}
+
+.events-area {
+  background-color: black;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  height: 400px;
+}
+
+.footer {
+  background-color: #FEAF66;
+  height: 100px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-data-form {
+  margin-bottom: 50px;
+}
+
+.event-header-text {
+  font-size: 32px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
