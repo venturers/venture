@@ -13,30 +13,6 @@ FlowRouter.route('/', {
   },
 });
 
-export const flashFinderLandingPageRouteName = 'FlashFinder_Landing_Page';
-FlowRouter.route('/flashfinder-landing-page', {
-  name: flashFinderLandingPageRouteName,
-  action() {
-    BlazeLayout.render('Landing_Layout', { main: flashFinderLandingPageRouteName });
-  },
-});
-
-export const flashFinderProfilePageRouteName = 'FlashFinder_Profile_Page';
-FlowRouter.route('/flashfinder-profile-page', {
-  name: flashFinderProfilePageRouteName,
-  action() {
-    BlazeLayout.render('Landing_Layout', { main: flashFinderProfilePageRouteName });
-  },
-});
-
-export const flashFinderSearchPageRouteName = 'FlashFinder_Search_Page';
-FlowRouter.route('/flashfinder-search-page', {
-  name: flashFinderSearchPageRouteName,
-  action() {
-    BlazeLayout.render('Landing_Layout', { main: flashFinderSearchPageRouteName });
-  },
-});
-
 /*                        DIRECTORY ROUTE                       */
 
 function addDirectoryBodyClass() {
@@ -84,11 +60,11 @@ userRoutes.route('/profile', {
   },
 });
 
-export const filterPageRouteName = 'Filter_Page';
-userRoutes.route('/filter', {
-  name: filterPageRouteName,
+export const searchPageRouteName = 'Search_Page';
+userRoutes.route('/search', {
+  name: searchPageRouteName,
   action() {
-    BlazeLayout.render('User_Layout', { main: filterPageRouteName });
+    BlazeLayout.render('User_Layout', { main: searchPageRouteName });
   },
 });
 

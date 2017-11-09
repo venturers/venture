@@ -1,36 +1,43 @@
-.landing-section-1 {
-  padding: 10px 10px 30px 10px;
-  background-color: #00B5AD;
-  color: #E5F9E7;
+#landing-menu {
+  background-color: #E5E5E5;
+  border: none;
+  border-radius: 0;
 }
 
-.landing-section-2 {
-  padding: 20px 10px 20px 10px;
-  background-color: #E5F9E7;
-  color:  #00B5AD;
+.middle-align {
+  height: 100%;
 }
 
-.landing-section-3 {
-  padding: 20px 10px 30px 30px;
-  background-color: #00B5AD;
-  color: #E5F9E7;
+.landing-page-main {
+  background: url("http://cdn.thepointsguy.com/wp-content/uploads/2015/10/Hawaii-sunset-beach-featured-shutterstock-162636074.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 400px;
 }
 
-.landing-section-5 {
-  padding: 20px 10px 20px 10px;
-  background-color: #00B5AD;
-  color: #E5F9E7;
+.landing-page-main-text {
+  text-align: center;
+  font-size: 100px;
+  color: white;
 }
 
-
-.landing-section-1-welcome {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 900;
-  font-size: 72px;
+.infobar {
+  background-color: black;
+  height: 175px;
 }
 
-.landing-section-header {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 900;
-  font-size: 36px;
+.infobar-text {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.footer {
+  background-color: #FEAF66;
+  height: 100px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 14px;
+  text-align: center;
 }
