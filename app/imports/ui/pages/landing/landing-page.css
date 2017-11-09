@@ -1,9 +1,3 @@
-#landing-menu {
-  background-color: #E5E5E5;
-  border: none;
-  border-radius: 0;
-}
-
 .middle-align {
   height: 100%;
 }
@@ -28,16 +22,5 @@
 .infobar-text {
   color: white;
   font-size: 18px;
-  text-align: center;
-}
-
-.footer {
-  background-color: #FEAF66;
-  height: 100px;
-}
-
-.footer-text {
-  color: white;
-  font-size: 14px;
   text-align: center;
 }

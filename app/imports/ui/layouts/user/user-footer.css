@@ -1,0 +1,10 @@
+.footer {
+  background-color: #FEAF66;
+  height: 100px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
