@@ -68,6 +68,14 @@ userRoutes.route('/search', {
   },
 });
 
+export const searchFriendsPageRouteName = 'Search_Friends_Page';
+userRoutes.route('/search-friends', {
+  name: searchFriendsPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: searchFriendsPageRouteName });
+  },
+});
+
 
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
