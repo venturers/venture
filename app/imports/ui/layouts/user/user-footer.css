@@ -5,6 +5,12 @@
 
 .footer-text {
   color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+.footer-text-second {
+  color: white;
   font-size: 14px;
   text-align: center;
 }

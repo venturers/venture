@@ -21,17 +21,17 @@
   height: 400px;
 }
 
-.footer {
-  background-color: #FEAF66;
-  height: 100px;
-}
+/*.footer {*/
+  /*background-color: #FEAF66;*/
+  /*height: 100px;*/
+/*}*/
 
-.footer-text {
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 20px;
-}
+/*.footer-text {*/
+  /*color: white;*/
+  /*font-size: 14px;*/
+  /*text-align: center;*/
+  /*margin-top: 20px;*/
+/*}*/
 
 .profile-data-form {
   margin-bottom: 50px;
