@@ -1,0 +1,18 @@
+.profile-head {
+  background: url('http://img08.deviantart.net/f882/i/2015/004/3/e/hawaii_sunset_stock_low_angle_by_leeorr_stock-d8cm6ag.jpg') no-repeat center;
+  background-size: cover;
+  height: 200px;
+}
+
+#profile-header {
+  border-bottom: 1px solid black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.title {
+  font-size: 60px;
+}

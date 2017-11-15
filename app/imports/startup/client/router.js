@@ -68,6 +68,14 @@ userRoutes.route('/search', {
   },
 });
 
+export const publicProfilePageRouteName = 'Public_Profile_Page';
+userRoutes.route('/public-profile', {
+  name: publicProfilePageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: publicProfilePageRouteName });
+  },
+});
+
 
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
