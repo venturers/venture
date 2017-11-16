@@ -16,3 +16,7 @@
 .title {
   font-size: 60px;
 }
+
+.ui.text.container.segment {
+  margin-bottom: 30px;
+}

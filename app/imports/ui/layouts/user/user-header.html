@@ -2,6 +2,7 @@
   <div id="header-menu" class="ui borderless inverted black menu">
     <div class="ui container">
       <div class="item"><h1>Venture</h1></div>
+      <a class="{{isActiveRoute "Public_Profile_Page"}} item" href="{{pathFor "Public_Profile_Page" username=routeUserName}}">Public Profile</a>
       <a class="{{isActiveRoute "Profile_Page"}} item" href="{{pathFor "Profile_Page" username=routeUserName}}">Profile</a>
       <a class="{{isActiveRoute "Search_Page"}} item" href="{{pathFor "Search_Page" username=routeUserName}}">Search</a>
       <div class="right aligned item">{{> Cas_Login }}</div>
