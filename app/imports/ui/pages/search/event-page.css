@@ -1,0 +1,18 @@
+.middle-align {
+  height: 100%;
+}
+
+.event-head {
+  background: url('http://wallpoper.com/images/00/38/67/91/sunset-beach_00386791.jpg') no-repeat center;
+  background-size: cover;
+  height: 200px;
+  margin: 0px;
+}
+
+.event-head-text {
+  font-size: 52px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
