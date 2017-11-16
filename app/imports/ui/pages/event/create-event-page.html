@@ -2,53 +2,59 @@
 
     {{#if Template.subscriptionsReady}}
 
-    <div class="profile-head">
+    <div class="event-head">
       <div class="ui container middle aligned centered grid middle-align">
         <div class="ui column">
           <div class="ui row">
-            <img class="ui small circular centered image profile-image"
-                 src="http://www.thisisplanb.com/wp-content/uploads/2013/01/Woman-Licking-Cactus.jpg">
-            <button class="ui inverted button">Change</button>
+            <h1 style="font-size: 35px"> Create an Event </h1>
           </div>
         </div>
       </div>
     </div>
 
     <div class="ui text container segment">
-      <div class="ui dividing header">
-        Profile
+
+      <div class="ui container middle aligned centered grid middle-align">
+        <div class="ui column">
+          <div class="ui row">
+            <img class="ui centered image event-image"
+                 src="http://ak6.picdn.net/shutterstock/videos/11349986/thumb/1.jpg">
+            <button class="ui centered button" style="margin-bottom: 10px">Change</button>
+          </div>
+        </div>
       </div>
-      <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
+
+      <div class="ui dividing header">
+        Event Details
+      </div>
+      <form class="ui equal width form create-event-form {{ successClass }} {{ errorClass }}">
 
         <div class="fields">
-          {{> Text_Form_Control label="First" placeholder="First name" value=profile.firstName errorMessage=(fieldError
-          "firstName")}}
-          {{> Text_Form_Control label="Last" placeholder="Last name" value=profile.lastName errorMessage=(fieldError
-          "lastName")}}
-          {{> Text_Form_Control label="Age" placeholder="Age" value=profile.lastName errorMessage=(fieldError "age")}}
+          {{> Text_Form_Control label="Event Name" placeholder="ex: Beach Bash" value=event.name errorMessage=(fieldError"name")}}
+        </div>
+        <div class="fields">
+          {{> Text_Form_Control label="Date" placeholder="ex: December 20, 2017" value=event.date errorMessage=(fieldError"date")}}
+          {{> Text_Form_Control label="Time" placeholder="ex: 6:00am - 6:30pm" value=event.time errorMessage=(fieldError"time")}}
+        </div>
+        <div class="fields">
+          {{> Text_Form_Control label="Location" placeholder="ex: Alamoana Beach Park" value=event.location errorMessage=(fieldError"location")}}
+        </div>
+        <div class="fields">
+          {{> Text_Form_Control label="Cost of Event" placeholder="ex: Free" value=event.cost errorMessage=(fieldError"cost")}}
+          {{> Text_Form_Control label="Transportation Options" placeholder="ex: Bus / Private Vehicle" value=event.transportation errorMessage=(fieldError"transportation")}}
         </div>
 
-        <div class="field">
+        <div class="fields">
           {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
           }}
         </div>
 
         <div class="fields">
-
-          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" placeholder="" value=profile.github
-          errorMessage=(fieldError "snapchat")}}
-          {{> Social_Network_Form_Control label="Facebook" icon="facebook" placeholder="" value=profile.facebook
-          errorMessage=(fieldError "facebook")}}
-          {{> Social_Network_Form_Control label="Instagram" icon="instagram" placeholder="" value=profile.instagram
-          errorMessage=(fieldError "instagram")}}
-
+          {{> TextArea_Form_Control label="Description" value=event.description placeholder="ex: Come to the beach and have good times with good people!"
+          errorMessage=(fieldError "description")}}
         </div>
 
-        {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here"
-        errorMessage=(fieldError "bio")}}
-
-
-        <button class="ui primary button" type="submit">Update</button>
+        <button class="ui primary centered button" type="submit">Submit</button>
 
       </form>
     </div>
