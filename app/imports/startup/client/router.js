@@ -68,6 +68,14 @@ userRoutes.route('/search', {
   },
 });
 
+export const publicProfilePageRouteName = 'Public_Profile_Page';
+userRoutes.route('/public-profile', {
+  name: publicProfilePageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: publicProfilePageRouteName });
+  },
+});
+
 export const searchFriendsPageRouteName = 'Search_Friends_Page';
 userRoutes.route('/search-friends', {
   name: searchFriendsPageRouteName,
