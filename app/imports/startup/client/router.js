@@ -68,6 +68,14 @@ userRoutes.route('/search', {
   },
 });
 
+export const createEventPageRouteName = 'Create_Event_Page';
+userRoutes.route('/create_event', {
+  name: createEventPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: createEventPageRouteName });
+  },
+});
+
 
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
