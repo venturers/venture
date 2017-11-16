@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8c7a4dc9-c8fd-4552-a8bc-1184384dc6c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/layouts/user/user-header.html" afterPath="$PROJECT_DIR$/app/imports/ui/layouts/user/user-header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.css" afterPath="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.html" afterPath="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.css" afterPath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html" afterPath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="456">
-              <caret line="175" column="18" lean-forward="true" selection-start-line="175" selection-start-column="18" selection-end-line="175" selection-end-column="18" />
+              <caret line="112" column="22" lean-forward="true" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -105,7 +101,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/app/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="621" />
     <option name="width" value="1309" />
     <option name="height" value="1030" />
@@ -419,15 +415,15 @@
       <workItem from="1510172546410" duration="989000" />
       <workItem from="1510174103813" duration="301000" />
       <workItem from="1510687553373" duration="2398000" />
-      <workItem from="1510696265774" duration="4120000" />
+      <workItem from="1510696265774" duration="4994000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7808000" />
+    <option name="totallyTimeSpent" value="8682000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -779,7 +775,7 @@
     <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
-          <caret line="175" column="18" lean-forward="true" selection-start-line="175" selection-start-column="18" selection-end-line="175" selection-end-column="18" />
+          <caret line="112" column="22" lean-forward="true" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
           <folding />
         </state>
       </provider>
