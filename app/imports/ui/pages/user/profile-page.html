@@ -8,7 +8,6 @@
           <div class="ui row">
             <img class="ui small circular centered image profile-image"
                  src="http://www.thisisplanb.com/wp-content/uploads/2013/01/Woman-Licking-Cactus.jpg">
-            <button class="ui inverted button">Change</button>
           </div>
         </div>
       </div>
@@ -32,6 +31,7 @@
         <div class="field">
           {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
           }}
+          {{> Text_Form_Control label="Profile Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
         </div>
 
         <div class="fields">
