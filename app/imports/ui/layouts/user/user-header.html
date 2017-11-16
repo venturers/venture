@@ -2,9 +2,16 @@
   <div id="header-menu" class="ui borderless inverted black menu">
     <div class="ui container">
       <div class="item"><h1>Venture</h1></div>
+<<<<<<< HEAD
       <a class="{{isActiveRoute "Profile_Page"}} item" href="{{pathFor "Profile_Page" username=routeUserName}}">Profile</a>
       <a class="{{isActiveRoute "Search_Page"}} item" href="{{pathFor "Search_Page" username=routeUserName}}">Search</a>
       <a class="{{isActiveRoute "Create_Event_Page"}} item" href="{{pathFor "Create_Event_Page" username=routeUserName}}">Create an Event</a>
+=======
+      <a class="{{isActiveRoute "Search_Page"}} item" href="{{pathFor "Search_Page" username=routeUserName}}">Find Events</a>
+      <a class="{{isActiveRoute "Search_Friends_Page"}} item" href="{{pathFor "Search_Friends_Page" username=routeUserName}}">Find Friends</a>
+      <a class="{{isActiveRoute "Profile_Page"}} item" href="{{pathFor "Profile_Page" username=routeUserName}}">Your Profile</a>
+      <a class="{{isActiveRoute "Public_Profile_Page"}} item" href="{{pathFor "Public_Profile_Page" username=routeUserName}}">Public Profile</a>
+>>>>>>> master
       <div class="right aligned item">{{> Cas_Login }}</div>
     </div>
   </div>
