@@ -1,0 +1,184 @@
+<template name="Search_Friends_Page">
+
+  <div class="search-header-friends">
+    <div class="ui container middle aligned centered grid middle-align">
+      <div class="ui column">
+        <div class="ui row">
+          <p class="search-header-text-main">Search for venturers near you...</p>
+          <div class="ui grid container">
+            <div class="ui row">
+              <div class="ui six wide column">
+                <p class="search-header-text-secondary">By name</p>
+                <div class="ui icon input">
+                  <input type="text" placeholder="Search...">
+                  <i class="search icon"></i>
+                </div>
+              </div>
+              <div class="ui four wide column">
+                <div class="ui inverted button">Advanced Search</div>
+              </div>
+              <div class="ui six wide column">
+                <p class="search-header-text-secondary">By interests</p>
+                <div class="field">
+                  {{> Select_Form_Control label="" options=interests multiple=true }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-area middle-align">
+    <div class="ui container">
+      <div class="ui centered dividing header" style="padding-top: 20px; padding-bottom: 20px;">
+        <p class="event-header-text">Here's who we found</p>
+      </div>
+      <div class="ui container middle aligned five column grid">
+        <div class="ui row">
+
+          <div class="column">
+            <div class="ui fluid card">
+              <div class="image">
+                <img
+                    src="https://thumbs.dreamstime.com/z/happy-old-man-29332682.jpg">
+              </div>
+              <div class="content">
+                <a class="header">Grandpa Man</a>
+                <div class="meta">
+                  <a>Kahala, HI</a>
+                </div>
+                <div class="description">
+                  I like mowing my lawn and watching football on my freshly mowed lawn.
+                </div>
+              </div>
+              <div class="extra content">
+                <span>
+        <i class="user icon"></i>
+        1809 friends
+      </span>
+              </div>
+              <div class="ui bottom attached button">
+                <i class="add icon"></i>
+                Add Friend
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="ui fluid card">
+              <div class="image">
+                <img
+                    src="http://www.gnomeplanet.com/photo/251/a/C9829_a.jpg">
+              </div>
+              <div class="content">
+                <a class="header">Kiddo the Kid</a>
+                <div class="meta">
+                  <a>Manoa, HI</a>
+                </div>
+                <div class="description">
+                  I'm just some crazy kid lol pls be my fren
+                </div>
+              </div>
+              <div class="extra content">
+                <span>
+        <i class="user icon"></i>
+        7 friends
+      </span>
+              </div>
+              <div class="ui bottom attached button">
+                <i class="add icon"></i>
+                Add Friend
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="ui fluid card">
+              <div class="image">
+                <img
+                    src="http://www.colourbox.com/preview/4057996-255580-business-person-holding-document-file.jpg">
+              </div>
+              <div class="content">
+                <a class="header">Your Dad's Boss</a>
+                <div class="meta">
+                  <a>Saint Louis Heights, HI</a>
+                </div>
+                <div class="description">
+                  I am literally the boss of your dad
+                </div>
+              </div>
+              <div class="extra content">
+                <span>
+        <i class="user icon"></i>
+        102 friends
+      </span>
+              </div>
+              <div class="ui bottom attached button">
+                <i class="add icon"></i>
+                Add Friend
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="ui fluid card">
+              <div class="image">
+                <img src="http://assets3.thrillist.com/v1/image/1299823/size/tl-horizontal_main/7-weird-stock-images-of-people-struggling-with-basic-cooking">
+              </div>
+              <div class="content">
+                <a class="header">Master Chef</a>
+                <div class="meta">
+                  <a>Waikiki, HI</a>
+                </div>
+                <div class="description">
+                  If you add me as a friend I will cook you food and love u 5ever
+                </div>
+              </div>
+              <div class="extra content">
+                <span>
+        <i class="user icon"></i>
+        309 friends
+      </span>
+              </div>
+              <div class="ui bottom attached button">
+                <i class="add icon"></i>
+                Add Friend
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="ui fluid card">
+              <div class="image">
+                <img src="http://image.shutterstock.com/display_pic_with_logo/93178/178307564/stock-photo-portrait-of-the-young-thinking-man-looks-up-with-hand-near-face-isolated-on-white-178307564.jpg">
+              </div>
+              <div class="content">
+                <a class="header">Thinking Guy</a>
+                <div class="meta">
+                  <a>Kaneohe, HI</a>
+                </div>
+                <div class="description">
+                  I overthink things, hmu if you wanna overthink things with me.
+                </div>
+              </div>
+              <div class="extra content">
+                <span>
+        <i class="user icon"></i>
+        45 friends
+      </span>
+              </div>
+              <div class="ui bottom attached button">
+                <i class="add icon"></i>
+                Add Friend
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>

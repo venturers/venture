@@ -6,16 +6,19 @@
       <div class="ui container middle aligned centered grid middle-align">
         <div class="ui column">
           <div class="ui row">
-            <p class="search-header-text-main">Search for things you love...</p>
+            <p class="search-header-text-main">Search for things you love to do...</p>
             <div class="ui grid container">
-              <div class="ui eight wide column">
+              <div class="ui six wide column">
                 <p class="search-header-text-secondary">By keyword</p>
                 <div class="ui icon input">
                   <input type="text" placeholder="Search...">
                   <i class="search icon"></i>
                 </div>
               </div>
-              <div class="ui eight wide column">
+              <div class="ui four wide column">
+                <div class="ui inverted button">Advanced Search</div>
+              </div>
+              <div class="ui six wide column">
                 <p class="search-header-text-secondary">By interests</p>
                 <div class="field">
                   {{> Select_Form_Control label="" options=interests multiple=true }}
