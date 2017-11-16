@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c7a4dc9-c8fd-4552-a8bc-1184384dc6c4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.css" afterPath="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.css" afterPath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html" afterPath="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,23 +24,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search-friends-page.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search-friends-page.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+            <state relative-caret-position="650">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search-page.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search-page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="6" column="71" lean-forward="false" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
+              <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
               <folding>
-                <marker date="1510813442334" expanded="false" signature="1219:1259" ph="..." />
+                <marker date="1510813661203" expanded="false" signature="1225:1265" ph="..." />
               </folding>
             </state>
           </provider>
@@ -99,11 +98,11 @@
         <option value="$PROJECT_DIR$/app/imports/ui/layouts/user/user-header.css" />
         <option value="$PROJECT_DIR$/app/imports/ui/pages/search/index.js" />
         <option value="$PROJECT_DIR$/app/imports/startup/client/router.js" />
-        <option value="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html" />
         <option value="$PROJECT_DIR$/app/imports/ui/layouts/user/user-header.html" />
         <option value="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.html" />
         <option value="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.css" />
         <option value="$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.css" />
+        <option value="$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html" />
       </list>
     </option>
   </component>
@@ -447,7 +446,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8699000" />
+    <option name="totallyTimeSpent" value="8803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
@@ -787,16 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="71" lean-forward="false" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
-          <folding>
-            <marker date="1510813442334" expanded="false" signature="1219:1259" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2800">
@@ -807,9 +796,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-friends-page.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        <state relative-caret-position="650">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/imports/ui/pages/search/search-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+          <folding>
+            <marker date="1510813661203" expanded="false" signature="1225:1265" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
