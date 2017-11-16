@@ -68,13 +68,12 @@ userRoutes.route('/search', {
   },
 });
 
-<<<<<<< HEAD
 export const createEventPageRouteName = 'Create_Event_Page';
-userRoutes.route('/create_event', {
+userRoutes.route('/create-event', {
   name: createEventPageRouteName,
   action() {
     BlazeLayout.render('User_Layout', { main: createEventPageRouteName });
-=======
+
 export const publicProfilePageRouteName = 'Public_Profile_Page';
 userRoutes.route('/public-profile', {
   name: publicProfilePageRouteName,
@@ -88,7 +87,6 @@ userRoutes.route('/search-friends', {
   name: searchFriendsPageRouteName,
   action() {
     BlazeLayout.render('User_Layout', { main: searchFriendsPageRouteName });
->>>>>>> master
   },
 });
 
