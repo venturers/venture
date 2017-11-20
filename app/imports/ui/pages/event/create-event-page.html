@@ -1,0 +1,120 @@
+<template name="Create_Event_Page">
+
+    {{#if Template.subscriptionsReady}}
+
+    <div class="event-head">
+      <div class="ui container middle aligned centered grid middle-align">
+        <div class="ui column">
+          <div class="ui row">
+            <h1 style="font-size: 35px"> Create an Event </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container segment">
+
+      <div class="ui container middle aligned centered grid middle-align">
+        <div class="ui column">
+          <div class="ui row">
+            <img class="ui centered image event-image"
+                 src="http://ak6.picdn.net/shutterstock/videos/11349986/thumb/1.jpg">
+            <button class="ui centered button" style="margin-bottom: 10px">Change</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui dividing header">
+        Event Details
+      </div>
+      <form class="ui equal width form create-event-form {{ successClass }} {{ errorClass }}">
+
+        <div class="fields">
+          {{> Text_Form_Control label="Event Name" placeholder="ex: Beach Bash" value=event.name errorMessage=(fieldError"name")}}
+        </div>
+        <div class="fields">
+          {{> Text_Form_Control label="Date" placeholder="ex: December 20, 2017" value=event.date errorMessage=(fieldError"date")}}
+          {{> Text_Form_Control label="Time" placeholder="ex: 6:00am - 6:30pm" value=event.time errorMessage=(fieldError"time")}}
+        </div>
+        <div class="fields">
+          {{> Text_Form_Control label="Location" placeholder="ex: Alamoana Beach Park" value=event.location errorMessage=(fieldError"location")}}
+        </div>
+        <div class="fields">
+          {{> Text_Form_Control label="Cost of Event" placeholder="ex: Free" value=event.cost errorMessage=(fieldError"cost")}}
+          {{> Text_Form_Control label="Transportation Options" placeholder="ex: Bus / Private Vehicle" value=event.transportation errorMessage=(fieldError"transportation")}}
+        </div>
+
+        <div class="fields">
+          {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
+          }}
+        </div>
+
+        <div class="fields">
+          {{> TextArea_Form_Control label="Description" value=event.description placeholder="ex: Come to the beach and have good times with good people!"
+          errorMessage=(fieldError "description")}}
+        </div>
+
+        <button class="ui primary centered button" type="submit">Submit</button>
+
+      </form>
+    </div>
+
+
+    <div class="events-area middle-align">
+      <div class="ui container">
+        <div class="ui centered dividing header" style="padding-top: 20px; padding-bottom: 20px;">
+          <p class="event-header-text">Your Events</p>
+        </div>
+        <div class="ui container middle aligned four column grid">
+          <div class="ui row">
+            <div class="column">
+              <div class="ui fluid card">
+                <div class="image">
+                  <img
+                      src="https://cdn.vox-cdn.com/thumbor/SflR4LOeJAX4LK-56sebfn6WhnM=/0x0:5184x3456/1200x800/filters:focal%281797x1111:2625x1939%29/cdn.vox-cdn.com/uploads/chorus_image/image/51587191/usa-today-9596232.0.jpg">
+                </div>
+                <div class="content">
+                  <a class="header">Football Game</a>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui fluid card">
+                <div class="image">
+                  <img
+                      src="http://static3.depositphotos.com/1003940/195/i/950/depositphotos_1958958-stock-photo-friends-at-the-beach.jpg">
+                </div>
+                <div class="content">
+                  <a class="header">Beach Day</a>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui fluid card">
+                <div class="image">
+                  <img
+                      src="https://static8.depositphotos.com/1252160/940/i/950/depositphotos_9401934-stock-photo-concert-crowd.jpg">
+                </div>
+                <div class="content">
+                  <a class="header">The Concert</a>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui fluid card">
+                <div class="image">
+                  <img src="http://www.eventsonthehorizon.com/wp-content/uploads/2014/07/adult-onesie-pyjamas.jpg">
+                </div>
+                <div class="content">
+                  <a class="header">A fun party</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/if}}
+
+</template>
