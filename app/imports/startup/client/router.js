@@ -92,6 +92,14 @@ userRoutes.route('/search-friends', {
   },
 });
 
+export const eventPageRouteName = 'Event_Page';
+userRoutes.route('/events/:_id', {
+  name: eventPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: eventPageRouteName });
+  },
+});
+
 
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
