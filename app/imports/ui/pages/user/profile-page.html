@@ -6,9 +6,12 @@
       <div class="ui container middle aligned centered grid middle-align">
         <div class="ui column">
           <div class="ui row">
-            <img class="ui small circular centered image profile-image"
-                 src="http://www.thisisplanb.com/wp-content/uploads/2013/01/Woman-Licking-Cactus.jpg">
-            <button class="ui inverted button">Change</button>
+            {{#if profile.picture}}
+              <img class="ui small circular centered image" src="{{ profile.picture }}">
+            {{else}}
+              <img class="ui small circular centered image"
+                   src="http://www.thisisplanb.com/wp-content/uploads/2013/01/Woman-Licking-Cactus.jpg">
+            {{/if}}
           </div>
         </div>
       </div>
@@ -26,17 +29,18 @@
           "firstName")}}
           {{> Text_Form_Control label="Last" placeholder="Last name" value=profile.lastName errorMessage=(fieldError
           "lastName")}}
-          {{> Text_Form_Control label="Age" placeholder="Age" value=profile.lastName errorMessage=(fieldError "age")}}
+          {{> Text_Form_Control label="Age" placeholder="Age" value=profile.age errorMessage=(fieldError "age")}}
         </div>
 
         <div class="field">
           {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
           }}
+          {{> Text_Form_Control label="Profile Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
         </div>
 
         <div class="fields">
 
-          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" placeholder="" value=profile.github
+          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" placeholder="" value=profile.snapchat
           errorMessage=(fieldError "snapchat")}}
           {{> Social_Network_Form_Control label="Facebook" icon="facebook" placeholder="" value=profile.facebook
           errorMessage=(fieldError "facebook")}}
