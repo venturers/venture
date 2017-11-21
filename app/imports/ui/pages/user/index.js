@@ -3,3 +3,7 @@ import './profile-page.js';
 import './profile-page.css';
 import './public-profile-page.html';
 import './public-profile-page.css';
+import './my-events-page.css';
+import './my-events-page.html';
+import './my-friends-page.css';
+import './my-friends-page.html';
