@@ -1,0 +1,21 @@
+.middle-align {
+  height: 100%;
+}
+
+.dashboard-page-header {
+  background: url("http://cdn.thepointsguy.com/wp-content/uploads/2015/10/Hawaii-sunset-beach-featured-shutterstock-162636074.jpg") no-repeat center;
+  background-size: cover;
+  height: 200px;
+}
+
+.dashboard-head-text {
+  font-size: 48px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dashboard-section {
+  padding: 30px;
+}
