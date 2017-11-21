@@ -100,6 +100,14 @@ userRoutes.route('/events/:_id', {
   },
 });
 
+export const dashboardPageRouteName = 'Dashboard_Page';
+userRoutes.route('/dashboard', {
+  name: dashboardPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: dashboardPageRouteName });
+  },
+});
+
 
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
