@@ -16,7 +16,18 @@
                 </div>
               </div>
               <div class="ui four wide column">
-                <div class="ui inverted button">Advanced Search</div>
+                <div class="ui inverted button advanced-search">Advanced Search</div>
+                <div class="ui hidden content segment advanced-search-form">
+                  <form class="ui form">
+                    <div class="field">
+                      {{> Text_Form_Control label="Location" placeholder="Location" value=profile.location errorMessage=(fieldError
+                          "location")}}
+                      {{> Text_Form_Control label="Transportation" placeholder="Transportation" value=profile.transportation errorMessage=(fieldError
+                          "transportation")}}
+                      {{> Text_Form_Control label="Attending Common Events" placeholder="Attending Common Events" value=profile.age errorMessage=(fieldError "attendingCommonEvents")}}
+                    </div>
+                  </form>
+                </div>
               </div>
               <div class="ui six wide column">
                 <p class="search-header-text-secondary">By interests</p>
