@@ -17,15 +17,22 @@
               </div>
               <div class="ui four wide column">
                 <div class="ui inverted button advanced-search">Advanced Search</div>
-                <div class="ui hidden content segment advanced-search-form">
+                <div class="ui segment advanced-search-form hidden">
                   <form class="ui form">
                     <div class="field">
+                      {{> Text_Form_Control label="Date" placeholder="Date" value=profile.location errorMessage=(fieldError
+                          "date")}}
+                      {{> Text_Form_Control label="Time" placeholder="Time" value=profile.location errorMessage=(fieldError
+                          "time")}}
                       {{> Text_Form_Control label="Location" placeholder="Location" value=profile.location errorMessage=(fieldError
                           "location")}}
+                      {{> Text_Form_Control label="Cost" placeholder="Cost" value=profile.location errorMessage=(fieldError
+                          "cost")}}
                       {{> Text_Form_Control label="Transportation" placeholder="Transportation" value=profile.transportation errorMessage=(fieldError
                           "transportation")}}
-                      {{> Text_Form_Control label="Attending Common Events" placeholder="Attending Common Events" value=profile.age errorMessage=(fieldError "attendingCommonEvents")}}
+                      {{> Checkbox_Field label="Friends are attending" value=profile.friendsAreAttending errorMessage=(fieldError "friendsAreAttending")}}
                     </div>
+                    <button class="ui primary button" type="submit">Search</button>
                   </form>
                 </div>
               </div>
