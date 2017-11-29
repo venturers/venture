@@ -1,0 +1,30 @@
+<template name="Event_Card">
+  <div class="ui fluid card">
+    <div class="image">
+      <img
+          src= {{ event.picture }}>
+    </div>
+    <div class="content">
+      <a class="header">{{ event.name }}</a>
+      <div class="meta">
+        <a>{{ event.location }}</a>
+      </div>
+      <div class="description">
+        {{ event.description }}
+      </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated">
+          {{ event.date }} {{ event.time }}
+        </span>
+      <span>
+          <i class="user icon"></i>
+          {{ event.peopleGoing }} people going
+        </span>
+    </div>
+    <div class="ui bottom attached button">
+      <i class="add icon"></i>
+      Add Event
+    </div>
+  </div>
+</template>

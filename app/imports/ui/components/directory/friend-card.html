@@ -1,0 +1,27 @@
+<template name="Friend_Card">
+  <div class="ui fluid card">
+    <div class="image">
+      <img
+          src={{ profile.picture }}>
+    </div>
+    <div class="content">
+      <a class="header">{{ profile.first }} {{ profile.last }}</a>
+      <div class="meta">
+        <a>{{ profile.location }}</a>
+      </div>
+      <div class="description">
+        {{ profile.description }}
+      </div>
+    </div>
+    <div class="extra content">
+                <span>
+        <i class="user icon"></i>
+        {{ profile.friends }} friends
+      </span>
+    </div>
+    <div class="ui bottom attached button">
+      <i class="add icon"></i>
+      Add Friend
+    </div>
+  </div>
+</template>

@@ -27,9 +27,10 @@ class EventCollection extends BaseCollection {
       location: { type: String },
       cost: { type: String },
       transportation: { type: String },
+      peopleGoing: { type: String },
 
       interests: { type: Array, optional: true },
-      'interests.$': { type: String },
+      'interests.$': { type: Number },
 
       title: { type: String, optional: true },
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
@@ -40,9 +41,9 @@ class EventCollection extends BaseCollection {
   }
 
   /**
-   * Defines a new Profile.
+   * Defines a new Event.
    * @example
-   * Profiles.define({ firstName: 'Philip',
+   * EventCollection.define({ firstName: 'Philip',
    *                   lastName: 'Johnson',
    *                   username: 'johnson',
    *                   bio: 'I have been a professor of computer science at UH since 1990.',
@@ -60,7 +61,7 @@ class EventCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', interests = [], picture = '', title = '', github = '',
+  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = 0, interests = [], picture = '', title = '', github = '',
            facebook = '', instagram = '' }) {
     // make sure required fields are OK.
     const checkPattern = { username: String, name: String, description: String, date: String, time: String, location: String, cost: String, transportation: String, picture: String,
@@ -79,7 +80,7 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error(`${interests} contains duplicates`);
     }
 
-    return this._collection.insert({ username, name, description, date, time, location, cost, transportation, interests, picture, title, github,
+    return this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture, title, github,
       facebook, instagram });
   }
 
@@ -98,13 +99,14 @@ class EventCollection extends BaseCollection {
     const location = doc.location;
     const cost = doc.cost;
     const transportation = doc.transportation;
+    const peopleGoing = doc.peopleGoing;
     const interests = doc.interests;
     const picture = doc.picture;
     const title = doc.title;
     const github = doc.github;
     const facebook = doc.facebook;
     const instagram = doc.instagram;
-    return { username, name, description, date, time, location, cost, transportation, interests, picture, title, github,
+    return { username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture, title, github,
       facebook, instagram };
   }
 }
