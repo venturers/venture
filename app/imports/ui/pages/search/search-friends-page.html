@@ -9,10 +9,12 @@
             <div class="ui row">
               <div class="ui six wide column">
                 <p class="search-header-text-secondary">By name</p>
-                <form class="ui form search-friends-form">
-                  <div class="ui icon input">
-                    <input type="text" placeholder="Search...">
-                    <i class="submit search link icon"></i>
+                <form class="ui form search-name-form">
+                  <div class="field">
+                    <div class="ui icon input">
+                      <input type="text" placeholder="Search...">
+                      <i class="search link icon search-icon"></i>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -34,7 +36,7 @@
               </div>
               <div class="ui six wide column">
                 <p class="search-header-text-secondary">By interests</p>
-                <div class="field">
+                <div class="ui form search-interests-form">
                   {{> Select_Form_Control options=interests multiple=true }}
                 </div>
               </div>
@@ -51,13 +53,9 @@
         <p class="event-header-text">Here's who we found</p>
       </div>
       <div class="ui cards">
-        <div class="ui cards">
-
-          {{#each profile in profiles }}
-            {{> Directory_Profile profile=profile }}
-          {{/each}}
-
-        </div>
+        {{#each profile in profiles}}
+          {{> Directory_Profile profile=profile}}
+        {{/each}}
       </div>
     </div>
   </div>

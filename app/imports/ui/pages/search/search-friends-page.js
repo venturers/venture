@@ -37,17 +37,17 @@ Template.Search_Friends_Page.helpers({
 });
 
 Template.Search_Friends_Page.events({
-  'click .submit'(event, instance) {
+  'click .search-icon'(event, instance) {
     event.preventDefault();
     $('.results-area').transition('slide down');
-    const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-    instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
   },
-  'submit .search-friends-form'(event, instance) {
+  'submit .search-name-form'(event, instance) {
     event.preventDefault();
     $('.results-area').transition('slide down');
-    const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-    instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+  },
+  'change .search-interests-form'(event, instance) {
+    event.preventDefault();
+    $('.results-area').transition('slide down');
   },
   'click .advanced-search'() {
     $('.advanced-search-form').transition('fly down');
