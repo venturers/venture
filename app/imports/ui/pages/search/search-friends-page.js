@@ -37,16 +37,14 @@ Template.Search_Friends_Page.helpers({
 });
 
 Template.Search_Friends_Page.events({
-  'click .search-icon'(event, instance) {
-    event.preventDefault();
+  'click .search.icon'(event, instance) {
     $('.results-area').transition('slide down');
   },
   'submit .search-name-form'(event, instance) {
     event.preventDefault();
     $('.results-area').transition('slide down');
   },
-  'change .search-interests-form'(event, instance) {
-    event.preventDefault();
+  'change .search-interests-form'() {
     $('.results-area').transition('slide down');
   },
   'click .advanced-search'() {

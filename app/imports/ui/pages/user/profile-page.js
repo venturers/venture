@@ -44,8 +44,8 @@ Template.Profile_Page.helpers({
 Template.Profile_Page.events({
   'submit .profile-data-form'(event, instance) {
     event.preventDefault();
-    const firstName = event.target.First.value;
-    const lastName = event.target.Last.value;
+    const firstName = event.target['First Name'].value;
+    const lastName = event.target['Last Name'].value;
     const age = event.target.Age.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
     const picture = event.target['Profile Picture'].value;
@@ -63,6 +63,12 @@ Template.Profile_Page.events({
     instance.context.reset();
     // Invoke clean so that updatedProfileData reflects what will be inserted.
     const cleanData = Profiles.getSchema().clean(updatedProfileData, { removeEmptyStrings: false });
+    if (cleanData.firstName === '') {
+      delete cleanData.firstName;
+    }
+    if (cleanData.lastName === '') {
+      delete cleanData.lastName;
+    }
     // Determine validity.
     instance.context.validate(cleanData);
 
@@ -75,6 +81,10 @@ Template.Profile_Page.events({
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
+  },
+  'click .close.icon'(event, instance) {
+    event.preventDefault();
+    instance.messageFlags.set(displaySuccessMessage, false);
   }
 });
 

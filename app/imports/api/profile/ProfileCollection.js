@@ -21,8 +21,8 @@ class ProfileCollection extends BaseCollection {
     super('Profile', new SimpleSchema({
       username: { type: String },
       // Remainder are optional
-      firstName: { type: String, optional: true },
-      lastName: { type: String, optional: true },
+      firstName: { type: String, optional: false },
+      lastName: { type: String, optional: false },
       age: { type: String, optional: true },
       bio: { type: String, optional: true },
       interests: { type: Array, optional: true },

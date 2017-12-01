@@ -1,20 +1,23 @@
 <template name="Friend_Card">
-  <div class="ui fluid card">
+  <div class="ui card">
     <div class="image">
-      <img
-          src={{ profile.picture }}>
+      <img src={{ profile.picture }}>
     </div>
     <div class="content">
-      <a class="header">{{ profile.first }} {{ profile.last }}</a>
-      <div class="meta">
-        <a>{{ profile.location }}</a>
+      <div class="header">
+        {{ profile.firstName }} {{ profile.lastName }}
       </div>
+      {{#if profile.age}}
+      <div class="meta">
+        <a>Age: {{ profile.age }}</a>
+      </div>
+      {{/if}}
       <div class="description">
-        {{ profile.description }}
+        {{ profile.bio }}
       </div>
     </div>
     <div class="extra content">
-                <span>
+      <span>
         <i class="user icon"></i>
         {{ profile.friends }} friends
       </span>
