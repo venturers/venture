@@ -4,6 +4,7 @@ import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 
+const searchedNameKey = 'searchedName';
 const selectedInterestsKey = 'selectedInterests';
 
 Template.Search_Friends_Page.onCreated(function onCreated() {
@@ -18,12 +19,17 @@ Template.Search_Friends_Page.onRendered(function onRendered() {
 
 Template.Search_Friends_Page.helpers({
   profiles() {
-    // Find all profiles with the currently selected interests.
-    const allProfiles = Profiles.findAll();
+    let matchedProfiles = Profiles.findAll();
+    const searchedName = Template.instance().messageFlags.get(searchedNameKey);
+    matchedProfiles = _.filter(matchedProfiles, profile => (profile.firstName + ' ' + profile.lastName).toUpperCase().indexOf(searchedName) >= 0);
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
-    return _.filter(allProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+    if (selectedInterests.length === 0) {
+      return matchedProfiles;
+    }
+    else {
+      return _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+    }
   },
-
   interests() {
     return _.map(Interests.findAll(),
         function makeInterestObject(interest) {
@@ -38,6 +44,7 @@ Template.Search_Friends_Page.helpers({
 Template.Search_Friends_Page.events({
   'submit .search-friends-form'(event, instance) {
     event.preventDefault();
+    instance.messageFlags.set(searchedNameKey, event.target.Name.value.toUpperCase());
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
     $('.search-area').hide();
