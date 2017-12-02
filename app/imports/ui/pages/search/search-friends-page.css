@@ -2,10 +2,6 @@
   height: 100%;
 }
 
-.hidden {
-  display: none;
-}
-
 .search-header-friends {
   background: url("https://static.pexels.com/photos/207896/pexels-photo-207896.jpeg") no-repeat center;
   background-size: cover;
@@ -26,27 +22,12 @@
   padding: 10px;
 }
 
-.results-area {
-  background-color: black;
-  padding-bottom: 50px;
-  height: 500px;
-}
-
 .event-header-text {
   font-size: 32px;
   color: white;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
-/*.footer {*/
-  /*background-color: #FEAF66;*/
-  /*height: 100px;*/
-/*}*/
-
-/*.footer-text {*/
-  /*color: white;*/
-  /*font-size: 14px;*/
-  /*text-align: center;*/
-/*}*/
+.results {
+  overflow: auto;
+  max-height: 600px;
+}

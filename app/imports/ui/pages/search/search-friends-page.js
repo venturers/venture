@@ -10,15 +10,14 @@ Template.Search_Friends_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Interests.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(selectedInterestsKey, undefined);
+});
+
+Template.Search_Friends_Page.onRendered(function onRendered() {
+  $('.results-area').hide();
 });
 
 Template.Search_Friends_Page.helpers({
   profiles() {
-    // Initialize selectedInterests to all of them if messageFlags is undefined.
-    if (!Template.instance().messageFlags.get(selectedInterestsKey)) {
-      Template.instance().messageFlags.set(selectedInterestsKey, _.map(Interests.findAll(), interest => interest.name));
-    }
     // Find all profiles with the currently selected interests.
     const allProfiles = Profiles.findAll();
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
@@ -37,17 +36,20 @@ Template.Search_Friends_Page.helpers({
 });
 
 Template.Search_Friends_Page.events({
-  'click .search.icon'(event, instance) {
-    $('.results-area').transition('slide down');
-  },
-  'submit .search-name-form'(event, instance) {
+  'submit .search-friends-form'(event, instance) {
     event.preventDefault();
-    $('.results-area').transition('slide down');
-  },
-  'change .search-interests-form'() {
-    $('.results-area').transition('slide down');
+    const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
+    instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+    $('.search-area').hide();
+    $('.search-area').removeClass('visible');
+    $('.results-area').transition('slide left');
   },
   'click .advanced-search'() {
     $('.advanced-search-form').transition('fly down');
+  },
+  'click .angle.left.link.icon'() {
+    $('.results-area').hide();
+    $('.results-area').removeClass('visible');
+    $('.search-area').transition('slide right');
   }
 });
