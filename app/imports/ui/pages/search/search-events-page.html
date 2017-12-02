@@ -1,0 +1,194 @@
+<template name="Search_Events_Page">
+
+  {{#if Template.subscriptionsReady}}
+
+    <div class="search-header-main">
+      <div class="ui container middle aligned centered grid middle-align search-area">
+        <div class="ui column">
+          <p class="search-header-text-main">Search for things you love to do...</p>
+          <form class="ui form search-form">
+            <div class="ui grid container">
+              <div class="ui six wide column">
+                <p class="search-header-text-secondary">By keyword</p>
+                <div class="field">
+                  <div class="ui icon input">
+                    <input type="text" name="Keyword" placeholder="Search...">
+                    <i class="search icon"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui four wide column">
+                <div class="ui inverted button advanced-search">Advanced Search</div>
+                <div class="ui segment advanced-search-form hidden">
+                  {{> Text_Form_Control label="Date" placeholder="Date" value=event.date errorMessage=(fieldError
+                      "date")}}
+                  {{> Text_Form_Control label="Time" placeholder="Time" value=event.time errorMessage=(fieldError
+                      "time")}}
+                  {{> Text_Form_Control label="Location" placeholder="Location" value=event.location errorMessage=(fieldError
+                      "location")}}
+                  {{> Text_Form_Control label="Cost" placeholder="Cost" value=event.cost errorMessage=(fieldError
+                      "cost")}}
+                  {{> Text_Form_Control label="Transportation" placeholder="Transportation" value=event.transportation errorMessage=(fieldError
+                      "transportation")}}
+                  {{> Checkbox_Field label="Friends are attending" value=event.friendsAreAttending errorMessage=(fieldError "friendsAreAttending")}}
+                </div>
+              </div>
+
+              <div class="ui six wide column">
+                <p class="search-header-text-secondary">By interests</p>
+                {{> Select_Form_Control name="Interests" options=interests multiple=true }}
+              </div>
+            </div>
+            <br>
+            <button class="ui primary button" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="results-area middle-align hidden">
+        <div class="ui container">
+          <div class="ui grid">
+            <div class="three wide column">
+              <div class="ui header">
+                <p class="event-header-text"><i class="angle left link icon"></i></p>
+              </div>
+            </div>
+            <div class="ten wide column">
+              <div class="ui centered header">
+                <p class="event-header-text">Here's what we found</p>
+              </div>
+            </div>
+          </div>
+          <div class="ui middle aligned four column grid results">
+            <div class="ui row">
+              <div class="column">
+                <div class="ui fluid card">
+                  <div class="image">
+                    <img
+                        src="https://cdn.vox-cdn.com/thumbor/SflR4LOeJAX4LK-56sebfn6WhnM=/0x0:5184x3456/1200x800/filters:focal%281797x1111:2625x1939%29/cdn.vox-cdn.com/uploads/chorus_image/image/51587191/usa-today-9596232.0.jpg">
+                  </div>
+                  <div class="content">
+                    <a class="header">Football Game</a>
+                    <div class="meta">
+                      <a>Aloha Stadium</a>
+                    </div>
+                    <div class="description">
+                      Watch U.H. football players play football against other football players.
+                    </div>
+                  </div>
+                  <div class="extra content">
+        <span class="right floated">
+          Fri 11/3 at 6PM
+        </span>
+                    <span>
+          <i class="user icon"></i>
+          75 going
+        </span>
+                  </div>
+                  <div class="ui bottom attached button">
+                    <i class="add icon"></i>
+                    Add Event
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="ui fluid card">
+                  <div class="image">
+                    <img
+                        src="http://static3.depositphotos.com/1003940/195/i/950/depositphotos_1958958-stock-photo-friends-at-the-beach.jpg">
+                  </div>
+                  <div class="content">
+                    <a class="header">Beach Day</a>
+                    <div class="meta">
+                      <a>Ala Moana Beach</a>
+                    </div>
+                    <div class="description">
+                      Come splash around with other kids at the beach.
+                    </div>
+                  </div>
+                  <div class="extra content">
+        <span class="right floated">
+          Sat 11/4 at 6PM
+        </span>
+                    <span>
+          <i class="user icon"></i>
+          75 going
+        </span>
+                  </div>
+                  <div class="ui bottom attached button">
+                    <i class="add icon"></i>
+                    Add Event
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="ui fluid card">
+                  <div class="image">
+                    <img
+                        src="https://static8.depositphotos.com/1252160/940/i/950/depositphotos_9401934-stock-photo-concert-crowd.jpg">
+                  </div>
+                  <div class="content">
+                    <a class="header">The Concert</a>
+                    <div class="meta">
+                      <a>Waikiki Shell</a>
+                    </div>
+                    <div class="description">
+                      An amazing concert with some cool songs to listen to and you can stand up and wave your hands around
+                      like everyone else at the concert while listening to great singers and having a joy.
+                    </div>
+                  </div>
+                  <div class="extra content">
+        <span class="right floated">
+          Fri 12/3 at 10PM
+        </span>
+                    <span>
+          <i class="user icon"></i>
+          99 going
+        </span>
+                  </div>
+                  <div class="ui bottom attached button">
+                    <i class="add icon"></i>
+                    Add Event
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="ui fluid card">
+                  <div class="image">
+                    <img src="http://www.eventsonthehorizon.com/wp-content/uploads/2014/07/adult-onesie-pyjamas.jpg">
+                  </div>
+                  <div class="content">
+                    <a class="header">A fun party</a>
+                    <div class="meta">
+                      <a>Campus Center</a>
+                    </div>
+                    <div class="description">
+                      Wear a onesie and have a blast at this cool party where you can dress up with your friends and you
+                      guys can all laugh at each other and have a grand ol time.
+                    </div>
+                  </div>
+                  <div class="extra content">
+        <span class="right floated">
+          Sun 11/5 at 8PM
+        </span>
+                    <span>
+          <i class="user icon"></i>
+          1008 going
+        </span>
+                  </div>
+                  <div class="ui bottom attached button">
+                    <i class="add icon"></i>
+                    Add Event
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {{/if}}
+
+</template>

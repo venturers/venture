@@ -1,30 +1,30 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Events } from '/imports/api/event/EventCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 
-const searchedNameKey = 'searchedName';
+const searchedKeywordKey = 'searchedKeyword';
 const selectedInterestsKey = 'selectedInterests';
 
-Template.Search_Friends_Page.onCreated(function onCreated() {
-  this.subscribe(Profiles.getPublicationName());
+Template.Search_Events_Page.onCreated(function onCreated() {
+  this.subscribe(Events.getPublicationName());
   this.subscribe(Interests.getPublicationName());
   this.messageFlags = new ReactiveDict();
 });
 
-Template.Search_Friends_Page.helpers({
-  profiles() {
-    let matchedProfiles = Profiles.findAll();
-    const searchedName = Template.instance().messageFlags.get(searchedNameKey);
-    if (searchedName !== '') {
-      matchedProfiles = _.filter(matchedProfiles, profile => (profile.firstName + ' ' + profile.lastName).toUpperCase().indexOf(searchedName) >= 0);
+Template.Search_Events_Page.helpers({
+  events() {
+    let matchedEvents = Events.findAll();
+    const searchedKeyword = Template.instance().messageFlags.get(searchedKeywordKey);
+    if (searchedKeyword !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.name.toUpperCase().indexOf(searchedKeyword) >= 0);
     }
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
     if (selectedInterests.length > 0) {
-      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+      matchedEvents = _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
     }
-    return matchedProfiles;
+    return matchedEvents;
   },
   interests() {
     return _.map(Interests.findAll(),
@@ -37,10 +37,10 @@ Template.Search_Friends_Page.helpers({
   },
 });
 
-Template.Search_Friends_Page.events({
+Template.Search_Events_Page.events({
   'submit .search-form'(event, instance) {
     event.preventDefault();
-    instance.messageFlags.set(searchedNameKey, event.target.Name.value.trim().toUpperCase());
+    instance.messageFlags.set(searchedKeywordKey, event.target.Keyword.value.trim().toUpperCase());
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
     $('.search-area').hide();

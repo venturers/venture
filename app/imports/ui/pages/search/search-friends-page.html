@@ -2,38 +2,37 @@
 
   {{#if Template.subscriptionsReady}}
 
-  <div class="search-header-friends">
-    <div class="ui container middle aligned centered grid middle-align search-area">
-      <div class="ui column">
-        <div class="ui row">
+    <div class="search-header-friends">
+      <div class="ui container middle aligned centered grid middle-align search-area">
+        <div class="ui column">
           <p class="search-header-text-main">Search for venturers near you...</p>
-          <form class="ui form search-friends-form">
+          <form class="ui form search-form">
             <div class="ui grid container">
-              <div class="ui row">
-                <div class="ui six wide column">
-                  <p class="search-header-text-secondary">By name</p>
-                  <div class="field">
-                    <div class="ui icon input">
-                      <input type="text" name="Name" placeholder="Search...">
-                      <i class="search icon"></i>
-                    </div>
+              <div class="ui six wide column">
+                <p class="search-header-text-secondary">By name</p>
+                <div class="field">
+                  <div class="ui icon input">
+                    <input type="text" name="Name" placeholder="Search...">
+                    <i class="search icon"></i>
                   </div>
                 </div>
-                <div class="ui four wide column">
-                  <div class="ui inverted button advanced-search">Advanced Search</div>
-                  <div class="ui segment advanced-search-form hidden">
-                    {{> Text_Form_Control label="Location" placeholder="Location" value=profile.location errorMessage=(fieldError
-                        "location")}}
-                    {{> Text_Form_Control label="Transportation" placeholder="Transportation" value=profile.transportation errorMessage=(fieldError
-                        "transportation")}}
-                    {{> Checkbox_Field label="Has common friends" value=profile.hasCommonFriends errorMessage=(fieldError "hasCommonFriends")}}
-                    {{> Checkbox_Field label="Attending common events" value=profile.attendingCommonEvents errorMessage=(fieldError "attendingCommonEvents")}}
-                  </div>
+              </div>
+
+              <div class="ui four wide column">
+                <div class="ui inverted button advanced-search">Advanced Search</div>
+                <div class="ui segment advanced-search-form hidden">
+                  {{> Text_Form_Control label="Location" placeholder="Location" value=profile.location errorMessage=(fieldError
+                      "location")}}
+                  {{> Text_Form_Control label="Transportation" placeholder="Transportation" value=profile.transportation errorMessage=(fieldError
+                      "transportation")}}
+                  {{> Checkbox_Field label="Has common friends" value=profile.hasCommonFriends errorMessage=(fieldError "hasCommonFriends")}}
+                  {{> Checkbox_Field label="Attending common events" value=profile.attendingCommonEvents errorMessage=(fieldError "attendingCommonEvents")}}
                 </div>
-                <div class="ui six wide column">
-                  <p class="search-header-text-secondary">By interests</p>
-                  {{> Select_Form_Control name="Interests" options=interests multiple=true }}
-                </div>
+              </div>
+
+              <div class="ui six wide column">
+                <p class="search-header-text-secondary">By interests</p>
+                {{> Select_Form_Control name="Interests" options=interests multiple=true }}
               </div>
             </div>
             <br>
@@ -41,29 +40,29 @@
           </form>
         </div>
       </div>
-    </div>
-    <div class="results-area middle-align hidden">
-      <div class="ui container">
-        <div class="ui grid">
-          <div class="three wide column">
-            <div class="ui header">
-              <p class="event-header-text"><i class="angle left link icon"></i></p>
+
+      <div class="results-area middle-align hidden">
+        <div class="ui container">
+          <div class="ui grid">
+            <div class="three wide column">
+              <div class="ui header">
+                <p class="event-header-text"><i class="angle left link icon"></i></p>
+              </div>
+            </div>
+            <div class="ten wide column">
+              <div class="ui centered header">
+                <p class="event-header-text">Here's who we found</p>
+              </div>
             </div>
           </div>
-          <div class="ten wide column">
-            <div class="ui centered header">
-              <p class="event-header-text">Here's who we found</p>
-            </div>
+          <div class="ui four cards results">
+            {{#each profile in profiles}}
+              {{> Friend_Card profile=profile}}
+            {{/each}}
           </div>
-        </div>
-        <div class="ui four cards results">
-          {{#each profile in profiles}}
-            {{> Friend_Card profile=profile}}
-          {{/each}}
         </div>
       </div>
     </div>
-  </div>
 
   {{/if}}
 
