@@ -1,5 +1,7 @@
 <template name="Search_Friends_Page">
 
+  {{#if Template.subscriptionsReady}}
+
   <div class="search-header-friends">
     <div class="ui container middle aligned centered grid middle-align search-area">
       <div class="ui column">
@@ -62,5 +64,7 @@
       </div>
     </div>
   </div>
+
+  {{/if}}
 
 </template>
