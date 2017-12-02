@@ -13,22 +13,18 @@ Template.Search_Friends_Page.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
 });
 
-Template.Search_Friends_Page.onRendered(function onRendered() {
-  $('.results-area').hide();
-});
-
 Template.Search_Friends_Page.helpers({
   profiles() {
     let matchedProfiles = Profiles.findAll();
     const searchedName = Template.instance().messageFlags.get(searchedNameKey);
-    matchedProfiles = _.filter(matchedProfiles, profile => (profile.firstName + ' ' + profile.lastName).toUpperCase().indexOf(searchedName) >= 0);
+    if (searchedName !== '') {
+      matchedProfiles = _.filter(matchedProfiles, profile => (profile.firstName + ' ' + profile.lastName).toUpperCase().indexOf(searchedName) >= 0);
+    }
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
-    if (selectedInterests.length === 0) {
-      return matchedProfiles;
+    if (selectedInterests.length > 0) {
+      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
     }
-    else {
-      return _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
-    }
+    return matchedProfiles;
   },
   interests() {
     return _.map(Interests.findAll(),
@@ -44,7 +40,7 @@ Template.Search_Friends_Page.helpers({
 Template.Search_Friends_Page.events({
   'submit .search-friends-form'(event, instance) {
     event.preventDefault();
-    instance.messageFlags.set(searchedNameKey, event.target.Name.value.toUpperCase());
+    instance.messageFlags.set(searchedNameKey, event.target.Name.value.trim().toUpperCase());
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
     $('.search-area').hide();

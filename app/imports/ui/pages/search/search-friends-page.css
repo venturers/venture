@@ -2,6 +2,10 @@
   height: 100%;
 }
 
+.hidden {
+  display: none;
+}
+
 .search-header-friends {
   background: url("https://static.pexels.com/photos/207896/pexels-photo-207896.jpeg") no-repeat center;
   background-size: cover;
