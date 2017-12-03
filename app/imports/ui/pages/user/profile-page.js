@@ -63,12 +63,6 @@ Template.Profile_Page.events({
     instance.context.reset();
     // Invoke clean so that updatedProfileData reflects what will be inserted.
     const cleanData = Profiles.getSchema().clean(updatedProfileData, { removeEmptyStrings: false });
-    if (cleanData.firstName === '') {
-      delete cleanData.firstName;
-    }
-    if (cleanData.lastName === '') {
-      delete cleanData.lastName;
-    }
     // Determine validity.
     instance.context.validate(cleanData);
 

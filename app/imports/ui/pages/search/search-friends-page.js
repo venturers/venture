@@ -11,11 +11,12 @@ Template.Search_Friends_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Interests.getPublicationName());
   this.messageFlags = new ReactiveDict();
+  this.messageFlags.set(selectedInterestsKey, []);
 });
 
 Template.Search_Friends_Page.helpers({
   profiles() {
-    let matchedProfiles = Profiles.findAll();
+    let matchedProfiles = _.filter(Profiles.findAll(), profile => profile.firstName && profile.firstName !== '');
     const searchedName = Template.instance().messageFlags.get(searchedNameKey);
     if (searchedName !== '') {
       matchedProfiles = _.filter(matchedProfiles, profile => (profile.firstName + ' ' + profile.lastName).toUpperCase().indexOf(searchedName) >= 0);

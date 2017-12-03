@@ -21,8 +21,8 @@ class ProfileCollection extends BaseCollection {
     super('Profile', new SimpleSchema({
       username: { type: String },
       // Remainder are optional
-      firstName: { type: String, optional: false },
-      lastName: { type: String, optional: false },
+      firstName: { type: String, optional: true },
+      lastName: { type: String, optional: true },
       age: { type: String, optional: true },
       bio: { type: String, optional: true },
       interests: { type: Array, optional: true },
@@ -59,8 +59,8 @@ class ProfileCollection extends BaseCollection {
   define({ firstName = '', lastName = '', age, username, bio = '', interests = [], picture = '', snapchat = '',
       facebook = '', instagram = '', friends = [] }) {
     // make sure required fields are OK.
-    const checkPattern = { firstName: String, lastName: String, username: String };
-    check({ firstName, lastName, username }, checkPattern);
+    const checkPattern = { username: String };
+    check({ username }, checkPattern);
 
     if (this.find({ username }).count() > 0) {
       throw new Meteor.Error(`${username} is previously defined in another Profile`);

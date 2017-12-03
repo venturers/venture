@@ -11,6 +11,7 @@ Template.Search_Events_Page.onCreated(function onCreated() {
   this.subscribe(Events.getPublicationName());
   this.subscribe(Interests.getPublicationName());
   this.messageFlags = new ReactiveDict();
+  this.messageFlags.set(selectedInterestsKey, []);
 });
 
 Template.Search_Events_Page.helpers({
@@ -22,7 +23,7 @@ Template.Search_Events_Page.helpers({
     }
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
     if (selectedInterests.length > 0) {
-      matchedEvents = _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+      matchedEvents = _.filter(matchedProfiles, event => _.intersection(event.interests, selectedInterests).length > 0);
     }
     return matchedEvents;
   },
