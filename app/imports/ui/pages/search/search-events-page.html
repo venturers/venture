@@ -1,18 +1,18 @@
-<template name="Search_Friends_Page">
+<template name="Search_Events_Page">
 
   {{#if Template.subscriptionsReady}}
 
-    <div class="search-header-friends">
+    <div class="search-header-main">
       <div class="ui container middle aligned centered grid middle-align search-area">
         <div class="ui column">
-          <p class="search-header-text-main">Search for venturers near you...</p>
+          <p class="search-header-text-main">Search for things you love to do...</p>
           <form class="ui form search-form">
             <div class="ui grid container">
               <div class="ui six wide column">
-                <p class="search-header-text-secondary">By name</p>
+                <p class="search-header-text-secondary">By keyword</p>
                 <div class="field">
                   <div class="ui icon input">
-                    <input type="text" name="Name" placeholder="Search...">
+                    <input type="text" name="Keyword" placeholder="Search...">
                     <i class="search icon"></i>
                   </div>
                 </div>
@@ -21,10 +21,12 @@
               <div class="ui four wide column">
                 <div class="ui inverted button advanced-search">Advanced Search</div>
                 <div class="ui segment advanced-search-form hidden">
+                  {{> Text_Form_Control label="Date" placeholder="Date"}}
+                  {{> Text_Form_Control label="Time" placeholder="Time"}}
                   {{> Text_Form_Control label="Location" placeholder="Location"}}
+                  {{> Text_Form_Control label="Cost" placeholder="Cost"}}
                   {{> Text_Form_Control label="Transportation" placeholder="Transportation"}}
-                  {{> Checkbox_Field label="Has common friends"}}
-                  {{> Checkbox_Field label="Attending common events"}}
+                  {{> Checkbox_Field label="Friends are attending"}}
                 </div>
               </div>
 
@@ -49,13 +51,13 @@
             </div>
             <div class="ten wide column">
               <div class="ui centered header">
-                <p class="event-header-text">Here's who we found</p>
+                <p class="event-header-text">Here's what we found</p>
               </div>
             </div>
           </div>
           <div class="ui four cards results">
-            {{#each profile in profiles}}
-              {{> Friend_Card profile=profile}}
+            {{#each event in events}}
+              {{> Event_Card event=event}}
             {{/each}}
           </div>
         </div>

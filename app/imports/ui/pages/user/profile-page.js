@@ -44,8 +44,8 @@ Template.Profile_Page.helpers({
 Template.Profile_Page.events({
   'submit .profile-data-form'(event, instance) {
     event.preventDefault();
-    const firstName = event.target.First.value;
-    const lastName = event.target.Last.value;
+    const firstName = event.target['First Name'].value;
+    const lastName = event.target['Last Name'].value;
     const age = event.target.Age.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
     const picture = event.target['Profile Picture'].value;
@@ -75,6 +75,10 @@ Template.Profile_Page.events({
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
+  },
+  'click .close.icon'(event, instance) {
+    event.preventDefault();
+    instance.messageFlags.set(displaySuccessMessage, false);
   }
 });
 

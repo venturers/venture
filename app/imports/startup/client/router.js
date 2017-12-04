@@ -60,11 +60,11 @@ userRoutes.route('/profile', {
   },
 });
 
-export const searchPageRouteName = 'Search_Page';
-userRoutes.route('/search', {
-  name: searchPageRouteName,
+export const searchEventsPageRouteName = 'Search_Events_Page';
+userRoutes.route('/search-events', {
+  name: searchEventsPageRouteName,
   action() {
-    BlazeLayout.render('User_Layout', { main: searchPageRouteName });
+    BlazeLayout.render('User_Layout', { main: searchEventsPageRouteName });
   },
 });
 
