@@ -25,8 +25,7 @@ class EventCollection extends BaseCollection {
       date: { type: String, optional: true },
       time: { type: String, optional: true },
       location: { type: String, optional: true },
-      cost: { type: String, optional: true },
-      transportation: { type: String, optional: true },
+      cost: { type: Number, optional: true },
       peopleGoing: { type: Array, optional: true },
       interests: { type: Array, optional: true },
       'interests.$': { type: Number },
@@ -57,7 +56,7 @@ class EventCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '',
+  define({ username, name = '', description = '', date = '', time = '', location = '', cost, peopleGoing = [], interests = [], picture = '',
            facebook = '', instagram = '' }) {
     // make sure required fields are OK.
     const checkPattern = { username: String, name: String };
@@ -75,7 +74,7 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error(`${interests} contains duplicates`);
     }
 
-    return this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
+    return this._collection.insert({ username, name, description, date, time, location, cost, peopleGoing, interests, picture,
       facebook, instagram });
   }
 
@@ -93,13 +92,12 @@ class EventCollection extends BaseCollection {
     const time = doc.time;
     const location = doc.location;
     const cost = doc.cost;
-    const transportation = doc.transportation;
     const peopleGoing = doc.peopleGoing;
     const interests = doc.interests;
     const picture = doc.picture;
     const facebook = doc.facebook;
     const instagram = doc.instagram;
-    return { username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
+    return { username, name, description, date, time, location, cost, peopleGoing, interests, picture,
       facebook, instagram };
   }
 }

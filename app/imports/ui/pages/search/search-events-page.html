@@ -21,12 +21,17 @@
               <div class="ui four wide column">
                 <div class="ui inverted button advanced-search">Advanced Search</div>
                 <div class="ui segment advanced-search-form hidden">
-                  {{> Text_Form_Control label="Date" placeholder="Date"}}
-                  {{> Text_Form_Control label="Time" placeholder="Time"}}
+                  <div class="field">
+                    <label>Date</label>
+                    <input type="date" name="Date" placeholder="Date">
+                  </div>
+                  <div class="field">
+                    <label>Time</label>
+                    <input type="time" name="Time" placeholder="Time">
+                  </div>
                   {{> Text_Form_Control label="Location" placeholder="Location"}}
                   {{> Text_Form_Control label="Cost" placeholder="Cost"}}
-                  {{> Text_Form_Control label="Transportation" placeholder="Transportation"}}
-                  {{> Checkbox_Field label="Friends are attending"}}
+                  {{> Checkbox_Field label="Friends Are Attending"}}
                 </div>
               </div>
 

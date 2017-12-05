@@ -32,6 +32,11 @@
           {{> Text_Form_Control label="Age" placeholder="Age" value=profile.age errorMessage=(fieldError "age")}}
         </div>
 
+        <div class="fields">
+          {{> Text_Form_Control label="Location" placeholder="Your approximate location, e.g. Kailua, HI" value=profile.location errorMessage=(fieldError "location")}}
+          {{> Text_Form_Control label="Transportation" placeholder="Transportation you can provide, e.g. Car" value=profile.transportation errorMessage=(fieldError "transportation")}}
+        </div>
+
         <div class="field">
           {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
           }}
@@ -59,7 +64,7 @@
           <div class="ui success message">
             <i class="close icon"></i>
             <div class="header">
-              Changes saved successfully.
+              Profile updated
             </div>
           </div>
         {{/if}}

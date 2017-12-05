@@ -3,20 +3,28 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
 const searchedNameKey = 'searchedName';
 const selectedInterestsKey = 'selectedInterests';
+const searchedLocationKey = 'searchedLocation';
+const searchedTransportationKey = 'searchedTransportation';
+const checkedHasCommonFriendsKey = 'checkedHasCommonFriends';
+const checkedAttendingCommonEventsKey = 'checkedAttendingCommonEvents';
 
 Template.Search_Friends_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Interests.getPublicationName());
+  this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(selectedInterestsKey, []);
 });
 
 Template.Search_Friends_Page.helpers({
   profiles() {
-    let matchedProfiles = _.filter(Profiles.findAll(), profile => profile.firstName && profile.firstName !== '');
+    const myUsername = FlowRouter.getParam('username');
+    let matchedProfiles = _.filter(Profiles.findAll(), profile => profile.firstName && profile.firstName !== ''/* && profile.username != myUsername*/);
+    const myProfile = Profiles.findDoc(myUsername);
     const searchedName = Template.instance().messageFlags.get(searchedNameKey);
     if (searchedName !== '') {
       matchedProfiles = _.filter(matchedProfiles, profile => (profile.firstName + ' ' + profile.lastName).toUpperCase().indexOf(searchedName) >= 0);
@@ -24,6 +32,22 @@ Template.Search_Friends_Page.helpers({
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
     if (selectedInterests.length > 0) {
       matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+    }
+    const searchedLocation = Template.instance().messageFlags.get(searchedLocationKey);
+    if (searchedLocation !== '') {
+      matchedProfiles = _.filter(matchedProfiles, profile => profile.location && profile.location.toUpperCase().indexOf(searchedLocation) >= 0);
+    }
+    const searchedTransportation = Template.instance().messageFlags.get(searchedTransportationKey);
+    if (searchedTransportation !== '') {
+      matchedProfiles = _.filter(matchedProfiles, profile => profile.transportation && profile.transportation.toUpperCase().indexOf(searchedTransportation) >= 0);
+    }
+    const checkedHasCommonFriends = Template.instance().messageFlags.get(checkedHasCommonFriendsKey);
+    if (checkedHasCommonFriends) {
+      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(myProfile.friends, profile.friends).length > 0);
+    }
+    const checkedAttendingCommonEvents = Template.instance().messageFlags.get(checkedAttendingCommonEventsKey);
+    if (checkedAttendingCommonEvents) {
+      matchedProfiles = _.filter(matchedProfiles, profile => _.filter(Events.findAll(), event => _.contains(event.peopleGoing, myUsername, profile.username)).length > 0);
     }
     return matchedProfiles;
   },
@@ -44,6 +68,10 @@ Template.Search_Friends_Page.events({
     instance.messageFlags.set(searchedNameKey, event.target.Name.value.trim().toUpperCase());
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+    instance.messageFlags.set(searchedLocationKey, event.target.Location.value.trim().toUpperCase());
+    instance.messageFlags.set(searchedTransportationKey, event.target.Transportation.value.trim().toUpperCase());
+    instance.messageFlags.set(checkedHasCommonFriendsKey, event.target['Has Common Friends'].checked);
+    instance.messageFlags.set(checkedAttendingCommonEventsKey, event.target['Attending Common Events'].checked);
     $('.search-area').hide();
     $('.search-area').removeClass('visible');
     $('.results-area').transition('slide left');

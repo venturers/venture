@@ -47,6 +47,8 @@ Template.Profile_Page.events({
     const firstName = event.target['First Name'].value;
     const lastName = event.target['Last Name'].value;
     const age = event.target.Age.value;
+    const location = event.target.Location.value;
+    const transportation = event.target.Transportation.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
     const picture = event.target['Profile Picture'].value;
     const snapchat = event.target.Snapchat.value;
@@ -56,8 +58,7 @@ Template.Profile_Page.events({
     const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
 
-    const updatedProfileData = { firstName, lastName, age, picture, snapchat, facebook, instagram, bio, interests,
-      username };
+    const updatedProfileData = { firstName, lastName, age, location, transportation, picture, snapchat, facebook, instagram, bio, interests, username };
 
     // Clear out any old validation errors.
     instance.context.reset();
