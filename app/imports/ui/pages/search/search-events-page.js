@@ -10,7 +10,8 @@ const selectedInterestsKey = 'selectedInterests';
 const searchedDateKey = 'searchedDate';
 const searchedTimeKey = 'searchedTime';
 const searchedLocationKey = 'searchedLocation';
-const searchedCostKey = 'searchedCost';
+const searchedMinimumKey = 'searchedMinimum';
+const searchedMaximumKey = 'searchedMaximum';
 const checkedFriendsAreAttendingKey = 'checkedFriendsAreAttending';
 
 Template.Search_Events_Page.onCreated(function onCreated() {
@@ -40,9 +41,13 @@ Template.Search_Events_Page.helpers({
     if (searchedTime !== '') {
       matchedEvents = _.filter(matchedEvents, event => event.time === searchedTime);
     }
-    const searchedCost = Template.instance().messageFlags.get(searchedCostKey);
-    if (searchedCost !== '') {
-      matchedEvents = _.filter(matchedEvents, event => event.cost === searchedCost);
+    const searchedMinimum = Template.instance().messageFlags.get(searchedMinimumKey);
+    if (searchedMinimum !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.cost >= searchedMinimum);
+    }
+    const searchedMaximum = Template.instance().messageFlags.get(searchedMaximumKey);
+    if (searchedMaximum !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.cost <= searchedMaximum);
     }
     const checkedFriendsAreAttending = Template.instance().messageFlags.get(checkedFriendsAreAttendingKey);
     if (checkedFriendsAreAttending) {
@@ -69,7 +74,8 @@ Template.Search_Events_Page.events({
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
     instance.messageFlags.set(searchedDateKey, event.target.Date.value);
     instance.messageFlags.set(searchedTimeKey, event.target.Time.value);
-    instance.messageFlags.set(searchedCostKey, event.target.Cost.value);
+    instance.messageFlags.set(searchedMinimumKey, event.target.Minimum.value);
+    instance.messageFlags.set(searchedMaximumKey, event.target.Maximum.value);
     instance.messageFlags.set(checkedFriendsAreAttendingKey, event.target['Friends Are Attending'].checked);
     $('.search-area').hide();
     $('.search-area').removeClass('visible');

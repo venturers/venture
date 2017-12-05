@@ -30,7 +30,17 @@
                     <input type="time" name="Time" placeholder="Time">
                   </div>
                   {{> Text_Form_Control label="Location" placeholder="Location"}}
-                  {{> Text_Form_Control label="Cost" placeholder="Cost"}}
+                  <div class="field">
+                    <label>Cost</label>
+                    <div class="ui left icon input">
+                      <i class="dollar icon"></i>
+                      <input type="number" name="Minimum" placeholder="Minimum" min="0">
+                    </div>
+                    <div class="ui left icon input">
+                      <i class="dollar icon"></i>
+                      <input type="number" name="Maximum" placeholder="Maximum" min="0">
+                    </div>
+                  </div>
                   {{> Checkbox_Field label="Friends Are Attending"}}
                 </div>
               </div>
