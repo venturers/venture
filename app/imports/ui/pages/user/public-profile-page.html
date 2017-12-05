@@ -6,7 +6,11 @@
       <div class="ui middle aligned centered grid middle-align">
         <div class="ui column">
           <div class="ui row">
-            <img class="ui small circular centered image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">
+            {{#if profile.picture}}
+            <img src={{ profile.picture }}>
+            {{else}}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+            {{/if}}
           </div>
         </div>
       </div>
@@ -14,11 +18,22 @@
 
     <div class="ui text container segment">
       <div id="profile-header" class="ui borderless menu">
-        <div class="item"><h1>John Smith</h1></div>
+        <div class="item"><h1>{{ profile.firstName }} {{ profile.lastName }}</h1></div>
         <div class="right menu">
-          <a class="ui item" href="#"><i class="big blue facebook icon"></i></a>
-          <a class="ui item" href="#"><i class="big instagram icon"></i></a>
-          <a class="ui item" href="#"><i class="big yellow snapchat icon"></i></a>
+          {{#if profile.facebook}}
+          <a class="ui item" href={{ profile.facebook }}><i class="big blue facebook icon"></i></a>
+          {{else}}
+          {{/if}}
+
+          {{#if profile.instagram}}
+          <a class="ui item" href={{ profile.instagram }}><i class="big instagram icon"></i></a>
+          {{else}}
+          {{/if}}
+
+          {{#if profile.snapchat}}
+          <a class="ui item" href={{ profile.snapchat }}><i class="big yellow snapchat icon"></i></a>
+          {{else}}
+          {{/if}}
         </div>
       </div>
 
@@ -26,15 +41,14 @@
         <i class="add icon"></i>
         Add Friend
       </div>
-      <h3>Age: 21</h3>
+      <h3>Age: {{ profile.age }}</h3>
       <h3>Interests:</h3>
-      <a class="ui green label">Software Engineering</a>
-      <a class="ui yellow label">Machine Learning</a>
-      <a class="ui pink label">Sports</a>
-      <a class="ui teal label">Movies</a>
+      {{#each interest in profile.interests}}
+      <a class="ui teal tag small label">{{interest}}</a>
+      {{/each}}
       <h3>Bio:</h3>
       <div class="ui segment">
-        I am a cool guy.
+        {{ profile.bio }}
       </div>
 
       <br>
@@ -83,21 +97,14 @@
 
       <h3 class="ui dividing header">Events</h3>
 
+      {{#each event in eventsToString(profile)}}
       <div class="ui attached segment">
-        <a href="#">A fun party | Mon Jul 6 at 3AMs</a>
+        <a href="#">{{event}}</a>
       </div>
-      <div class="ui attached segment">
+      {{/each}}
+      <!-- div class="ui attached segment">
         <a href="#">Football game | Wed Oct 12 at 2AM</a>
-      </div>
-      <div class="ui attached segment">
-        <a href="#">Cool Concert | Tues Oct 22 at 10PM</a>
-      </div>
-      <div class="ui attached segment">
-        <a href="#">Beach Day | Sat Dec 3 at 4AM</a>
-      </div>
-      <div class="ui attached segment">
-        <a href="#">Ramen Tasting | Fri Nov 30 at 6PM</a>
-      </div>
+      </div -->
 
     </div>
 
