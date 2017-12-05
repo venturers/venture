@@ -30,27 +30,27 @@
       <form class="ui equal width form create-event-form {{ successClass }} {{ errorClass }}">
 
         <div class="fields">
-          {{> Text_Form_Control label="Event Name" placeholder="ex: Beach Bash" value=event.name errorMessage=(fieldError "name")}}
+          {{> Text_Form_Control label="Event Name" name="name" placeholder="ex: Beach Bash" value=event.name errorMessage=(fieldError "name")}}
         </div>
         <div class="fields">
-          {{> Text_Form_Control label="Date" placeholder="ex: December 20, 2017" value=event.date errorMessage=(fieldError "date")}}
-          {{> Text_Form_Control label="Time" placeholder="ex: 6:00am - 6:30pm" value=event.time errorMessage=(fieldError "time")}}
+          {{> Text_Form_Control label="Date" name="date" placeholder="ex: December 20, 2017" value=event.date errorMessage=(fieldError "date")}}
+          {{> Text_Form_Control label="Time" name="time" placeholder="ex: 6:00am - 6:30pm" value=event.time errorMessage=(fieldError "time")}}
         </div>
         <div class="fields">
-          {{> Text_Form_Control label="Location" placeholder="ex: Alamoana Beach Park" value=event.location errorMessage=(fieldError "location")}}
+          {{> Text_Form_Control label="Location" name="location" placeholder="ex: Alamoana Beach Park" value=event.location errorMessage=(fieldError "location")}}
         </div>
         <div class="fields">
-          {{> Text_Form_Control label="Cost of Event" placeholder="ex: Free" value=event.cost errorMessage=(fieldError "cost")}}
-          {{> Text_Form_Control label="Transportation Options" placeholder="ex: Bus / Private Vehicle" value=event.transportation errorMessage=(fieldError "transportation")}}
+          {{> Text_Form_Control label="Cost of Event" name="cost" placeholder="ex: Free" value=event.cost errorMessage=(fieldError "cost")}}
+          {{> Text_Form_Control label="Transportation Options" name="transportation" placeholder="ex: Bus / Private Vehicle" value=event.transportation errorMessage=(fieldError "transportation")}}
         </div>
 
         <div class="fields">
-          {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
+          {{> Select_Form_Control label="Interests" name="interests" options=interests errorMessage=(fieldError "interests") multiple=true
           }}
         </div>
 
         <div class="fields">
-          {{> TextArea_Form_Control label="Description" value=event.description placeholder="ex: Come to the beach and have good times with good people!"
+          {{> TextArea_Form_Control label="Description" name="description" value=event.description placeholder="ex: Come to the beach and have good times with good people!"
           errorMessage=(fieldError "description")}}
         </div>
 

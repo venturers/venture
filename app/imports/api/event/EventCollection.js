@@ -25,10 +25,11 @@ class EventCollection extends BaseCollection {
       date: { type: String, optional: true },
       time: { type: String, optional: true },
       location: { type: String, optional: true },
-      cost: { type: Number, optional: true },
+      cost: { type: String, optional: true },
+      transportation: { type: String, optional: true },
       peopleGoing: { type: Array, optional: true },
       interests: { type: Array, optional: true },
-      'interests.$': { type: Number },
+      'interests.$': { type: String },
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       instagram: { type: SimpleSchema.RegEx.Url, optional: true },
@@ -56,8 +57,9 @@ class EventCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ username, name = '', description = '', date = '', time = '', location = '', cost, peopleGoing = [], interests = [], picture = '',
-           facebook = '', instagram = '' }) {
+
+  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '' }) {
+
     // make sure required fields are OK.
     const checkPattern = { username: String, name: String };
     check({ username, name }, checkPattern);
@@ -74,9 +76,31 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error(`${interests} contains duplicates`);
     }
 
-    return this._collection.insert({ username, name, description, date, time, location, cost, peopleGoing, interests, picture,
+    return this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
       facebook, instagram });
   }
+
+  // insert({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '' }){
+  //
+  //   // make sure required fields are OK.
+  //   const checkPattern = { username: String, name: String };
+  //   check({ username, name }, checkPattern);
+  //
+  //   if (this.find({ name }).count() > 0) {
+  //     throw new Meteor.Error(`${name} is previously defined in another Event`);
+  //   }
+  //
+  //   // Throw an error if any of the passed Interest names are not defined.
+  //   Interests.assertNames(interests);
+  //
+  //   // Throw an error if there are duplicates in the passed interest names.
+  //   if (interests.length !== _.uniq(interests).length) {
+  //     throw new Meteor.Error(`${interests} contains duplicates`);
+  //   }
+  //
+  //   this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
+  //     facebook, instagram });
+  // }
 
   /**
    * Returns an object representing the Profile docID in a format acceptable to define().
@@ -92,12 +116,13 @@ class EventCollection extends BaseCollection {
     const time = doc.time;
     const location = doc.location;
     const cost = doc.cost;
+    const transportation = doc.transportation;
     const peopleGoing = doc.peopleGoing;
     const interests = doc.interests;
     const picture = doc.picture;
     const facebook = doc.facebook;
     const instagram = doc.instagram;
-    return { username, name, description, date, time, location, cost, peopleGoing, interests, picture,
+    return { username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
       facebook, instagram };
   }
 }
@@ -106,3 +131,4 @@ class EventCollection extends BaseCollection {
  * Provides the singleton instance of this class to all other entities.
  */
 export const Events = new EventCollection();
+
