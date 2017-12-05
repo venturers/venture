@@ -34,7 +34,7 @@
 
         <div class="fields">
           {{> Text_Form_Control label="Location" placeholder="Your approximate location, e.g. Kailua, HI" value=profile.location errorMessage=(fieldError "location")}}
-          {{> Text_Form_Control label="Transportation" placeholder="Transportation you can provide, e.g. Car" value=profile.transportation errorMessage=(fieldError "transportation")}}
+          {{> Select_Form_Control label="Transportation You Can Provide" options=transportation errorMessage=(fieldError "transportation")}}
         </div>
 
         <div class="field">

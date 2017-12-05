@@ -7,6 +7,7 @@ import { Interests } from '/imports/api/interest/InterestCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
+const transportationOptions = ['None', 'Car', 'Bus'];
 
 Template.Profile_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
@@ -38,6 +39,14 @@ Template.Profile_Page.helpers({
               return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
             });
   },
+  transportation() {
+    const profile = Profiles.findDoc(FlowRouter.getParam('username'));
+    const selectedTransportation = profile.transportation;
+    return profile && _.map(transportationOptions,
+        function makeTransportationObject(transportation) {
+          return { label: transportation, selected: selectedTransportation === transportation };
+        });
+  }
 });
 
 
@@ -48,7 +57,7 @@ Template.Profile_Page.events({
     const lastName = event.target['Last Name'].value;
     const age = event.target.Age.value;
     const location = event.target.Location.value;
-    const transportation = event.target.Transportation.value;
+    const transportation = event.target['Transportation You Can Provide'].value;
     const username = FlowRouter.getParam('username'); // schema requires username.
     const picture = event.target['Profile Picture'].value;
     const snapchat = event.target.Snapchat.value;

@@ -11,6 +11,7 @@ const searchedLocationKey = 'searchedLocation';
 const searchedTransportationKey = 'searchedTransportation';
 const checkedHasCommonFriendsKey = 'checkedHasCommonFriends';
 const checkedAttendingCommonEventsKey = 'checkedAttendingCommonEvents';
+const transportationOptions = ['None', 'Car', 'Bus'];
 
 Template.Search_Friends_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
@@ -39,7 +40,7 @@ Template.Search_Friends_Page.helpers({
     }
     const searchedTransportation = Template.instance().messageFlags.get(searchedTransportationKey);
     if (searchedTransportation !== '') {
-      matchedProfiles = _.filter(matchedProfiles, profile => profile.transportation && profile.transportation.toUpperCase().indexOf(searchedTransportation) >= 0);
+      matchedProfiles = _.filter(matchedProfiles, profile => (profile.transportation && profile.transportation === searchedTransportation) || (!profile.transportation && searchedTransportation === 'None'));
     }
     const checkedHasCommonFriends = Template.instance().messageFlags.get(checkedHasCommonFriendsKey);
     if (checkedHasCommonFriends) {
@@ -60,6 +61,12 @@ Template.Search_Friends_Page.helpers({
           };
         });
   },
+  transportation() {
+    return _.map(transportationOptions,
+        function makeTransportationObject(transportation) {
+          return { label: transportation };
+        });
+  }
 });
 
 Template.Search_Friends_Page.events({
@@ -69,7 +76,8 @@ Template.Search_Friends_Page.events({
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
     instance.messageFlags.set(searchedLocationKey, event.target.Location.value.trim().toUpperCase());
-    instance.messageFlags.set(searchedTransportationKey, event.target.Transportation.value.trim().toUpperCase());
+    console.log(event.target.Transportation.value);
+    instance.messageFlags.set(searchedTransportationKey, event.target.Transportation.value);
     instance.messageFlags.set(checkedHasCommonFriendsKey, event.target['Has Common Friends'].checked);
     instance.messageFlags.set(checkedAttendingCommonEventsKey, event.target['Attending Common Events'].checked);
     $('.search-area').hide();
