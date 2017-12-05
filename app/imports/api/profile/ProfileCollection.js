@@ -34,6 +34,7 @@ class ProfileCollection extends BaseCollection {
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       instagram: { type: SimpleSchema.RegEx.Url, optional: true },
       friends: { type: Array, optional: true },
+      events: { type: Array, optional: true },
     }, { tracker: Tracker }));
   }
 
@@ -59,7 +60,7 @@ class ProfileCollection extends BaseCollection {
    * @returns The newly created docID.
    */
   define({ firstName = '', lastName = '', age, location = '', transportation = '', username, bio = '', interests = [], picture = '', snapchat = '',
-      facebook = '', instagram = '', friends = [] }) {
+      facebook = '', instagram = '', friends = [], events = [] }) {
     // make sure required fields are OK.
     const checkPattern = { username: String };
     check({ username }, checkPattern);
@@ -77,7 +78,7 @@ class ProfileCollection extends BaseCollection {
     }
 
     return this._collection.insert({ firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat,
-      facebook, instagram, friends });
+      facebook, instagram, friends, events });
   }
 
   /**
@@ -100,7 +101,8 @@ class ProfileCollection extends BaseCollection {
     const facebook = doc.facebook;
     const instagram = doc.instagram;
     const friends = doc.friends;
-    return { firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat, facebook, instagram, friends };
+    const events = doc.events;
+    return { firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat, facebook, instagram, friends, events };
   }
 }
 
