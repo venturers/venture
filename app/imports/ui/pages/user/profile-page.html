@@ -7,7 +7,7 @@
         <div class="ui column">
           <div class="ui row">
             {{#if profile.picture}}
-              <img class="ui small circular centered image" src="{{ profile.picture }}">
+              <img class="ui small circular centered image" src={{ profile.picture }}>
             {{else}}
               <img class="ui small circular centered image"
                    src="http://www.thisisplanb.com/wp-content/uploads/2013/01/Woman-Licking-Cactus.jpg">
@@ -25,11 +25,16 @@
       <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
 
         <div class="fields">
-          {{> Text_Form_Control label="First" placeholder="First name" value=profile.firstName errorMessage=(fieldError
+          {{> Text_Form_Control label="First Name" placeholder="First name" value=profile.firstName errorMessage=(fieldError
           "firstName")}}
-          {{> Text_Form_Control label="Last" placeholder="Last name" value=profile.lastName errorMessage=(fieldError
+          {{> Text_Form_Control label="Last Name" placeholder="Last name" value=profile.lastName errorMessage=(fieldError
           "lastName")}}
           {{> Text_Form_Control label="Age" placeholder="Age" value=profile.age errorMessage=(fieldError "age")}}
+        </div>
+
+        <div class="fields">
+          {{> Text_Form_Control label="Location" placeholder="Your approximate location, e.g. Kailua, HI" value=profile.location errorMessage=(fieldError "location")}}
+          {{> Select_Form_Control label="Transportation You Can Provide" options=transportation errorMessage=(fieldError "transportation")}}
         </div>
 
         <div class="field">
@@ -55,6 +60,14 @@
 
         <button class="ui primary button" type="submit">Update</button>
 
+        {{#if displaySuccessMessage}}
+          <div class="ui success message">
+            <i class="close icon"></i>
+            <div class="header">
+              Profile updated
+            </div>
+          </div>
+        {{/if}}
       </form>
     </div>
 

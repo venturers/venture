@@ -24,6 +24,8 @@ class ProfileCollection extends BaseCollection {
       firstName: { type: String, optional: true },
       lastName: { type: String, optional: true },
       age: { type: String, optional: true },
+      location: { type: String, optional: true },
+      transportation: { type: String, optional: true },
       bio: { type: String, optional: true },
       interests: { type: Array, optional: true },
       'interests.$': { type: String },
@@ -31,7 +33,7 @@ class ProfileCollection extends BaseCollection {
       snapchat: { type: SimpleSchema.RegEx.Url, optional: true },
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       instagram: { type: SimpleSchema.RegEx.Url, optional: true },
-      friends: { type: Number },
+      friends: { type: Array, optional: true },
     }, { tracker: Tracker }));
   }
 
@@ -56,11 +58,11 @@ class ProfileCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ firstName = '', lastName = '', age, username, bio = '', interests = [], picture = '', snapchat = '',
-      facebook = '', instagram = '', friends = 0 }) {
+  define({ firstName = '', lastName = '', age, location = '', transportation = '', username, bio = '', interests = [], picture = '', snapchat = '',
+      facebook = '', instagram = '', friends = [] }) {
     // make sure required fields are OK.
-    const checkPattern = { firstName: String, lastName: String, username: String };
-    check({ firstName, lastName, username }, checkPattern);
+    const checkPattern = { username: String };
+    check({ username }, checkPattern);
 
     if (this.find({ username }).count() > 0) {
       throw new Meteor.Error(`${username} is previously defined in another Profile`);
@@ -74,7 +76,7 @@ class ProfileCollection extends BaseCollection {
       throw new Meteor.Error(`${interests} contains duplicates`);
     }
 
-    return this._collection.insert({ firstName, lastName, age, username, bio, interests, picture, snapchat,
+    return this._collection.insert({ firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat,
       facebook, instagram, friends });
   }
 
@@ -88,6 +90,8 @@ class ProfileCollection extends BaseCollection {
     const firstName = doc.firstName;
     const lastName = doc.lastName;
     const age = doc.age;
+    const location = doc.location;
+    const transportation = doc.transportation;
     const username = doc.username;
     const bio = doc.bio;
     const interests = doc.interests;
@@ -96,7 +100,7 @@ class ProfileCollection extends BaseCollection {
     const facebook = doc.facebook;
     const instagram = doc.instagram;
     const friends = doc.friends;
-    return { firstName, lastName, age, username, bio, interests, picture, snapchat, facebook, instagram, friends };
+    return { firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat, facebook, instagram, friends };
   }
 }
 

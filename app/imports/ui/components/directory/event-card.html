@@ -1,8 +1,11 @@
 <template name="Event_Card">
-  <div class="ui fluid card">
+  <div class="ui card">
     <div class="image">
-      <img
-          src= {{ event.picture }}>
+      {{#if event.picture}}
+        <img src={{ event.picture }}>
+      {{else}}
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+      {{/if}}
     </div>
     <div class="content">
       <a class="header">{{ event.name }}</a>
@@ -14,13 +17,13 @@
       </div>
     </div>
     <div class="extra content">
-        <span class="right floated">
-          {{ event.date }} {{ event.time }}
-        </span>
+      <span class="right floated">
+        {{ event.date }} at {{ time event }}
+      </span>
       <span>
-          <i class="user icon"></i>
-          {{ event.peopleGoing }} people going
-        </span>
+        <i class="user icon"></i>
+        {{ peopleGoing event }} going
+      </span>
     </div>
     <div class="ui bottom attached button">
       <i class="add icon"></i>

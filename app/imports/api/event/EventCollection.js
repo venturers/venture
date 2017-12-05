@@ -21,20 +21,15 @@ class EventCollection extends BaseCollection {
     super('Event', new SimpleSchema({
       username: { type: String },
       name: { type: String },
-      description: { type: String },
-      date: { type: String },
-      time: { type: String },
-      location: { type: String },
-      cost: { type: String },
-      transportation: { type: String },
-      peopleGoing: { type: String },
-
+      description: { type: String, optional: true },
+      date: { type: String, optional: true },
+      time: { type: String, optional: true },
+      location: { type: String, optional: true },
+      cost: { type: Number, optional: true },
+      peopleGoing: { type: Array, optional: true },
       interests: { type: Array, optional: true },
       'interests.$': { type: Number },
-
-      title: { type: String, optional: true },
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
-      github: { type: SimpleSchema.RegEx.Url, optional: true },
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       instagram: { type: SimpleSchema.RegEx.Url, optional: true },
     }, { tracker: Tracker }));
@@ -61,12 +56,11 @@ class EventCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = 0, interests = [], picture = '', title = '', github = '',
+  define({ username, name = '', description = '', date = '', time = '', location = '', cost, peopleGoing = [], interests = [], picture = '',
            facebook = '', instagram = '' }) {
     // make sure required fields are OK.
-    const checkPattern = { username: String, name: String, description: String, date: String, time: String, location: String, cost: String, transportation: String, picture: String,
-      title: String };
-    check({ username, name, description, date, time, location, cost, transportation }, checkPattern);
+    const checkPattern = { username: String, name: String };
+    check({ username, name }, checkPattern);
 
     if (this.find({ name }).count() > 0) {
       throw new Meteor.Error(`${name} is previously defined in another Event`);
@@ -80,7 +74,7 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error(`${interests} contains duplicates`);
     }
 
-    return this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture, title, github,
+    return this._collection.insert({ username, name, description, date, time, location, cost, peopleGoing, interests, picture,
       facebook, instagram });
   }
 
@@ -98,15 +92,12 @@ class EventCollection extends BaseCollection {
     const time = doc.time;
     const location = doc.location;
     const cost = doc.cost;
-    const transportation = doc.transportation;
     const peopleGoing = doc.peopleGoing;
     const interests = doc.interests;
     const picture = doc.picture;
-    const title = doc.title;
-    const github = doc.github;
     const facebook = doc.facebook;
     const instagram = doc.instagram;
-    return { username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture, title, github,
+    return { username, name, description, date, time, location, cost, peopleGoing, interests, picture,
       facebook, instagram };
   }
 }
