@@ -11,6 +11,6 @@ Template.Public_Profile_Page.helpers({
     if (profile.events) {
       return _.map(profile.events, event => (event.name + " | " + event.date + " " + event.time));
     }
-    return "No events to show.";
+    return ["No events to show."];
   }
 });
