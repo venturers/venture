@@ -11,10 +11,10 @@
       <div class="header">
         {{ profile.firstName }} {{ profile.lastName }}
       </div>
-      {{#if profile.age}}
-      <div class="meta">
-        <a>Age: {{ profile.age }}</a>
-      </div>
+      {{#if profile.location}}
+        <div class="meta">
+          <a>{{ profile.location }}</a>
+        </div>
       {{/if}}
       <div class="description">
         {{ profile.bio }}

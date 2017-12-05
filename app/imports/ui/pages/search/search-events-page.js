@@ -3,13 +3,21 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
 import { Events } from '/imports/api/event/EventCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
 
 const searchedKeywordKey = 'searchedKeyword';
 const selectedInterestsKey = 'selectedInterests';
+const searchedDateKey = 'searchedDate';
+const searchedTimeKey = 'searchedTime';
+const searchedLocationKey = 'searchedLocation';
+const searchedMinimumKey = 'searchedMinimum';
+const searchedMaximumKey = 'searchedMaximum';
+const checkedFriendsAreAttendingKey = 'checkedFriendsAreAttending';
 
 Template.Search_Events_Page.onCreated(function onCreated() {
   this.subscribe(Events.getPublicationName());
   this.subscribe(Interests.getPublicationName());
+  this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(selectedInterestsKey, []);
 });
@@ -24,6 +32,26 @@ Template.Search_Events_Page.helpers({
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
     if (selectedInterests.length > 0) {
       matchedEvents = _.filter(matchedProfiles, event => _.intersection(event.interests, selectedInterests).length > 0);
+    }
+    const searchedDate = Template.instance().messageFlags.get(searchedDateKey);
+    if (searchedDate !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.date === searchedDate);
+    }
+    const searchedTime = Template.instance().messageFlags.get(searchedTimeKey);
+    if (searchedTime !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.time === searchedTime);
+    }
+    const searchedMinimum = Template.instance().messageFlags.get(searchedMinimumKey);
+    if (searchedMinimum !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.cost >= searchedMinimum);
+    }
+    const searchedMaximum = Template.instance().messageFlags.get(searchedMaximumKey);
+    if (searchedMaximum !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.cost <= searchedMaximum);
+    }
+    const checkedFriendsAreAttending = Template.instance().messageFlags.get(checkedFriendsAreAttendingKey);
+    if (checkedFriendsAreAttending) {
+      matchedEvents = _.filter(matchedEvents, event => _.intersection(event.peopleGoing, Profiles.findDoc(FlowRouter.getParam('username')).friends).length > 0);
     }
     return matchedEvents;
   },
@@ -44,6 +72,11 @@ Template.Search_Events_Page.events({
     instance.messageFlags.set(searchedKeywordKey, event.target.Keyword.value.trim().toUpperCase());
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+    instance.messageFlags.set(searchedDateKey, event.target.Date.value);
+    instance.messageFlags.set(searchedTimeKey, event.target.Time.value);
+    instance.messageFlags.set(searchedMinimumKey, event.target.Minimum.value);
+    instance.messageFlags.set(searchedMaximumKey, event.target.Maximum.value);
+    instance.messageFlags.set(checkedFriendsAreAttendingKey, event.target['Friends Are Attending'].checked);
     $('.search-area').hide();
     $('.search-area').removeClass('visible');
     $('.results-area').transition('slide left');
