@@ -27,6 +27,9 @@ Template.Create_Event_Page.helpers({
   displaySuccessMessage() {
     return Template.instance().messageFlags.get(displaySuccessMessage);
   },
+  displayErrorMessage() {
+    return Template.instance().messageFlags.get(displayErrorMessage);
+  },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
@@ -40,6 +43,11 @@ Template.Create_Event_Page.helpers({
         function makeInterestObject(interest) {
           return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
         });
+  },
+  fieldError(fieldName) {
+    const invalidKeys = Template.instance().context.invalidKeys();
+    const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
+    return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
   },
 });
 
@@ -63,7 +71,7 @@ Template.Create_Event_Page.events({
     // Clear out any old validation errors.
     instance.context.reset();
     // Invoke clean so that updatedProfileData reflects what will be inserted.
-    const eventData = Events.getSchema().clean(createdEvent, { removeEmptyStrings: false });
+    const eventData = Events.getSchema().clean(createdEvent);
 
 
     // Determine validity.
@@ -71,7 +79,9 @@ Template.Create_Event_Page.events({
 
     if (instance.context.isValid()) {
       Events.define(eventData);
-      instance.messageFlags.set(displayErrorMessages, false);
+      instance.messageFlags.set(displaySuccessMessage, false);
+      instance.messageFlags.set(displayErrorMessages, true);
+      FlowRouter.go('Event_Page');
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
