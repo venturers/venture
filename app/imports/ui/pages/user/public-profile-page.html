@@ -41,7 +41,35 @@
         <i class="add icon"></i>
         Add Friend
       </div>
-      <h3>Age: {{ profile.age }}</h3>
+
+
+      <div class="ui horizontal list">
+        <div class="item">
+          <h3>Age: {{ profile.age }}</h3>
+        </div>
+        <div class="item">
+          <h3>{{ profile.location }}</h3>
+        </div>
+        {{#if profile.transportation}}
+        <div class="item">
+          {{#if transportationIsBus profile}}
+          <i class="ui large bus icon"></i>
+          {{/if}}
+          {{#if transportationIsCar profile}}
+          <i class="ui large car icon"></i>
+          {{/if}}
+          {{#if transportationIsNone profile}}
+          <i class="ui large bicycle icon"></i>
+          {{/if}}
+          <div class="content">
+            <div class="ui sub header">Transportation</div>
+            {{ profile.transportation }}
+          </div>
+        </div>
+        {{else}}
+        {{/if}}
+      </div>
+
       <h3>Interests:</h3>
       {{#each interest in profile.interests}}
       <a class="ui teal tag small label">{{interest}}</a>
@@ -50,6 +78,7 @@
       <div class="ui segment">
         {{ profile.bio }}
       </div>
+
 
       <br>
 

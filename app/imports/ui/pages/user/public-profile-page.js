@@ -24,5 +24,23 @@ Template.Public_Profile_Page.helpers({
       return _.map(profile.events, event => (event.name + " | " + event.date + " " + event.time));
     }
     return ["No events to show."];
+  },
+  transportationIsBus(profile) {
+    if (profile.transportation == "Bus") {
+      return true;
+    }
+    return false;
+  },
+  transportationIsCar(profile) {
+    if (profile.transportation == "Car") {
+      return true;
+    }
+    return false;
+  },
+  transportationIsNone(profile) {
+    if (profile.transportation == "None") {
+      return true;
+    }
+    return false;
   }
 });
