@@ -1,6 +1,18 @@
 import { Template } from 'meteor/templating';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Interests } from '/imports/api/interest/InterestCollection';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
+
+Template.Public_Profile_Page.onCreated(function onCreated() {
+  this.subscribe(Interests.getPublicationName());
+  this.subscribe(Profiles.getPublicationName());
+});
 
 Template.Public_Profile_Page.helpers({
+  profile() {
+    return Profiles.findDoc(FlowRouter.getParam('username'));
+  },
   numFriends(profile) {
     if (profile.friends) {
       return profile.friends.length;

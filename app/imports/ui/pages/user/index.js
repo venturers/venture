@@ -3,5 +3,6 @@ import './profile-page.js';
 import './profile-page.css';
 import './public-profile-page.html';
 import './public-profile-page.css';
+import './public-profile-page.js'
 import './dashboard.css';
 import './dashboard.html';
