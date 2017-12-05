@@ -33,6 +33,7 @@ class EventCollection extends BaseCollection {
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       instagram: { type: SimpleSchema.RegEx.Url, optional: true },
+      coordinator: { type: String, optional: true },
     }, { tracker: Tracker }));
   }
 
@@ -58,7 +59,7 @@ class EventCollection extends BaseCollection {
    * @returns The newly created docID.
    */
 
-  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '' }) {
+  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '', coordinator = '' }) {
 
     // make sure required fields are OK.
     const checkPattern = { username: String, name: String };
@@ -77,7 +78,7 @@ class EventCollection extends BaseCollection {
     }
 
     return this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
-      facebook, instagram });
+      facebook, instagram, coordinator });
   }
 
   // insert({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '' }){
@@ -122,8 +123,9 @@ class EventCollection extends BaseCollection {
     const picture = doc.picture;
     const facebook = doc.facebook;
     const instagram = doc.instagram;
+    const coordinator = doc.coordinator;
     return { username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
-      facebook, instagram };
+      facebook, instagram, coordinator };
   }
 }
 
