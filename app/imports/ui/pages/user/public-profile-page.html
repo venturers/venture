@@ -97,21 +97,14 @@
 
       <h3 class="ui dividing header">Events</h3>
 
+      {{#each event in eventsToString(profile)}}
       <div class="ui attached segment">
-        <a href="#">A fun party | Mon Jul 6 at 3AMs</a>
+        <a href="#">{{event}}</a>
       </div>
-      <div class="ui attached segment">
+      {{/each}}
+      <!-- div class="ui attached segment">
         <a href="#">Football game | Wed Oct 12 at 2AM</a>
-      </div>
-      <div class="ui attached segment">
-        <a href="#">Cool Concert | Tues Oct 22 at 10PM</a>
-      </div>
-      <div class="ui attached segment">
-        <a href="#">Beach Day | Sat Dec 3 at 4AM</a>
-      </div>
-      <div class="ui attached segment">
-        <a href="#">Ramen Tasting | Fri Nov 30 at 6PM</a>
-      </div>
+      </div -->
 
     </div>
 
