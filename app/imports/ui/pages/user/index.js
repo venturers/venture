@@ -6,3 +6,4 @@ import './public-profile-page.css';
 import './public-profile-page.js'
 import './dashboard.css';
 import './dashboard.html';
+import './dashboard.js';
