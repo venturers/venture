@@ -32,17 +32,24 @@
         <h4 class="ui inverted attached header">
           Your Friends
         </h4>
-        {{#each friend in profile.friends}}
-        {{#if getFriendPicture friend}}
-        <div class="ui attached segment">
-          <a href="#"><img class="ui avatar image"
-                           src={{getFriendPicture friend}}>{{getFriendName friend}}</a>
-        </div>
+        {{#if profile.friends}}
+
+          {{#each friend in profile.friends}}
+            {{#if getFriendPicture friend}}
+              <div class="ui attached segment">
+                <a href="#"><img class="ui avatar image"
+                                 src={{getFriendPicture friend}}>{{getFriendName friend}}</a>
+              </div>
+            {{else}}
+              <a href="#"><img class="ui avatar image"
+                               src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{{getFriendName friend}}</a>
+            {{/if}}
+          {{/each}}
         {{else}}
-        <a href="#"><img class="ui avatar image"
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{{getFriendName friend}}</a>
+          <div class="ui attached segment">
+            <a href="#">You have no friends. Go make some!</a>
+          </div>
         {{/if}}
-        {{/each}}
         
       </div>
     </div>
