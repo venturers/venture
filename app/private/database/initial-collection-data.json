@@ -5,55 +5,99 @@
       "name": "InterestCollection",
       "contents": [
         {
-          "name": "Software Engineering",
-          "description": "Techniques for development of high quality systems"
-        },
-        {
-          "name": "Algorithms",
-          "description": "A set of rules to be followed in computation"
-        },
-        {
-          "name": "Mobile Networks",
-          "description": "Networks created using mobile devices."
-        },
-        {
-          "name": "Sailing",
+          "name": "3D Printing",
           "description": ""
         },
         {
-          "name": "Mars",
+          "name": "Acting",
           "description": ""
         },
         {
-          "name": "Imu Cooking",
-          "description": "Hawaiian practice of cooking in a pit."
-        },
-        {
-          "name": "Scuba",
+          "name": "Airsoft",
           "description": ""
         },
         {
-          "name": "Photography",
+          "name": "Archery",
           "description": ""
         },
         {
-          "name": "Wind surfing",
+          "name": "Astronomy",
           "description": ""
         },
         {
-          "name": "Psychology",
+          "name": "Badminton",
           "description": ""
         },
         {
-          "name": "Motorcycling",
+          "name": "Baseball",
           "description": ""
         },
         {
-          "name": "Accreditation",
+          "name": "Basketball",
           "description": ""
         },
         {
-          "name": "Paddling",
+          "name": "Billiards",
+          "description": "Pool"
+        },
+        {
+          "name": "Bird Watching",
+          "description": ""
+        },
+        {
+          "name": "Board/Tabletop Games",
+          "description": ""
+        },
+        {
+          "name": "Bodyboarding",
+          "description": ""
+        },
+        {
+          "name": "Bodybuilding",
+          "description": ""
+        },
+        {
+          "name": "Bowling",
+          "description": ""
+        },
+        {
+          "name": "Brazilian Jiu-Jitsu",
+          "description": ""
+        },
+        {
+          "name": "Camping",
+          "description": ""
+        },
+        {
+          "name": "Candle Making",
+          "description": ""
+        },
+        {
+          "name": "Chess",
+          "description": ""
+        },
+        {
+          "name": "Climbing",
+          "description": ""
+        },
+        {
+          "name": "Coffee Roasting",
+          "description": ""
+        },
+        {
+          "name": "Computer Vision",
+          "description": ""
+        },
+        {
+          "name": "Cooking",
+          "description": ""
+        },
+        {
+          "name": "Cosplaying",
+          "description": ""
+        },
+        {
+          "name": "Cricket",
           "description": ""
         },
         {
@@ -65,11 +109,119 @@
           "description": ""
         },
         {
-          "name": "Surfing",
+          "name": "Cycling",
           "description": ""
         },
         {
-          "name": "Computer Vision",
+          "name": "Dancing",
+          "description": ""
+        },
+        {
+          "name": "Darts",
+          "description": ""
+        },
+        {
+          "name": "Drawing",
+          "description": ""
+        },
+        {
+          "name": "Evolutionary Computation",
+          "description": ""
+        },
+        {
+          "name": "Fantasy Sports",
+          "description": ""
+        },
+        {
+          "name": "Fishing",
+          "description": ""
+        },
+        {
+          "name": "Flying",
+          "description": ""
+        },
+        {
+          "name": "Frisbee",
+          "description": ""
+        },
+        {
+          "name": "Gardening",
+          "description": ""
+        },
+        {
+          "name": "Go",
+          "description": ""
+        },
+        {
+          "name": "Golf",
+          "description": ""
+        },
+        {
+          "name": "Hiking",
+          "description": ""
+        },
+        {
+          "name": "Hockey",
+          "description": ""
+        },
+        {
+          "name": "Horseback Riding",
+          "description": ""
+        },
+        {
+          "name": "Hula Hooping",
+          "description": ""
+        },
+        {
+          "name": "Hunting",
+          "description": ""
+        },
+        {
+          "name": "Ice Skating",
+          "description": ""
+        },
+        {
+          "name": "Imu Cooking",
+          "description": "Hawaiian practice of cooking in a pit."
+        },
+        {
+          "name": "Inline Skating",
+          "description": ""
+        },
+        {
+          "name": "Jogging",
+          "description": ""
+        },
+        {
+          "name": "Judo",
+          "description": ""
+        },
+        {
+          "name": "Karate",
+          "description": ""
+        },
+        {
+          "name": "Kayaking",
+          "description": ""
+        },
+        {
+          "name": "Lacrosse",
+          "description": ""
+        },
+        {
+          "name": "Lego",
+          "description": ""
+        },
+        {
+          "name": "Magic",
+          "description": ""
+        },
+        {
+          "name": "Mahjong",
+          "description": ""
+        },
+        {
+          "name": "Mars",
           "description": ""
         },
         {
@@ -77,7 +229,179 @@
           "description": ""
         },
         {
-          "name": "Evolutionary Computation",
+          "name": "Mobile Networks",
+          "description": "Networks created using mobile devices."
+        },
+        {
+          "name": "Motorcycling",
+          "description": ""
+        },
+        {
+          "name": "Mountain Biking",
+          "description": ""
+        },
+        {
+          "name": "Mountaineering",
+          "description": ""
+        },
+        {
+          "name": "Movies",
+          "description": ""
+        },
+        {
+          "name": "Music",
+          "description": ""
+        },
+        {
+          "name": "Origami",
+          "description": ""
+        },
+        {
+          "name": "Paddling",
+          "description": ""
+        },
+        {
+          "name": "Paintball",
+          "description": ""
+        },
+        {
+          "name": "Painting",
+          "description": ""
+        },
+        {
+          "name": "Parkour",
+          "description": ""
+        },
+        {
+          "name": "Photography",
+          "description": ""
+        },
+        {
+          "name": "Poker",
+          "description": ""
+        },
+        {
+          "name": "Psychology",
+          "description": ""
+        },
+        {
+          "name": "Racing",
+          "description": ""
+        },
+        {
+          "name": "Reading",
+          "description": ""
+        },
+        {
+          "name": "Roller Skating",
+          "description": ""
+        },
+        {
+          "name": "Running",
+          "description": ""
+        },
+        {
+          "name": "Sailing",
+          "description": ""
+        },
+        {
+          "name": "Scuba Diving",
+          "description": ""
+        },
+        {
+          "name": "Shooting",
+          "description": ""
+        },
+        {
+          "name": "Shopping",
+          "description": ""
+        },
+        {
+          "name": "Singing",
+          "description": ""
+        },
+        {
+          "name": "Skateboarding",
+          "description": ""
+        },
+        {
+          "name": "Skiing",
+          "description": ""
+        },
+        {
+          "name": "Skydiving",
+          "description": ""
+        },
+        {
+          "name": "Snowboarding",
+          "description": ""
+        },
+        {
+          "name": "Soccer",
+          "description": ""
+        },
+        {
+          "name": "Software Engineering",
+          "description": "Techniques for development of high quality systems"
+        },
+        {
+          "name": "Surfing",
+          "description": ""
+        },
+        {
+          "name": "Swimming",
+          "description": ""
+        },
+        {
+          "name": "Table Tennis",
+          "description": ""
+        },
+        {
+          "name": "Taekwondo",
+          "description": ""
+        },
+        {
+          "name": "Tai Chi",
+          "description": ""
+        },
+        {
+          "name": "Tennis",
+          "description": ""
+        },
+        {
+          "name": "Travel",
+          "description": ""
+        },
+        {
+          "name": "Video Gaming",
+          "description": ""
+        },
+        {
+          "name": "Volleyball",
+          "description": ""
+        },
+        {
+          "name": "Watching TV",
+          "description": ""
+        },
+        {
+          "name": "Water Polo",
+          "description": ""
+        },
+        {
+          "name": "Weightlifting",
+          "description": ""
+        },
+        {
+          "name": "Windsurfing",
+          "description": ""
+        },
+        {
+          "name": "Writing",
+          "description": ""
+        },
+        {
+          "name": "Yoga",
           "description": ""
         }
       ]
