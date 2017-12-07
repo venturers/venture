@@ -6,3 +6,4 @@ import './search-friends-page.css';
 import './search-friends-page.js';
 import './event-page.css';
 import './event-page.html';
+import './event-page.js';
