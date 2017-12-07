@@ -17,6 +17,7 @@ Template.Event_Page.helpers({
   },
   user() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
+  },
   getCoordinatorPicture(event) {
     return event.coordinator.picture;
   },
