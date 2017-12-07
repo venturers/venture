@@ -14,8 +14,8 @@ Template.Event_Page.onCreated(function onCreated() {
 
 Template.Event_Page.helpers({
   event() {
-    console.log(Events.findDoc(FlowRouter.getParam('username')));
-    return Events.findDoc(FlowRouter.getParam('username'));
+    //console.log(Events.findDoc(FlowRouter.getParam('username')));
+    return Events.findDoc(FlowRouter.getParam('_id'));
   },
   user() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
@@ -23,17 +23,8 @@ Template.Event_Page.helpers({
   getCoordinatorPicture(event) {
     return event.coordinator.picture;
   },
-  getParticipantNames(event){
-    let user = this.user();
-    if (event.peopleGoing.length > 0) {
-      return _.each(event.peopleGoing, function(person) {
-        if (! user.friends.contains(person)) {
-          return person.firstName + " " + person.lastName; }})
-    }
-    return ["No event attendees yet."];
-  },
-  getFriendParticipantNames(event){
-    let user = this.user();
+  getFriendParticipants(event){
+    let user = user();
     if (event.peopleGoing.length > 0) {
       return _.each(event.peopleGoing, function(person) {
         if (user.friends.contains(person)) {
@@ -41,8 +32,14 @@ Template.Event_Page.helpers({
         }
       })
     }
-    return ["No friends attending."];
+  },
+  getFriendPicture(username) {
+    const friend = Profiles.findDoc(username);
+    return friend.picture;
+  },
+  getFriendName(username) {
+    const friend = Profiles.findDoc(username);
+    return friend.firstName + " " + friend.lastName;
   }
-
     }
 );
