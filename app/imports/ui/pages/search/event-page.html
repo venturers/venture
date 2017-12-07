@@ -109,24 +109,28 @@
     <h4 class="ui inverted top attached header">
       Friends
     </h4>
+    {{#each friend in getFriendParticipantNames event}}
     <div class="ui attached segment">
-      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">Bestie</a>
+      {{#if friend.picture}}
+      <a href="#"><img class="ui avatar image" src={{friend.picture}}>{{friend.firstName}} {{friend.lastName}}</a>
+      {{else}}
+      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{{friend.firstName}} {{friend.lastName}}</a>
+      {{/if}}
     </div>
-    <div class="ui attached segment">
-      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">Your Friend Guy</a>
-    </div>
+    {{/each}}
+
     <h4 class="ui inverted attached header">
       Others
     </h4>
+    {{#each person in getParticipantNames event}}
     <div class="ui attached segment">
-      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">Rude Guy</a>
+      {{#if person.picture}}
+      <a href="#"><img class="ui avatar image" src={{person.picture}}>{{person.firstName}} {{person.lastName}}</a>
+      {{else}}
+      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{{person.firstName}} {{person.lastName}}</a>
+      {{/if}}
     </div>
-    <div class="ui attached segment">
-      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">Cool Guy</a>
-    </div>
-    <div class="ui attached segment">
-      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">Nice Guy</a>
-    </div>
+    {{/each}}
 
   </div>
 
