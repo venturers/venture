@@ -17,9 +17,10 @@
       <div class="ui container middle aligned centered grid middle-align">
         <div class="ui column">
           <div class="ui row">
+            {{#if event.picture}}
             <img class="ui centered image event-image"
-                 src="http://ak6.picdn.net/shutterstock/videos/11349986/thumb/1.jpg">
-            <button class="ui centered button" style="margin-bottom: 10px">Change</button>
+                 src={{event.picture}}>
+            {{/if}}
           </div>
         </div>
       </div>
@@ -31,6 +32,9 @@
 
         <div class="fields">
           {{> Text_Form_Control label="Event Name" name="name" placeholder="ex: Beach Bash" value=event.name errorMessage=(fieldError "name")}}
+        </div>
+        <div class="field">
+          {{> Text_Form_Control label="Event Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
         </div>
         <div class="fields">
           {{> Text_Form_Control label="Date" name="date" placeholder="ex: December 20, 2017" value=event.date errorMessage=(fieldError "date")}}
@@ -50,7 +54,7 @@
         </div>
 
         <div class="fields">
-          {{> TextArea_Form_Control label="Description" name="description" value=event.description placeholder="ex: Come to the beach and have good times with good people!"
+          {{> TextArea_Form_Control label="Description" name="description" value=event.description placeholder="Include important event information here"
           errorMessage=(fieldError "description")}}
         </div>
 
