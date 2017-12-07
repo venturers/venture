@@ -95,6 +95,8 @@ userRoutes.route('/search-friends', {
 export const eventPageRouteName = 'Event_Page';
 userRoutes.route('/events/:_id', {
   name: eventPageRouteName,
+  action: function (params) {
+  },
   action() {
     BlazeLayout.render('User_Layout', { main: eventPageRouteName });
   },

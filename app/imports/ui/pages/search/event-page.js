@@ -1,18 +1,20 @@
 import { Template } from 'meteor/templating';
-import { Events } from '/imports/api/event/EventCollection';
-import { Interests } from '/imports/api/interest/InterestCollection';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Events } from '../../../api/event/EventCollection';
+import { Profiles } from '../../../api/profile/ProfileCollection';
+import { Interests } from '../../../api/interest/InterestCollection';
 
 Template.Event_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
+  this.context = Events.getSchema().namedContext('Event_Page');
 });
 
 Template.Event_Page.helpers({
   event() {
+    console.log(Events.findDoc(FlowRouter.getParam('username')));
     return Events.findDoc(FlowRouter.getParam('username'));
   },
   user() {

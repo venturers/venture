@@ -21,14 +21,21 @@ Template.Create_Event_Page.onCreated(function onCreated() {
 });
 
 Template.Create_Event_Page.helpers({
+  eventsList() {
+    return Events.find();
+  },
+  event() {
+    console.log(Events.findDoc(FlowRouter.getParam('username')));
+    return Events.findDoc(FlowRouter.getParam('username'));
+  },
+});
+
+Template.Create_Event_Page.helpers({
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
   displaySuccessMessage() {
     return Template.instance().messageFlags.get(displaySuccessMessage);
-  },
-  displayErrorMessage() {
-    return Template.instance().messageFlags.get(displayErrorMessage);
   },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
@@ -78,10 +85,16 @@ Template.Create_Event_Page.events({
     instance.context.validate(eventData);
 
     if (instance.context.isValid()) {
-      Events.define(eventData);
-      instance.messageFlags.set(displaySuccessMessage, false);
+      const docID = Events.define(eventData);
+      instance.messageFlags.set(displaySuccessMessage, true);
       instance.messageFlags.set(displayErrorMessages, true);
-      FlowRouter.go('Event_Page');
+      const id = FlowRouter.getParam('username');
+      console.log(docID, id);
+
+      var params = {username: id, _id: docID};
+      const path = FlowRouter.path("Event_Page", params);
+      FlowRouter.go(path);
+
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
