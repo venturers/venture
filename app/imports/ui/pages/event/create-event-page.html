@@ -34,7 +34,7 @@
           {{> Text_Form_Control label="Event Name" name="name" placeholder="ex: Beach Bash" value=event.name errorMessage=(fieldError "name")}}
         </div>
         <div class="field">
-          {{> Text_Form_Control label="Event Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
+          {{> Text_Form_Control label="Event Picture" name="picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
         </div>
         <div class="fields">
           {{> Text_Form_Control label="Date" name="date" placeholder="ex: December 20, 2017" value=event.date errorMessage=(fieldError "date")}}

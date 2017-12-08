@@ -69,8 +69,8 @@ Template.Create_Event_Page.events({
     const description = event.target.description.value;
     const selectedInterests = _.filter(event.target.interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
-
-    const createdEvent = { name, date, time, location, cost, transportation, description, interests, username };
+    const picture = event.target.picture.value;
+    const createdEvent = { name, date, time, location, cost, transportation, description, interests, picture, username };
 
     // Clear out any old validation errors.
     instance.context.reset();
