@@ -14,16 +14,9 @@
 
     <div class="ui text container segment">
 
-      <div class="ui container middle aligned centered grid middle-align">
-        <div class="ui column">
-          <div class="ui row">
-            {{#if event.picture}}
-            <img class="ui centered image event-image"
-                 src={{event.picture}}>
-            {{/if}}
-          </div>
-        </div>
-      </div>
+      {{#if picture}}
+        <img class="ui medium centered image" src={{picture}}>
+      {{/if}}
 
       <div class="ui dividing header">
         Event Details
@@ -31,10 +24,12 @@
       <form class="ui equal width form create-event-form {{ successClass }} {{ errorClass }}">
 
         <div class="fields">
-          {{> Text_Form_Control label="Event Name" name="name" placeholder="ex: Beach Bash" value=event.name errorMessage=(fieldError "name")}}
+          {{> Text_Form_Control label="Event Name" name="name" placeholder="ex: Beach Bash" errorMessage=(fieldError "name")}}
         </div>
         <div class="field">
-          {{> Text_Form_Control label="Event Picture" name="picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
+          <label>Event Picture</label>
+          <input class="picture" type="text" name="picture" placeholder="URL">
+          {{> Form_Error_Message errorMessage=(fieldError "picture")}}
         </div>
         <div class="fields">
           <div class="field">
@@ -47,11 +42,11 @@
           </div>
         </div>
         <div class="fields">
-          {{> Text_Form_Control label="Location" name="location" placeholder="ex: Alamoana Beach Park" value=event.location errorMessage=(fieldError "location")}}
+          {{> Text_Form_Control label="Location" name="location" placeholder="ex: Alamoana Beach Park" errorMessage=(fieldError "location")}}
         </div>
         <div class="fields">
-          {{> Text_Form_Control label="Cost of Event" name="cost" placeholder="ex: Free" value=event.cost errorMessage=(fieldError "cost")}}
-          {{> Text_Form_Control label="Transportation Options" name="transportation" placeholder="ex: Bus / Private Vehicle" value=event.transportation errorMessage=(fieldError "transportation")}}
+          {{> Text_Form_Control label="Cost of Event" name="cost" placeholder="ex: Free" errorMessage=(fieldError "cost")}}
+          {{> Text_Form_Control label="Transportation Options" name="transportation" placeholder="ex: Bus / Private Vehicle" errorMessage=(fieldError "transportation")}}
         </div>
 
         <div class="fields">
@@ -60,7 +55,7 @@
         </div>
 
         <div class="fields">
-          {{> TextArea_Form_Control label="Description" name="description" value=event.description placeholder="Include important event information here"
+          {{> TextArea_Form_Control label="Description" name="description" placeholder="Include important event information here"
           errorMessage=(fieldError "description")}}
         </div>
 

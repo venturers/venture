@@ -8,7 +8,7 @@ import { Events } from '../../../api/event/EventCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
-
+const picture = 'picture';
 
 Template.Create_Event_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
@@ -28,6 +28,9 @@ Template.Create_Event_Page.helpers({
     //console.log(Events.findDoc(FlowRouter.getParam('username')));
     return Events.findDoc(FlowRouter.getParam('_id'));
   },
+  picture() {
+    return Template.instance().messageFlags.get(picture);
+  },
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
@@ -36,9 +39,6 @@ Template.Create_Event_Page.helpers({
   },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
-  },
-  profile() {
-    return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   interests() {
     const profile = Profiles.findDoc(FlowRouter.getParam('username'));
@@ -55,8 +55,10 @@ Template.Create_Event_Page.helpers({
   },
 });
 
-
 Template.Create_Event_Page.events({
+  'change .picture'(event, instance) {
+    instance.messageFlags.set(picture, event.target.value);
+  },
   'submit .create-event-form'(event, instance) {
     event.preventDefault();
     const username = FlowRouter.getParam('username'); // schema requires username.
