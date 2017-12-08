@@ -13,7 +13,7 @@ Template.Public_Profile_Page.onCreated(function onCreated() {
 
 Template.Public_Profile_Page.helpers({
   profile() {
-    return Profiles.findDoc(FlowRouter.getParam('username'));
+    return Profiles.findDoc(FlowRouter.getParam('_id'));
   },
   numFriends(profile) {
     if (profile.friends) {

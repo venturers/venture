@@ -86,7 +86,7 @@ Template.Create_Event_Page.events({
       instance.messageFlags.set(displaySuccessMessage, true);
       instance.messageFlags.set(displayErrorMessages, true);
       const id = FlowRouter.getParam('username');
-      console.log(docID, id);
+      //console.log(docID, id);
 
       var params = {username: id, _id: docID};
       const path = FlowRouter.path("Event_Page", params);

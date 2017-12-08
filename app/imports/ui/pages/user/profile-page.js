@@ -81,6 +81,11 @@ Template.Profile_Page.events({
       const id = Profiles.update(docID, { $set: cleanData });
       instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
+      const username = FlowRouter.getParam('username');
+      var params = {username: username, _id: docID};
+      const path = FlowRouter.path("Public_Profile_Page", params);
+      FlowRouter.go(path);
+
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
