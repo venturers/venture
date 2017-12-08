@@ -126,11 +126,19 @@
 
       <h3 class="ui dividing header">Events</h3>
 
-      {{ #each event in eventsToString profile }}
+      {{#if profile.events}}
+        {{ #each event profile.events }}
+        <div class="ui attached segment">
+          <a href="#">{{eventName event}}</a>
+        </div>
+        {{/each}}
+      {{else}}
       <div class="ui attached segment">
-        <a href="#">{{event}}</a>
+        <p>Not attending any events.</p>
       </div>
-      {{/each}}
+      {{/if}}
+
+
       <!-- div class="ui attached segment">
         <a href="#">Football game | Wed Oct 12 at 2AM</a>
       </div -->
