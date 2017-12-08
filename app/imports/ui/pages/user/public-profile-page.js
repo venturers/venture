@@ -21,11 +21,9 @@ Template.Public_Profile_Page.helpers({
     }
     return 0;
   },
-  eventsToString(profile) {
-    if (profile.events) {
-      return _.map(profile.events, event => (event.name + " | " + event.date + " " + event.time));
-    }
-    return ["No events to show."];
+  eventName(id) {
+    const event = Events.findDoc(id);
+    return event.name;
   },
   transportationIsBus(profile) {
     if (profile.transportation == "Bus") {
