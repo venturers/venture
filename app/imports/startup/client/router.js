@@ -79,6 +79,8 @@ userRoutes.route('/create-event', {
 export const publicProfilePageRouteName = 'Public_Profile_Page';
 userRoutes.route('/public-profile/:_id', {
   name: publicProfilePageRouteName,
+  action: function (params) {
+  },
   action() {
     BlazeLayout.render('User_Layout', { main: publicProfilePageRouteName });
   },

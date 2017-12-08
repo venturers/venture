@@ -9,11 +9,17 @@ Template.Public_Profile_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Events.getPublicationName());
+  this.context = Profiles.getSchema().namedContext('Public_Profile_Page');
+  console.log(Profiles.findDoc(FlowRouter.getParam('_id')));
 });
 
 Template.Public_Profile_Page.helpers({
   profile() {
+    //console.log(Profiles.findDoc(FlowRouter.getParam('_id')));
     return Profiles.findDoc(FlowRouter.getParam('_id'));
+  },
+  user() {
+    return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   numFriends(profile) {
     if (profile.friends) {
