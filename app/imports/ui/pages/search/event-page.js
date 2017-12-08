@@ -21,7 +21,12 @@ Template.Event_Page.helpers({
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   getCoordinatorPicture(event) {
-    return event.coordinator.picture;
+    const coordinator = Profiles.findDoc(event.username);
+    return coordinator.picture;
+  },
+  getCoordinatorName(event) {
+    const coordinator = Profiles.findDoc(event.username);
+    return coordinator.firstName + " " + coordinator.lastName;
   },
   getFriendParticipants(event){
     let user = user();
