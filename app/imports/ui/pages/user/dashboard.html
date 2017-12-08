@@ -17,13 +17,15 @@
     <div class="ui ten wide column">
       <div class="ui container dashboard-section">
         <h3 class="ui dividing header">Your Events</h3>
-        <div class="ui grid">
-          <div class="ui four cards events">
+        {{#if profile.events}}
+          <div class="ui four cards">
             {{#each event in profile.events}}
-            {{> Event_Card event=event}}
+              {{> Event_Card event=event}}
             {{/each}}
           </div>
-        </div>
+        {{else}}
+          <a href="{{pathFor "Search_Events_Page" username=routeUserName}}">You have no events. Go join some!</a>
+        {{/if}}
       </div>
     </div>
 
@@ -33,7 +35,6 @@
           Your Friends
         </h4>
         {{#if profile.friends}}
-
           {{#each friend in profile.friends}}
             {{#if getFriendPicture friend}}
               <div class="ui attached segment">
@@ -47,10 +48,9 @@
           {{/each}}
         {{else}}
           <div class="ui attached segment">
-            <a href="#">You have no friends. Go make some!</a>
+            <a href="{{pathFor "Search_Friends_Page" username=routeUserName}}">You have no friends. Go make some!</a>
           </div>
         {{/if}}
-        
       </div>
     </div>
   </div>

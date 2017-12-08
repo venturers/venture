@@ -19,8 +19,3 @@
 .dashboard-section {
   padding: 30px;
 }
-
-.events {
-  overflow: auto;
-  max-height: 300px;
-}

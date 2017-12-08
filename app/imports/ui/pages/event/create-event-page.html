@@ -37,8 +37,14 @@
           {{> Text_Form_Control label="Event Picture" name="picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
         </div>
         <div class="fields">
-          {{> Text_Form_Control label="Date" name="date" placeholder="ex: December 20, 2017" value=event.date errorMessage=(fieldError "date")}}
-          {{> Text_Form_Control label="Time" name="time" placeholder="ex: 6:00am - 6:30pm" value=event.time errorMessage=(fieldError "time")}}
+          <div class="field">
+            <label>Date</label>
+            <input type="date" name="date" placeholder="Date">
+          </div>
+          <div class="field">
+            <label>Time</label>
+            <input type="time" name="time" placeholder="Time">
+          </div>
         </div>
         <div class="fields">
           {{> Text_Form_Control label="Location" name="location" placeholder="ex: Alamoana Beach Park" value=event.location errorMessage=(fieldError "location")}}
