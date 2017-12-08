@@ -25,12 +25,9 @@ Template.Create_Event_Page.helpers({
     return Events.find();
   },
   event() {
-    console.log(Events.findDoc(FlowRouter.getParam('username')));
-    return Events.findDoc(FlowRouter.getParam('username'));
+    //console.log(Events.findDoc(FlowRouter.getParam('username')));
+    return Events.findDoc(FlowRouter.getParam('_id'));
   },
-});
-
-Template.Create_Event_Page.helpers({
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
