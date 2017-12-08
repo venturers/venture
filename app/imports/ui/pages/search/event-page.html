@@ -24,13 +24,13 @@
     <div class="ui horizontal list">
       <div class="item">
         {{#if getCoordinatorPicture event}}
-        <img class="ui mini circular image" src={{getCoordinatorPicture event}}>
+          <img class="ui mini circular image" src={{getCoordinatorPicture event}}>
         {{else}}
-        <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">
+          <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">
         {{/if}}
         <div class="content">
           <div class="ui sub header">Event Coordinator:</div>
-          {{event.coordinator}}
+          {{getCoordinatorName event}}
         </div>
       </div>
       <div class="item">
@@ -109,28 +109,42 @@
     <h4 class="ui inverted top attached header">
       Friends
     </h4>
-    {{#each friend in getFriendParticipantNames event}}
-    <div class="ui attached segment">
-      {{#if friend.picture}}
-      <a href="#"><img class="ui avatar image" src={{friend.picture}}>{{friend.firstName}} {{friend.lastName}}</a>
-      {{else}}
-      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{{friend.firstName}} {{friend.lastName}}</a>
-      {{/if}}
-    </div>
-    {{/each}}
+    {{#if event.getFriendParticipants event}}
+      {{#each friend in event.getFriendParticipants event}}
+      <div class="ui attached segment">
+        {{#if getFriendPicture}}
+          <a href="#"><img class="ui avatar image" src={{getFriendPicture friend}}>{getFriendName friend}</a>
+        {{else}}
+          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{getFriendName friend}</a>
+        {{/if}}
+      </div>
+      {{/each}}
+    {{else}}
+      <div class="ui attached segment">
+        <p>None of your friends are going.</p>
+      </div>
+    {{/if}}
+
 
     <h4 class="ui inverted attached header">
       Others
     </h4>
-    {{#each person in getParticipantNames event}}
-    <div class="ui attached segment">
-      {{#if person.picture}}
-      <a href="#"><img class="ui avatar image" src={{person.picture}}>{{person.firstName}} {{person.lastName}}</a>
-      {{else}}
-      <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{{person.firstName}} {{person.lastName}}</a>
-      {{/if}}
-    </div>
-    {{/each}}
+    {{#if event.peopleGoing}}
+      {{#each person in event.peopleGoing}}
+      <div class="ui attached segment">
+        {{#if getFriendPicture person}}
+          <a href="#"><img class="ui avatar image" src={{getFriendPicture person}}>{getFriendName person}</a>
+        {{else}}
+          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{getFriendName person}</a>
+        {{/if}}
+      </div>
+      {{/each}}
+    {{else}}
+      <div class="ui attached segment">
+        <p>No one is attending. Be the first!</p>
+      </div>
+    {{/if}}
+
 
   </div>
 
