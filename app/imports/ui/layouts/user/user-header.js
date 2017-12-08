@@ -5,4 +5,5 @@ Template.User_Header.helpers({
   routeUserName() {
     return FlowRouter.getParam('username');
   },
-});
+})
+;
