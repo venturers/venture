@@ -21,18 +21,13 @@
         <div class="item"><h1>{{ profile.firstName }} {{ profile.lastName }}</h1></div>
         <div class="right menu">
           {{#if profile.facebook}}
-          <a class="ui item" href={{ profile.facebook }}><i class="big blue facebook icon"></i></a>
-          {{else}}
+            <a class="ui item" href={{ profile.facebook }}><i class="big blue facebook icon"></i></a>
           {{/if}}
-
           {{#if profile.instagram}}
-          <a class="ui item" href={{ profile.instagram }}><i class="big instagram icon"></i></a>
-          {{else}}
+            <a class="ui item" href={{ profile.instagram }}><i class="big instagram icon"></i></a>
           {{/if}}
-
           {{#if profile.snapchat}}
-          <a class="ui item" href={{ profile.snapchat }}><i class="big yellow snapchat icon"></i></a>
-          {{else}}
+            <a class="ui item" href={{ profile.snapchat }}><i class="big yellow snapchat icon"></i></a>
           {{/if}}
         </div>
       </div>
@@ -42,43 +37,45 @@
         Add Friend
       </div>
 
-
-      <div class="ui horizontal list">
-        <div class="item">
-          <h3>Age: {{ profile.age }}</h3>
-        </div>
-        <div class="item">
-          <h3>{{ profile.location }}</h3>
-        </div>
-        {{#if profile.transportation}}
-        <div class="item">
-          {{#if transportationIsBus profile}}
-          <i class="ui large bus icon"></i>
+      {{#if hasInfo profile}}
+        <div class="ui relaxed divided horizontal list">
+          {{#if profile.age}}
+            <div class="item">
+              <div class="content larger">
+                <div class="header">Age</div>
+                <div class="description">{{ profile.age }}</div>
+              </div>
+            </div>
           {{/if}}
-          {{#if transportationIsCar profile}}
-          <i class="ui large car icon"></i>
+          {{#if profile.location}}
+            <div class="item">
+              <div class="content larger">
+                <div class="header">Location</div>
+                <div class="description">{{ profile.location }}</div>
+              </div>
+            </div>
           {{/if}}
-          {{#if transportationIsNone profile}}
-          <i class="ui large bicycle icon"></i>
+          {{#if profile.transportation}}
+            <div class="item">
+              <div class="content larger">
+                <div class="header">Transportation</div>
+                <div class="description">{{ profile.transportation }}</div>
+              </div>
+            </div>
           {{/if}}
-          <div class="content">
-            <div class="ui sub header">Transportation</div>
-            {{ profile.transportation }}
-          </div>
         </div>
-        {{else}}
-        {{/if}}
-      </div>
+      {{/if}}
 
-      <h3>Interests:</h3>
-      {{#each interest in profile.interests}}
-      <a class="ui teal tag small label">{{interest}}</a>
-      {{/each}}
-      <h3>Bio:</h3>
-      <div class="ui segment">
-        {{ profile.bio }}
-      </div>
-
+      {{#if profile.interests}}
+        <h3>Interests:</h3>
+        {{#each interest in profile.interests}}
+          <a class="ui teal tag small label">{{ interest }}</a>
+        {{/each}}
+        <h3>Bio:</h3>
+        <div class="ui segment">
+          {{ profile.bio }}
+        </div>
+      {{/if}}
 
       <br>
 
@@ -127,7 +124,7 @@
       <h3 class="ui dividing header">Events</h3>
 
       {{#if profile.events}}
-        {{ #each event profile.events }}
+        {{#each event profile.events}}
         <div class="ui attached segment">
           <a href="#">{{eventName event}}</a>
         </div>

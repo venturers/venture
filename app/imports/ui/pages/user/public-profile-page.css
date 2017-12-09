@@ -17,6 +17,10 @@
   font-size: 60px;
 }
 
+.larger {
+  font-size: 18px;
+}
+
 .ui.text.container.segment {
   margin-bottom: 30px;
 }
