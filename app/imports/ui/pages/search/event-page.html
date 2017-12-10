@@ -19,7 +19,38 @@
       </div>
     </div>
 
-    <h3>{{ event.location }} | {{ event.date }} | {{event.time}}</h3>
+    {{#if hasInfo event}}
+      <div class="ui divided horizontal list">
+        {{#if event.location}}
+          <div class="item">
+            <div class="content larger">
+              <div class="header">
+                {{ event.location }}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+        {{#if event.date}}
+          <div class="item">
+            <div class="content larger">
+              <div class="header">
+                {{ event.date }}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+        {{#if event.time}}
+          <div class="item">
+            <div class="content larger">
+              <div class="header">
+                {{ event.time }}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+      <br><br>
+    {{/if}}
 
     <div class="ui horizontal list">
       <div class="item">
@@ -29,37 +60,45 @@
           <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">
         {{/if}}
         <div class="content">
-          <div class="ui sub header">Event Coordinator:</div>
+          <div class="ui sub header">Event Coordinator</div>
           {{getCoordinatorName event}}
         </div>
       </div>
-      <div class="item">
-        <i class="ui large dollar icon"></i>
-        <div class="content">
-          <div class="ui sub header">Cost</div>
-          {{event.cost}}
+      {{#if event.cost}}
+        <div class="item">
+          <i class="ui large dollar icon"></i>
+          <div class="content">
+            <div class="ui sub header">Cost</div>
+            {{event.cost}}
+          </div>
         </div>
-      </div>
+      {{/if}}
       {{#if event.transportation}}
-      <div class="item">
-       <i class="ui large bus icon"></i>
-        <div class="content">
-          <div class="ui sub header">Transportation</div>
-          {{event.transportation}}
+        <div class="item">
+         <i class="ui large bus icon"></i>
+          <div class="content">
+            <div class="ui sub header">Transportation</div>
+            {{event.transportation}}
+          </div>
         </div>
-      </div>
       {{/if}}
     </div>
 
-    <h3>Interest Categories:</h3>
-    {{#each interest in event.interests}}
-    <a class="ui teal tag small label">{{interest}}</a>
-    {{/each}}
+    {{#if event.interests}}
+      <h3>Interest Categories:</h3>
+      {{#each interest in event.interests}}
+        <a class="ui teal tag small label">{{interest}}</a>
+      {{/each}}
+    {{/if}}
 
-    <h3>Info:</h3>
-    <div class="ui segment">
-      {{event.description}}
-    </div>
+    {{#if event.description}}
+      <h3>Info:</h3>
+      <div class="ui segment">
+        {{event.description}}
+      </div>
+    {{else}}
+      <br>
+    {{/if}}
 
     <br>
 
@@ -144,7 +183,6 @@
         <p>No one is attending. Be the first!</p>
       </div>
     {{/if}}
-
 
   </div>
 

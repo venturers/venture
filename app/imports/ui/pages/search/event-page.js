@@ -20,6 +20,9 @@ Template.Event_Page.helpers({
   user() {
     return Profiles.findDoc(FlowRouter.getParam('username'));
   },
+  hasInfo(event) {
+    return event.location || event.date || event.time;
+  },
   getCoordinatorPicture(event) {
     const coordinator = Profiles.findDoc(event.username);
     return coordinator.picture;

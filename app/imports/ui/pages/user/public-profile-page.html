@@ -42,7 +42,7 @@
           {{#if profile.age}}
             <div class="item">
               <div class="content larger">
-                <div class="header">Age</div>
+                <div class="ui sub header">Age</div>
                 <div class="description">{{ profile.age }}</div>
               </div>
             </div>
@@ -50,7 +50,7 @@
           {{#if profile.location}}
             <div class="item">
               <div class="content larger">
-                <div class="header">Location</div>
+                <div class="ui sub header">Location</div>
                 <div class="description">{{ profile.location }}</div>
               </div>
             </div>
@@ -58,7 +58,7 @@
           {{#if profile.transportation}}
             <div class="item">
               <div class="content larger">
-                <div class="header">Transportation</div>
+                <div class="ui sub header">Transportation</div>
                 <div class="description">{{ profile.transportation }}</div>
               </div>
             </div>
@@ -71,10 +71,14 @@
         {{#each interest in profile.interests}}
           <a class="ui teal tag small label">{{ interest }}</a>
         {{/each}}
+      {{/if}}
+      {{#if profile.bio}}
         <h3>Bio:</h3>
         <div class="ui segment">
           {{ profile.bio }}
         </div>
+      {{else}}
+        <br>
       {{/if}}
 
       <br>
