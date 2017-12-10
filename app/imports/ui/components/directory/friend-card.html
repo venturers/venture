@@ -1,19 +1,19 @@
 <template name="Friend_Card">
   <div class="ui card">
-    <div class="image">
+    <a class="image" href="{{pathFor "Public_Profile_Page" username=routeUserName _id=profile._id}}">
       {{#if profile.picture}}
         <img src={{ profile.picture }}>
       {{else}}
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
       {{/if}}
-    </div>
+    </a>
     <div class="content">
       <a class="{{isActiveRoute "Public_Profile_Page"}} header" href="{{pathFor "Public_Profile_Page" username=routeUserName _id=profile._id}}">
         {{ profile.firstName }} {{ profile.lastName }}
       </a>
       {{#if profile.location}}
         <div class="meta">
-          <a>{{ profile.location }}</a>
+          {{ profile.location }}
         </div>
       {{/if}}
       <div class="description">

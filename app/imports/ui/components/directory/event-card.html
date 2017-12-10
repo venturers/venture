@@ -1,16 +1,16 @@
 <template name="Event_Card">
   <div class="ui card">
-    <div class="image">
+    <a class="image" href="{{pathFor "Event_Page" username=routeUserName _id=event._id}}">
       {{#if event.picture}}
         <img src={{event.picture}}>
       {{else}}
         <img src="http://coreyuniform.com/media/images/event.png">
       {{/if}}
-    </div>
+    </a>
     <div class="content">
       <a class="{{isActiveRoute "Event_Page"}} header" href="{{pathFor "Event_Page" username=routeUserName _id=event._id}}">{{event.name}}</a>
       <div class="meta">
-        <a>{{ event.location }}</a>
+        {{ event.location }}
       </div>
       <div class="description">
         {{ event.description }}
