@@ -32,10 +32,17 @@
         </div>
       </div>
 
-      <div class="ui right floated button">
-        <i class="add icon"></i>
-        Add Friend
-      </div>
+      {{#if myProfile}}
+        <div class="ui right floated button edit-profile">
+          <i class="edit icon"></i>
+          Edit Profile
+        </div>
+      {{else}}
+        <div class="ui right floated button">
+          <i class="add user icon"></i>
+          Add Friend
+        </div>
+      {{/if}}
 
       {{#if hasInfo profile}}
         <div class="ui relaxed divided horizontal list">
@@ -138,7 +145,6 @@
         <p>Not attending any events.</p>
       </div>
       {{/if}}
-
 
       <!-- div class="ui attached segment">
         <a href="#">Football game | Wed Oct 12 at 2AM</a>

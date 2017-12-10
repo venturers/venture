@@ -5,7 +5,6 @@ import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 
-const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 const transportationOptions = ['None', 'Car', 'Bus'];
 
@@ -13,18 +12,11 @@ Template.Profile_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
   this.context = Profiles.getSchema().namedContext('Profile_Page');
 });
 
 Template.Profile_Page.helpers({
-  successClass() {
-    return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
-  },
-  displaySuccessMessage() {
-    return Template.instance().messageFlags.get(displaySuccessMessage);
-  },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
@@ -79,21 +71,12 @@ Template.Profile_Page.events({
     if (instance.context.isValid()) {
       const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
       const id = Profiles.update(docID, { $set: cleanData });
-      instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       const username = FlowRouter.getParam('username');
-      var params = {username: username, _id: docID};
-      const path = FlowRouter.path("Public_Profile_Page", params);
-      FlowRouter.go(path);
-
+      FlowRouter.go("Public_Profile_Page", {username, _id: docID});
     } else {
-      instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
-  },
-  'click .close.icon'(event, instance) {
-    event.preventDefault();
-    instance.messageFlags.set(displaySuccessMessage, false);
   }
 });
 

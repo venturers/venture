@@ -13,6 +13,12 @@ Template.Public_Profile_Page.helpers({
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('_id'));
   },
+  myProfile() {
+    if (FlowRouter.getParam('username') === Profiles.findDoc(FlowRouter.getParam('_id')).username) {
+      return true;
+    }
+    return false;
+  },
   hasInfo(profile) {
     return profile.age || profile.location || profile.transportation;
   },
@@ -37,5 +43,12 @@ Template.Public_Profile_Page.helpers({
   eventName(id) {
     const event = Events.findDoc(id);
     return event.name;
+  }
+});
+
+Template.Public_Profile_Page.events({
+  'click .edit-profile'() {
+    const username = FlowRouter.getParam('username');
+    FlowRouter.go('Profile_Page', {username});
   }
 });

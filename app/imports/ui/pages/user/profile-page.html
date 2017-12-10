@@ -22,7 +22,7 @@
         Profile
       </div>
 
-      <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
+      <form class="ui equal width form profile-data-form {{ errorClass }}">
 
         <div class="fields">
           {{> Text_Form_Control label="First Name" placeholder="First name" value=profile.firstName errorMessage=(fieldError
@@ -37,37 +37,22 @@
           {{> Select_Form_Control label="Transportation You Can Provide" options=transportation errorMessage=(fieldError "transportation")}}
         </div>
 
-        <div class="field">
-          {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
-          }}
-          {{> Text_Form_Control label="Profile Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
-        </div>
+        {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true}}
+        {{> Text_Form_Control label="Profile Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
 
         <div class="fields">
-
-          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" placeholder="" value=profile.snapchat
+          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" value=profile.snapchat
           errorMessage=(fieldError "snapchat")}}
-          {{> Social_Network_Form_Control label="Facebook" icon="facebook" placeholder="" value=profile.facebook
+          {{> Social_Network_Form_Control label="Facebook" icon="facebook" value=profile.facebook
           errorMessage=(fieldError "facebook")}}
-          {{> Social_Network_Form_Control label="Instagram" icon="instagram" placeholder="" value=profile.instagram
+          {{> Social_Network_Form_Control label="Instagram" icon="instagram" value=profile.instagram
           errorMessage=(fieldError "instagram")}}
-
         </div>
 
         {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here"
         errorMessage=(fieldError "bio")}}
 
-
         <button class="ui primary button" type="submit">Update</button>
-
-        {{#if displaySuccessMessage}}
-          <div class="ui success message">
-            <i class="close icon"></i>
-            <div class="header">
-              Profile updated
-            </div>
-          </div>
-        {{/if}}
       </form>
     </div>
 
