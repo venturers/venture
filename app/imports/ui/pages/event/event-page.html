@@ -20,31 +20,28 @@
     </div>
 
     {{#if hasInfo event}}
-      <div class="ui divided horizontal list">
+      <div class="ui relaxed divided horizontal list">
         {{#if event.location}}
           <div class="item">
             <div class="content larger">
-              <div class="header">
-                {{ event.location }}
-              </div>
+              <div class="ui sub header">Location</div>
+              <div class="description">{{ event.location }}</div>
             </div>
           </div>
         {{/if}}
         {{#if event.date}}
           <div class="item">
             <div class="content larger">
-              <div class="header">
-                {{ event.date }}
-              </div>
+              <div class="ui sub header">Date</div>
+              <div class="description">{{ event.date }}</div>
             </div>
           </div>
         {{/if}}
         {{#if event.time}}
           <div class="item">
             <div class="content larger">
-              <div class="header">
-                {{ event.time }}
-              </div>
+              <div class="ui sub header">Time</div>
+              <div class="description">{{ time event }}</div>
             </div>
           </div>
         {{/if}}

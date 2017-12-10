@@ -4,6 +4,3 @@ import './search-events-page.js';
 import './search-friends-page.html';
 import './search-friends-page.css';
 import './search-friends-page.js';
-import './event-page.css';
-import './event-page.html';
-import './event-page.js';
