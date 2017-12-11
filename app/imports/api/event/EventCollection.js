@@ -33,7 +33,11 @@ class EventCollection extends BaseCollection {
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       instagram: { type: SimpleSchema.RegEx.Url, optional: true },
-      coordinator: { type: String, optional: true },
+      comments: { type: Array, optional: true },
+      'comments.$': { type: Object },
+      'comments.$.username': { type: String },
+      'comments.$.date': { type: Date },
+      'comments.$.text': { type: String }
     }, { tracker: Tracker }));
   }
 
@@ -59,7 +63,7 @@ class EventCollection extends BaseCollection {
    * @returns The newly created docID.
    */
 
-  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '', coordinator = '' }) {
+  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '', comments = [] }) {
 
     // make sure required fields are OK.
     const checkPattern = { username: String, name: String };
@@ -78,7 +82,7 @@ class EventCollection extends BaseCollection {
     }
 
     return this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
-      facebook, instagram, coordinator });
+      facebook, instagram, comments });
   }
 
   // insert({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '' }){
@@ -123,9 +127,9 @@ class EventCollection extends BaseCollection {
     const picture = doc.picture;
     const facebook = doc.facebook;
     const instagram = doc.instagram;
-    const coordinator = doc.coordinator;
+    const comments = doc.comments;
     return { username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
-      facebook, instagram, coordinator };
+      facebook, instagram, comments };
   }
 }
 

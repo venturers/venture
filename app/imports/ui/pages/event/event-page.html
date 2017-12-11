@@ -54,7 +54,7 @@
         {{#if getCoordinatorPicture event}}
           <img class="ui mini circular image" src={{getCoordinatorPicture event}}>
         {{else}}
-          <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">
+          <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
         {{/if}}
         <div class="content">
           <div class="ui sub header">Event Coordinator</div>
@@ -101,41 +101,20 @@
 
     <div class="ui comments">
       <h3 class="ui dividing header">Comments</h3>
-      <div class="comment">
-        <a class="avatar">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">
-        </a>
-        <div class="content">
-          <a class="author">Fun Guy</a>
-          <div class="metadata">
-            <span class="date">Today at 5:42PM</span>
-          </div>
-          <div class="text">
-            Haha what a fun party lmao
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <a class="avatar">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">
-        </a>
-        <div class="content">
-          <a class="author">Rude Guy</a>
-          <div class="metadata">
-            <span class="date">5 days ago</span>
-          </div>
-          <div class="text">
-            i am not ok.
-          </div>
-        </div>
-      </div>
+      {{#if event.comments}}
+        {{#each comment in event.comments}}
+          {{> Comment comment=comment}}
+        {{/each}}
+      {{else}}
+        No comments yet. Be the first to comment!
+      {{/if}}
       <form class="ui reply form">
         <div class="field">
-          <textarea></textarea>
+          <textarea name="Text"></textarea>
         </div>
-        <div class="ui primary submit labeled icon button">
+        <button class="ui primary submit labeled icon button" type="submit">
           <i class="icon edit"></i> Post Comment
-        </div>
+        </button>
       </form>
     </div>
 
@@ -151,7 +130,7 @@
         {{#if getFriendPicture}}
           <a href="#"><img class="ui avatar image" src={{getFriendPicture friend}}>{getFriendName friend}</a>
         {{else}}
-          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{getFriendName friend}</a>
+          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{getFriendName friend}</a>
         {{/if}}
       </div>
       {{/each}}
@@ -171,7 +150,7 @@
         {{#if getFriendPicture person}}
           <a href="#"><img class="ui avatar image" src={{getFriendPicture person}}>{getFriendName person}</a>
         {{else}}
-          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Antu_system-switch-user.svg/600px-Antu_system-switch-user.svg.png">{getFriendName person}</a>
+          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{getFriendName person}</a>
         {{/if}}
       </div>
       {{/each}}

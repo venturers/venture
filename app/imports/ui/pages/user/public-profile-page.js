@@ -7,6 +7,7 @@ import { _ } from 'meteor/underscore';
 Template.Public_Profile_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
   this.subscribe(Events.getPublicationName());
+  this.context = Profiles.getSchema().namedContext('Public_Profile_Page');
 });
 
 Template.Public_Profile_Page.helpers({
@@ -50,5 +51,17 @@ Template.Public_Profile_Page.events({
   'click .edit-profile'() {
     const username = FlowRouter.getParam('username');
     FlowRouter.go('Profile_Page', {username});
+  },
+  'submit .ui.reply.form'(event, instance) {
+    event.preventDefault();
+    const username = FlowRouter.getParam('username');
+    const date = new Date();
+    const text = event.target.Text.value;
+
+    const comment = { username, date, text };
+
+    const docID = FlowRouter.getParam('_id');
+    Profiles.update(docID, { $push: { comments: comment } });
+    event.target.Text.value = '';
   }
 });

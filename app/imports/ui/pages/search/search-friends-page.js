@@ -76,7 +76,6 @@ Template.Search_Friends_Page.events({
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
     instance.messageFlags.set(searchedLocationKey, event.target.Location.value.trim().toUpperCase());
-    console.log(event.target.Transportation.value);
     instance.messageFlags.set(searchedTransportationKey, event.target.Transportation.value);
     instance.messageFlags.set(checkedHasCommonFriendsKey, event.target['Has Common Friends'].checked);
     instance.messageFlags.set(checkedAttendingCommonEventsKey, event.target['Attending Common Events'].checked);

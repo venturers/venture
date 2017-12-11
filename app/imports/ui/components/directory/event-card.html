@@ -18,7 +18,7 @@
     </div>
     <div class="extra content">
       <span class="right floated">
-        {{ event.date }} at {{ time event }}
+        {{ event.date }}{{#if hasDateAndTime event}} at {{/if}}{{ time event }}
       </span>
       <span>
         <i class="user icon"></i>

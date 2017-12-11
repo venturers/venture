@@ -3,10 +3,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Events } from '../../../api/event/EventCollection';
 import { Profiles } from '../../../api/profile/ProfileCollection';
-import { Interests } from '../../../api/interest/InterestCollection';
 
 Template.Event_Page.onCreated(function onCreated() {
-  this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.context = Events.getSchema().namedContext('Event_Page');
@@ -14,11 +12,7 @@ Template.Event_Page.onCreated(function onCreated() {
 
 Template.Event_Page.helpers({
   event() {
-    //console.log(Events.findDoc(FlowRouter.getParam('username')));
     return Events.findDoc(FlowRouter.getParam('_id'));
-  },
-  user() {
-    return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   hasInfo(event) {
     return event.location || event.date || event.time;
@@ -59,5 +53,19 @@ Template.Event_Page.helpers({
     const friend = Profiles.findDoc(username);
     return friend.firstName + " " + friend.lastName;
   }
-    }
-);
+});
+
+Template.Event_Page.events({
+  'submit .ui.reply.form'(event, instance) {
+    event.preventDefault();
+    const username = FlowRouter.getParam('username');
+    const date = new Date();
+    const text = event.target.Text.value;
+
+    const comment = { username, date, text };
+
+    const docID = FlowRouter.getParam('_id');
+    Events.update(docID, { $push: { comments: comment } });
+    event.target.Text.value = '';
+  }
+});

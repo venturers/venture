@@ -4,6 +4,9 @@ Template.Event_Card.helpers({
   routeUserName() {
     return FlowRouter.getParam('username');
   },
+  hasDateAndTime(event) {
+    return event.date && event.time;
+  },
   time(event) {
     let hours = Number(event.time.slice(0, event.time.indexOf(':')));
     let minutes = event.time.slice(event.time.indexOf(':'));
