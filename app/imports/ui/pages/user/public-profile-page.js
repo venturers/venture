@@ -60,7 +60,7 @@ Template.Public_Profile_Page.events({
 
     const comment = { username, date, text };
 
-    if (text !== '') {
+    if (text.trim() !== '') {
       const docID = FlowRouter.getParam('_id');
       Profiles.update(docID, { $push: { comments: comment } });
       event.target.Text.value = '';

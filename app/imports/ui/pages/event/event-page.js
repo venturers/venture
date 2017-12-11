@@ -64,7 +64,7 @@ Template.Event_Page.events({
 
     const comment = { username, date, text };
 
-    if (text !== '') {
+    if (text.trim() !== '') {
       const docID = FlowRouter.getParam('_id');
       Events.update(docID, { $push: { comments: comment } });
       event.target.Text.value = '';
