@@ -1,4 +1,7 @@
 <template name="Friend_Card">
+
+  {{#if Template.subscriptionsReady}}
+
   <div class="ui card">
     <a class="image" href="{{pathFor "Public_Profile_Page" username=routeUserName _id=profile._id}}">
       {{#if profile.picture}}
@@ -26,9 +29,21 @@
         {{ numFriends profile }} friends
       </span>
     </div>
-    <div class="ui bottom attached button">
-      <i class="add icon"></i>
-      Add Friend
-    </div>
+    {{#if notMyProfile profile}}
+      {{#if friendsWith profile}}
+        <div class="ui bottom attached positive button unfriend">
+          Friends
+          <i class="checkmark icon"></i>
+        </div>
+      {{else}}
+        <div class="ui bottom attached button add-friend">
+          <i class="add icon"></i>
+          Add Friend
+        </div>
+      {{/if}}
+    {{/if}}
   </div>
+
+  {{/if}}
+
 </template>

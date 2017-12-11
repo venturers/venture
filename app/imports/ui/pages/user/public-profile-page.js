@@ -11,6 +11,9 @@ Template.Public_Profile_Page.onCreated(function onCreated() {
 });
 
 Template.Public_Profile_Page.helpers({
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('_id'));
   },

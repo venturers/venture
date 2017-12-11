@@ -25,6 +25,9 @@ Template.Dashboard_Page.helpers({
   },
   routeUserName() {
     return FlowRouter.getParam('username');
+  },
+  events(profile) {
+    return _.filter(Events.findAll(), event => _.contains(profile.events, event._id));
   }
 })
 ;

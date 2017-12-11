@@ -114,21 +114,16 @@
       <h3 class="ui dividing header">Events</h3>
 
       {{#if profile.events}}
-        {{#each event profile.events}}
-        <div class="ui attached segment">
-          <a href="#">{{eventName event}}</a>
-        </div>
+        {{#each event in profile.events}}
+          <div class="ui attached segment">
+            <a href={{pathFor "Event_Page" username=routeUserName _id=event}}>{{eventName event}}</a>
+          </div>
         {{/each}}
       {{else}}
-      <div class="ui attached segment">
-        <p>Not attending any events.</p>
-      </div>
+        <div class="ui attached segment">
+          <p>Not attending any events.</p>
+        </div>
       {{/if}}
-
-      <!-- div class="ui attached segment">
-        <a href="#">Football game | Wed Oct 12 at 2AM</a>
-      </div -->
-
     </div>
 
   {{/if}}

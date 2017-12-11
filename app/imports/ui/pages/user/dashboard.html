@@ -18,8 +18,8 @@
       <div class="ui container dashboard-section">
         <h3 class="ui dividing header">Your Events</h3>
         {{#if profile.events}}
-          <div class="ui four cards">
-            {{#each event in profile.events}}
+          <div class="ui two cards">
+            {{#each event in events profile}}
               {{> Event_Card event=event}}
             {{/each}}
           </div>

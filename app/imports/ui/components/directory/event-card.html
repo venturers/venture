@@ -1,4 +1,7 @@
 <template name="Event_Card">
+
+  {{#if Template.subscriptionsReady}}
+
   <div class="ui card">
     <a class="image" href="{{pathFor "Event_Page" username=routeUserName _id=event._id}}">
       {{#if event.picture}}
@@ -25,9 +28,19 @@
         {{ peopleGoing event }} going
       </span>
     </div>
-    <div class="ui bottom attached button">
-      <i class="add icon"></i>
-      Add Event
-    </div>
+    {{#if attending event}}
+      <div class="ui bottom attached positive button remove-event">
+        Added
+        <i class="checkmark icon"></i>
+      </div>
+    {{else}}
+      <div class="ui bottom attached button add-event">
+        <i class="add icon"></i>
+        Add Event
+      </div>
+    {{/if}}
   </div>
+
+  {{/if}}
+
 </template>
