@@ -48,7 +48,7 @@ Template.Search_Friends_Page.helpers({
     }
     const checkedAttendingCommonEvents = Template.instance().messageFlags.get(checkedAttendingCommonEventsKey);
     if (checkedAttendingCommonEvents) {
-      matchedProfiles = _.filter(matchedProfiles, profile => _.filter(Events.findAll(), event => _.contains(event.peopleGoing, myUsername, profile.username)).length > 0);
+      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(myProfile.events, profile.events).length > 0);
     }
     return matchedProfiles;
   },
