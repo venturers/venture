@@ -24,10 +24,8 @@
       <form class="ui equal width form profile-data-form {{ errorClass }}">
 
         <div class="fields">
-          {{> Text_Form_Control label="First Name" placeholder="First name" value=profile.firstName errorMessage=(fieldError
-          "firstName")}}
-          {{> Text_Form_Control label="Last Name" placeholder="Last name" value=profile.lastName errorMessage=(fieldError
-          "lastName")}}
+          {{> Text_Form_Control label="First Name" placeholder="First name" value=profile.firstName errorMessage=(fieldError "firstName")}}
+          {{> Text_Form_Control label="Last Name" placeholder="Last name" value=profile.lastName errorMessage=(fieldError "lastName")}}
           {{> Text_Form_Control label="Age" placeholder="Age" value=profile.age errorMessage=(fieldError "age")}}
         </div>
 
@@ -40,16 +38,12 @@
         {{> Text_Form_Control label="Profile Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
 
         <div class="fields">
-          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" value=profile.snapchat
-          errorMessage=(fieldError "snapchat")}}
-          {{> Social_Network_Form_Control label="Facebook" icon="facebook" value=profile.facebook
-          errorMessage=(fieldError "facebook")}}
-          {{> Social_Network_Form_Control label="Instagram" icon="instagram" value=profile.instagram
-          errorMessage=(fieldError "instagram")}}
+          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" value=profile.snapchat errorMessage=(fieldError "snapchat")}}
+          {{> Social_Network_Form_Control label="Facebook" icon="facebook" value=profile.facebook errorMessage=(fieldError "facebook")}}
+          {{> Social_Network_Form_Control label="Instagram" icon="instagram" value=profile.instagram errorMessage=(fieldError "instagram")}}
         </div>
 
-        {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here"
-        errorMessage=(fieldError "bio")}}
+        {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here" errorMessage=(fieldError "bio")}}
 
         <button class="ui primary button" type="submit">Update</button>
       </form>

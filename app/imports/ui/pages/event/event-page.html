@@ -1,175 +1,188 @@
 <template name="Event_Page">
-  <div class="event-head">
-    <div class="ui middle aligned centered grid container middle-align">
-      <div class="ui sixteen wide column">
-        <div class="ui row">
-          <h1 class="event-head-text">Event Details</h1>
+
+  {{#if Template.subscriptionsReady}}
+
+    <div class="event-head">
+      <div class="ui middle aligned centered grid container middle-align">
+        <div class="ui sixteen wide column">
+          <div class="ui row">
+            <h1 class="event-head-text">Event Details</h1>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="ui text container segment">
-    <div id="profile-header" class="ui borderless menu">
-      <div class="item"><h1>{{ event.name }}</h1></div>
-      <div class="right menu">
-        <div class="item">
-          {{#if attending event}}
-            <div class="ui labeled positive icon button remove-event">
-              Added
-              <i class="checkmark icon"></i>
+    <div class="ui text container segment">
+      <div id="profile-header" class="ui borderless menu">
+        <div class="item"><h1>{{ event.name }}</h1></div>
+        <div class="right menu">
+          <div class="item">
+            {{#if attending event}}
+              <div class="ui labeled positive icon button remove-event">
+                Added
+                <i class="checkmark icon"></i>
+              </div>
+            {{else}}
+              <div class="ui button add-event">
+                <i class="add icon"></i>
+                Add Event
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+
+      {{#if hasInfo event}}
+        <div class="ui relaxed divided horizontal list">
+          {{#if event.location}}
+            <div class="item">
+              <div class="content larger">
+                <div class="ui sub header">Location</div>
+                <div class="description">{{ event.location }}</div>
+              </div>
             </div>
-          {{else}}
-            <div class="ui button add-event">
-              <i class="add icon"></i>
-              Add Event
+          {{/if}}
+          {{#if event.date}}
+            <div class="item">
+              <div class="content larger">
+                <div class="ui sub header">Date</div>
+                <div class="description">{{ event.date }}</div>
+              </div>
+            </div>
+          {{/if}}
+          {{#if event.time}}
+            <div class="item">
+              <div class="content larger">
+                <div class="ui sub header">Time</div>
+                <div class="description">{{time event}}</div>
+              </div>
             </div>
           {{/if}}
         </div>
-      </div>
-    </div>
-
-    {{#if hasInfo event}}
-      <div class="ui relaxed divided horizontal list">
-        {{#if event.location}}
-          <div class="item">
-            <div class="content larger">
-              <div class="ui sub header">Location</div>
-              <div class="description">{{ event.location }}</div>
-            </div>
-          </div>
-        {{/if}}
-        {{#if event.date}}
-          <div class="item">
-            <div class="content larger">
-              <div class="ui sub header">Date</div>
-              <div class="description">{{ event.date }}</div>
-            </div>
-          </div>
-        {{/if}}
-        {{#if event.time}}
-          <div class="item">
-            <div class="content larger">
-              <div class="ui sub header">Time</div>
-              <div class="description">{{ time event }}</div>
-            </div>
-          </div>
-        {{/if}}
-      </div>
-      <br><br>
-    {{/if}}
-
-    <div class="ui horizontal list">
-      <div class="item">
-        {{#if getPicture event.username}}
-          <img class="ui mini circular image" src={{getPicture event.username}}>
-        {{else}}
-          <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
-        {{/if}}
-        <div class="content">
-          <div class="ui sub header">Event Coordinator</div>
-          {{getFirstName event.username}} {{getLastName event.username}}
-        </div>
-      </div>
-      {{#if event.cost}}
-        <div class="item">
-          <i class="ui large dollar icon"></i>
-          <div class="content">
-            <div class="ui sub header">Cost</div>
-            {{event.cost}}
-          </div>
-        </div>
+        <br><br>
       {{/if}}
-      {{#if event.transportation}}
+
+      <div class="ui horizontal list">
         <div class="item">
-         <i class="ui large bus icon"></i>
+          {{#if getPicture event.username}}
+            <img class="ui mini circular image" src={{getPicture event.username}}>
+          {{else}}
+            <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+          {{/if}}
           <div class="content">
-            <div class="ui sub header">Transportation</div>
-            {{event.transportation}}
+            <div class="ui sub header">Event Coordinator</div>
+            {{getFirstName event.username}} {{getLastName event.username}}
           </div>
         </div>
-      {{/if}}
-    </div>
-
-    {{#if event.interests}}
-      <h3>Interest Categories:</h3>
-      {{#each interest in event.interests}}
-        <a class="ui teal tag small label">{{interest}}</a>
-      {{/each}}
-    {{/if}}
-
-    {{#if event.description}}
-      <h3>Info:</h3>
-      <div class="ui segment">
-        {{event.description}}
+        {{#if event.cost}}
+          <div class="item">
+            <i class="ui large dollar icon"></i>
+            <div class="content">
+              <div class="ui sub header">Cost</div>
+              {{ event.cost }}
+            </div>
+          </div>
+        {{/if}}
+        {{#if event.transportation}}
+          <div class="item">
+            <i class="ui large bus icon"></i>
+            <div class="content">
+              <div class="ui sub header">Transportation</div>
+              {{ event.transportation }}
+            </div>
+          </div>
+        {{/if}}
       </div>
-    {{else}}
+
+      {{#if event.interests}}
+        <h3>Interest Categories:</h3>
+        {{#each interest in event.interests}}
+          <a class="ui teal tag small label">{{ interest }}</a>
+        {{/each}}
+      {{/if}}
+
+      {{#if event.description}}
+        <h3>Info:</h3>
+        <div class="ui segment">
+          {{ event.description }}
+        </div>
+      {{else}}
+        <br>
+      {{/if}}
+
       <br>
-    {{/if}}
 
-    <br>
+      <div class="ui comments">
+        <h3 class="ui dividing header">Comments</h3>
+        {{#if event.comments}}
+          {{#each comment in event.comments}}
+            {{> Comment comment=comment}}
+          {{/each}}
+        {{else}}
+          No comments yet. Be the first to comment!
+        {{/if}}
+        <form class="ui reply form">
+          <div class="field">
+            <textarea name="Text"></textarea>
+          </div>
+          <button class="ui primary submit labeled icon button" type="submit">
+            <i class="icon edit"></i> Post Comment
+          </button>
+        </form>
+      </div>
 
-    <div class="ui comments">
-      <h3 class="ui dividing header">Comments</h3>
-      {{#if event.comments}}
-        {{#each comment in event.comments}}
-          {{> Comment comment=comment}}
+      <br>
+
+      <h3 class="ui dividing header">People Going</h3>
+      <h4 class="ui inverted top attached header">
+        Friends
+      </h4>
+      {{#if getFriendParticipants event}}
+        {{#each friend in getFriendParticipants event}}
+          <div class="ui attached segment">
+            {{#if getPicture friend}}
+              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}>
+                <img class="ui avatar image" src={{getPicture friend}}>{{getFirstName friend}} {{getLastName friend}}
+              </a>
+            {{else}}
+              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}>
+                <img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName friend}} {{getLastName friend}}
+              </a>
+            {{/if}}
+          </div>
         {{/each}}
       {{else}}
-        No comments yet. Be the first to comment!
-      {{/if}}
-      <form class="ui reply form">
-        <div class="field">
-          <textarea name="Text"></textarea>
+        <div class="ui attached segment">
+          <p>None of your friends are going.</p>
         </div>
-        <button class="ui primary submit labeled icon button" type="submit">
-          <i class="icon edit"></i> Post Comment
-        </button>
-      </form>
+      {{/if}}
+
+
+      <h4 class="ui inverted attached header">
+        Others
+      </h4>
+      {{#if getOtherParticipants event}}
+        {{#each person in getOtherParticipants event}}
+          <div class="ui attached segment">
+            {{#if getPicture person}}
+              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}>
+                <img class="ui avatar image" src={{getPicture person}}>{{getFirstName person}} {{getLastName person}}
+              </a>
+            {{else}}
+              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}>
+                <img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName person}} {{getLastName person}}
+              </a>
+            {{/if}}
+          </div>
+        {{/each}}
+      {{else}}
+        <div class="ui attached segment">
+          <p>No one else is attending. Be the first!</p>
+        </div>
+      {{/if}}
+
     </div>
 
-    <br>
-
-    <h3 class="ui dividing header">People Going</h3>
-    <h4 class="ui inverted top attached header">
-      Friends
-    </h4>
-    {{#if getFriendParticipants event}}
-      {{#each friend in getFriendParticipants event}}
-      <div class="ui attached segment">
-        {{#if getPicture friend}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}><img class="ui avatar image" src={{getPicture friend}}>{{getFirstName friend}} {{getLastName friend}}</a>
-        {{else}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName friend}} {{getLastName friend}}</a>
-        {{/if}}
-      </div>
-      {{/each}}
-    {{else}}
-      <div class="ui attached segment">
-        <p>None of your friends are going.</p>
-      </div>
-    {{/if}}
-
-
-    <h4 class="ui inverted attached header">
-      Others
-    </h4>
-    {{#if getOtherParticipants event}}
-      {{#each person in getOtherParticipants event}}
-      <div class="ui attached segment">
-        {{#if getPicture person}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}><img class="ui avatar image" src={{getPicture person}}>{{getFirstName person}} {{getLastName person}}</a>
-        {{else}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName person}} {{getLastName person}}</a>
-        {{/if}}
-      </div>
-      {{/each}}
-    {{else}}
-      <div class="ui attached segment">
-        <p>No one else is attending. Be the first!</p>
-      </div>
-    {{/if}}
-
-  </div>
+  {{/if}}
 
 </template>

@@ -2,47 +2,47 @@
 
   {{#if Template.subscriptionsReady}}
 
-  <div class="ui card">
-    <a class="image" href="{{pathFor "Public_Profile_Page" username=routeUserName _id=profile._id}}">
-      {{#if profile.picture}}
-        <img src={{ profile.picture }}>
-      {{else}}
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
-      {{/if}}
-    </a>
-    <div class="content">
-      <a class="header" href="{{pathFor "Public_Profile_Page" username=routeUserName _id=profile._id}}">
-        {{ profile.firstName }} {{ profile.lastName }}
+    <div class="ui card">
+      <a class="image" href="{{pathFor "Public_Profile_Page" username=routeUserName _id=profile._id}}">
+        {{#if profile.picture}}
+          <img src={{ profile.picture }}>
+        {{else}}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+        {{/if}}
       </a>
-      {{#if profile.location}}
-        <div class="meta">
-          {{ profile.location }}
+      <div class="content">
+        <a class="header" href="{{pathFor "Public_Profile_Page" username=routeUserName _id=profile._id}}">
+          {{ profile.firstName }} {{ profile.lastName }}
+        </a>
+        {{#if profile.location}}
+          <div class="meta">
+            {{ profile.location }}
+          </div>
+        {{/if}}
+        <div class="description">
+          {{ profile.bio }}
         </div>
-      {{/if}}
-      <div class="description">
-        {{ profile.bio }}
       </div>
-    </div>
-    <div class="extra content">
-      <span>
-        <i class="user icon"></i>
-        {{ numFriends profile }} friends
-      </span>
-    </div>
-    {{#if notMyProfile profile}}
-      {{#if friendsWith profile}}
-        <div class="ui bottom attached positive button unfriend">
-          Friends
-          <i class="checkmark icon"></i>
-        </div>
-      {{else}}
-        <div class="ui bottom attached button add-friend">
-          <i class="add icon"></i>
-          Add Friend
-        </div>
+      <div class="extra content">
+        <span>
+          <i class="user icon"></i>
+          {{numFriends profile}} friends
+        </span>
+      </div>
+      {{#if notMyProfile profile}}
+        {{#if friendsWith profile}}
+          <div class="ui bottom attached positive button unfriend">
+            Friends
+            <i class="checkmark icon"></i>
+          </div>
+        {{else}}
+          <div class="ui bottom attached button add-friend">
+            <i class="add icon"></i>
+            Add Friend
+          </div>
+        {{/if}}
       {{/if}}
-    {{/if}}
-  </div>
+    </div>
 
   {{/if}}
 

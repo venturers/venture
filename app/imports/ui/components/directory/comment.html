@@ -2,24 +2,24 @@
 
   {{#if Template.subscriptionsReady}}
 
-  <div class="comment">
-    <a class="avatar">
-    {{#if picture comment}}
-      <img src={{ picture comment }}>
-    {{else}}
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
-    {{/if}}
-    </a>
-    <div class="content">
-      <a class="author">{{ firstName comment }} {{ lastName comment }}</a>
-      <div class="metadata">
-        <span class="date">{{ date comment }}</span>
-      </div>
-      <div class="text">
-        {{ comment.text }}
+    <div class="comment">
+      <a class="avatar">
+      {{#if picture comment}}
+        <img src={{picture comment}}>
+      {{else}}
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+      {{/if}}
+      </a>
+      <div class="content">
+        <a class="author">{{firstName comment}} {{lastName comment}}</a>
+        <div class="metadata">
+          <span class="date">{{date comment}}</span>
+        </div>
+        <div class="text">
+          {{ comment.text }}
+        </div>
       </div>
     </div>
-  </div>
 
   {{/if}}
 
