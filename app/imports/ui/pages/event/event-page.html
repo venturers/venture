@@ -14,7 +14,17 @@
       <div class="item"><h1>{{ event.name }}</h1></div>
       <div class="right menu">
         <div class="item">
-          <button class="ui button"><i class="check square icon"></i>Add Event</button>
+          {{#if attending event}}
+            <div class="ui labeled positive icon button remove-event">
+              Added
+              <i class="checkmark icon"></i>
+            </div>
+          {{else}}
+            <div class="ui button add-event">
+              <i class="add icon"></i>
+              Add Event
+            </div>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -58,7 +68,7 @@
         {{/if}}
         <div class="content">
           <div class="ui sub header">Event Coordinator</div>
-          {{getCoordinatorName event}}
+          {{getCoordinatorFirstName event}} {{getCoordinatorLastName event}}
         </div>
       </div>
       {{#if event.cost}}
@@ -124,13 +134,13 @@
     <h4 class="ui inverted top attached header">
       Friends
     </h4>
-    {{#if event.getFriendParticipants event}}
-      {{#each friend in event.getFriendParticipants event}}
+    {{#if getFriendParticipants event}}
+      {{#each friend in getFriendParticipants event}}
       <div class="ui attached segment">
-        {{#if getFriendPicture}}
-          <a href="#"><img class="ui avatar image" src={{getFriendPicture friend}}>{getFriendName friend}</a>
+        {{#if getPicture friend}}
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID friend)}}><img class="ui avatar image" src={{getPicture friend}}>{{getFirstName friend}} {{getLastName friend}}</a>
         {{else}}
-          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{getFriendName friend}</a>
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID friend)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName friend}} {{getLastName friend}}</a>
         {{/if}}
       </div>
       {{/each}}
@@ -144,13 +154,13 @@
     <h4 class="ui inverted attached header">
       Others
     </h4>
-    {{#if event.peopleGoing}}
-      {{#each person in event.peopleGoing}}
+    {{#if getOtherParticipants event}}
+      {{#each person in getOtherParticipants event}}
       <div class="ui attached segment">
-        {{#if getFriendPicture person}}
-          <a href="#"><img class="ui avatar image" src={{getFriendPicture person}}>{getFriendName person}</a>
+        {{#if getPicture person}}
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID person)}}><img class="ui avatar image" src={{getPicture person}}>{{getFirstName person}} {{getLastName person}}</a>
         {{else}}
-          <a href="#"><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{getFriendName person}</a>
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID person)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName person}} {{getLastName person}}</a>
         {{/if}}
       </div>
       {{/each}}

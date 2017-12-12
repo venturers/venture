@@ -11,8 +11,17 @@ Template.Event_Page.onCreated(function onCreated() {
 });
 
 Template.Event_Page.helpers({
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
+  routeID(username) {
+    return Profiles.findDoc(username)._id;
+  },
   event() {
     return Events.findDoc(FlowRouter.getParam('_id'));
+  },
+  attending(event) {
+    return _.contains(event.peopleGoing, FlowRouter.getParam('username'));
   },
   hasInfo(event) {
     return event.location || event.date || event.time;
@@ -31,31 +40,49 @@ Template.Event_Page.helpers({
     const coordinator = Profiles.findDoc(event.username);
     return coordinator.picture;
   },
-  getCoordinatorName(event) {
+  getCoordinatorFirstName(event) {
     const coordinator = Profiles.findDoc(event.username);
-    return coordinator.firstName + " " + coordinator.lastName;
+    return coordinator.firstName;
+  },
+  getCoordinatorLastName(event) {
+    const coordinator = Profiles.findDoc(event.username);
+    return coordinator.lastName;
   },
   getFriendParticipants(event){
-    let user = user();
-    if (event.peopleGoing.length > 0) {
-      return _.each(event.peopleGoing, function(person) {
-        if (user.friends.contains(person)) {
-          return person.firstName + " " + person.lastName;
-        }
-      })
-    }
+    return _.filter(event.peopleGoing, person => _.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends, person));
   },
-  getFriendPicture(username) {
-    const friend = Profiles.findDoc(username);
-    return friend.picture;
+  getOtherParticipants(event){
+    return _.filter(event.peopleGoing, person => !_.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends, person));
   },
-  getFriendName(username) {
-    const friend = Profiles.findDoc(username);
-    return friend.firstName + " " + friend.lastName;
+  getPicture(username) {
+    const person = Profiles.findDoc(username);
+    return person.picture;
+  },
+  getFirstName(username) {
+    const person = Profiles.findDoc(username);
+    return person.firstName;
+  },
+  getLastName(username) {
+    const person = Profiles.findDoc(username);
+    return person.lastName;
   }
 });
 
 Template.Event_Page.events({
+  'click .add-event'(event, instance) {
+    const myUsername = FlowRouter.getParam('username');
+    const myID = Profiles.findDoc(myUsername)._id;
+    const eventID = FlowRouter.getParam('_id');
+    Profiles.update(myID, { $push: { events: eventID } });
+    Events.update(eventID, { $push: { peopleGoing: myUsername } });
+  },
+  'click .remove-event'(event, instance) {
+    const myUsername = FlowRouter.getParam('username');
+    const myID = Profiles.findDoc(myUsername)._id;
+    const eventID = FlowRouter.getParam('_id');
+    Profiles.update(myID, { $pull: { events: eventID } });
+    Events.update(eventID, { $pull: { peopleGoing: myUsername } });
+  },
   'submit .ui.reply.form'(event, instance) {
     event.preventDefault();
     const username = FlowRouter.getParam('username');

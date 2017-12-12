@@ -1,4 +1,3 @@
-import { Template } from 'meteor/templating';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 
 Template.Comment.onCreated(function onCreated() {

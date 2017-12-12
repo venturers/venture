@@ -28,6 +28,7 @@ class EventCollection extends BaseCollection {
       cost: { type: String, optional: true },
       transportation: { type: String, optional: true },
       peopleGoing: { type: Array, optional: true },
+      'peopleGoing.$': { type: String },
       interests: { type: Array, optional: true },
       'interests.$': { type: String },
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
