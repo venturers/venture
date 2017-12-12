@@ -2,62 +2,62 @@
 
     {{#if Template.subscriptionsReady}}
 
-    <div class="create-event">
-    <div class="create-event-head">
-      <div class="ui container middle aligned centered grid middle-align">
-        <div class="ui column">
-          <div class="ui row">
-            <h1 style="font-size: 35px; margin-bottom: 15px; margin-top: 15px">Create an Event</h1>
+      <div class="create-event">
+        <div class="create-event-head">
+          <div class="ui container middle aligned centered grid middle-align">
+            <div class="ui column">
+              <div class="ui row">
+                <h1 class="event-header-text">Create an Event</h1>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="ui text container segment">
+          {{#if picture}}
+            <img class="ui medium image" src={{picture}}>
+          {{/if}}
+
+          <div class="ui dividing header">
+            Create Event
+          </div>
+
+          <form class="ui equal width form create-event-form {{ successClass }} {{ errorClass }}">
+            {{> Text_Form_Control label="Event Name" name="name" placeholder="ex: Beach Bash" errorMessage=(fieldError "name")}}
+
+            <div class="field">
+              <label>Event Picture</label>
+              <input class="picture" type="text" name="picture" placeholder="URL">
+              {{> Form_Error_Message errorMessage=(fieldError "picture")}}
+            </div>
+
+            <div class="fields">
+              <div class="field">
+                <label>Date</label>
+                <input type="date" name="date" placeholder="Date">
+              </div>
+              <div class="field">
+                <label>Time</label>
+                <input type="time" name="time" placeholder="Time">
+              </div>
+            </div>
+
+            {{> Text_Form_Control label="Location" name="location" placeholder="ex: Alamoana Beach Park" errorMessage=(fieldError "location")}}
+
+            <div class="fields">
+              {{> Text_Form_Control label="Cost of Event" name="cost" placeholder="ex: Free" errorMessage=(fieldError "cost")}}
+              {{> Text_Form_Control label="Transportation Options" name="transportation" placeholder="ex: Bus / Private Vehicle" errorMessage=(fieldError "transportation")}}
+            </div>
+
+            {{> Select_Form_Control label="Interests" name="interests" options=interests errorMessage=(fieldError "interests") multiple=true}}
+
+            {{> TextArea_Form_Control label="Description" name="description" placeholder="Include important event information here"
+              errorMessage=(fieldError "description")}}
+
+            <button class="ui centered button" type="submit" style="color: black">Submit</button>
+          </form>
         </div>
       </div>
-    </div>
-
-    <div class="ui text container segment">
-      {{#if picture}}
-        <img class="ui medium image" src={{picture}}>
-      {{/if}}
-
-      <div class="ui dividing header">
-        Create Event
-      </div>
-
-      <form class="ui equal width form create-event-form {{ successClass }} {{ errorClass }}">
-        {{> Text_Form_Control label="Event Name" name="name" placeholder="ex: Beach Bash" errorMessage=(fieldError "name")}}
-
-        <div class="field">
-          <label>Event Picture</label>
-          <input class="picture" type="text" name="picture" placeholder="URL">
-          {{> Form_Error_Message errorMessage=(fieldError "picture")}}
-        </div>
-
-        <div class="fields">
-          <div class="field">
-            <label>Date</label>
-            <input type="date" name="date" placeholder="Date">
-          </div>
-          <div class="field">
-            <label>Time</label>
-            <input type="time" name="time" placeholder="Time">
-          </div>
-        </div>
-
-        {{> Text_Form_Control label="Location" name="location" placeholder="ex: Alamoana Beach Park" errorMessage=(fieldError "location")}}
-
-        <div class="fields">
-          {{> Text_Form_Control label="Cost of Event" name="cost" placeholder="ex: Free" errorMessage=(fieldError "cost")}}
-          {{> Text_Form_Control label="Transportation Options" name="transportation" placeholder="ex: Bus / Private Vehicle" errorMessage=(fieldError "transportation")}}
-        </div>
-
-        {{> Select_Form_Control label="Interests" name="interests" options=interests errorMessage=(fieldError "interests") multiple=true}}
-
-        {{> TextArea_Form_Control label="Description" name="description" placeholder="Include important event information here"
-          errorMessage=(fieldError "description")}}
-
-        <button class="ui centered button" type="submit" style="color: black">Submit</button>
-      </form>
-    </div>
-    </div>
 
     {{/if}}
 

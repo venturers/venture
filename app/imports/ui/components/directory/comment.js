@@ -6,16 +6,13 @@ Template.Comment.onCreated(function onCreated() {
 
 Template.Comment.helpers({
   picture(comment) {
-    const profile = Profiles.findDoc(comment.username);
-    return profile.picture;
+    return Profiles.findDoc(comment.username).picture;
   },
   firstName(comment) {
-    const profile = Profiles.findDoc(comment.username);
-    return profile.firstName;
+    return Profiles.findDoc(comment.username).firstName;
   },
   lastName(comment) {
-    const profile = Profiles.findDoc(comment.username);
-    return profile.lastName;
+    return Profiles.findDoc(comment.username).lastName;
   },
   date(comment) {
     return comment.date.toLocaleDateString() + ' at ' + comment.date.toLocaleTimeString();

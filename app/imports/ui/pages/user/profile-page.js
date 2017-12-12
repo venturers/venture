@@ -9,8 +9,8 @@ const displayErrorMessages = 'displayErrorMessages';
 const transportationOptions = ['None', 'Car', 'Bus'];
 
 Template.Profile_Page.onCreated(function onCreated() {
-  this.subscribe(Interests.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
+  this.subscribe(Interests.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
   this.context = Profiles.getSchema().namedContext('Profile_Page');

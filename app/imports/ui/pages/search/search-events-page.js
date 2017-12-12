@@ -1,9 +1,9 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-import { Events } from '/imports/api/event/EventCollection';
-import { Interests } from '/imports/api/interest/InterestCollection';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Interests } from '/imports/api/interest/InterestCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
 const searchedKeywordKey = 'searchedKeyword';
 const selectedInterestsKey = 'selectedInterests';
@@ -15,9 +15,9 @@ const searchedMaximumKey = 'searchedMaximum';
 const checkedFriendsAreAttendingKey = 'checkedFriendsAreAttending';
 
 Template.Search_Events_Page.onCreated(function onCreated() {
-  this.subscribe(Events.getPublicationName());
-  this.subscribe(Interests.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
+  this.subscribe(Interests.getPublicationName());
+  this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(selectedInterestsKey, []);
 });

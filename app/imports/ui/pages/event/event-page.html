@@ -61,14 +61,14 @@
 
     <div class="ui horizontal list">
       <div class="item">
-        {{#if getCoordinatorPicture event}}
-          <img class="ui mini circular image" src={{getCoordinatorPicture event}}>
+        {{#if getPicture event.username}}
+          <img class="ui mini circular image" src={{getPicture event.username}}>
         {{else}}
           <img class="ui mini circular image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
         {{/if}}
         <div class="content">
           <div class="ui sub header">Event Coordinator</div>
-          {{getCoordinatorFirstName event}} {{getCoordinatorLastName event}}
+          {{getFirstName event.username}} {{getLastName event.username}}
         </div>
       </div>
       {{#if event.cost}}
@@ -138,9 +138,9 @@
       {{#each friend in getFriendParticipants event}}
       <div class="ui attached segment">
         {{#if getPicture friend}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID friend)}}><img class="ui avatar image" src={{getPicture friend}}>{{getFirstName friend}} {{getLastName friend}}</a>
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}><img class="ui avatar image" src={{getPicture friend}}>{{getFirstName friend}} {{getLastName friend}}</a>
         {{else}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID friend)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName friend}} {{getLastName friend}}</a>
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName friend}} {{getLastName friend}}</a>
         {{/if}}
       </div>
       {{/each}}
@@ -158,15 +158,15 @@
       {{#each person in getOtherParticipants event}}
       <div class="ui attached segment">
         {{#if getPicture person}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID person)}}><img class="ui avatar image" src={{getPicture person}}>{{getFirstName person}} {{getLastName person}}</a>
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}><img class="ui avatar image" src={{getPicture person}}>{{getFirstName person}} {{getLastName person}}</a>
         {{else}}
-          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeID person)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName person}} {{getLastName person}}</a>
+          <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}><img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName person}} {{getLastName person}}</a>
         {{/if}}
       </div>
       {{/each}}
     {{else}}
       <div class="ui attached segment">
-        <p>No one is attending. Be the first!</p>
+        <p>No one else is attending. Be the first!</p>
       </div>
     {{/if}}
 

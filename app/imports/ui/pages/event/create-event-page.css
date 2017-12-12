@@ -10,3 +10,9 @@
   background: url('http://wallpoper.com/images/00/38/67/91/sunset-beach_00386791.jpg') no-repeat center;
   height: 100%;
 }
+
+.event-header-text {
+  font-size: 35px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

@@ -1,12 +1,12 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
-import { Events } from '../../../api/event/EventCollection';
-import { Profiles } from '../../../api/profile/ProfileCollection';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
 Template.Event_Page.onCreated(function onCreated() {
-  this.subscribe(Events.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
+  this.subscribe(Events.getPublicationName());
   this.context = Events.getSchema().namedContext('Event_Page');
 });
 
@@ -14,7 +14,7 @@ Template.Event_Page.helpers({
   routeUserName() {
     return FlowRouter.getParam('username');
   },
-  routeID(username) {
+  routeId(username) {
     return Profiles.findDoc(username)._id;
   },
   event() {
@@ -36,35 +36,20 @@ Template.Event_Page.helpers({
     }
     return hours + minutes + suffix;
   },
-  getCoordinatorPicture(event) {
-    const coordinator = Profiles.findDoc(event.username);
-    return coordinator.picture;
+  getPicture(username) {
+    return Profiles.findDoc(username).picture;
   },
-  getCoordinatorFirstName(event) {
-    const coordinator = Profiles.findDoc(event.username);
-    return coordinator.firstName;
+  getFirstName(username) {
+    return Profiles.findDoc(username).firstName;
   },
-  getCoordinatorLastName(event) {
-    const coordinator = Profiles.findDoc(event.username);
-    return coordinator.lastName;
+  getLastName(username) {
+    return Profiles.findDoc(username).lastName;
   },
   getFriendParticipants(event){
     return _.filter(event.peopleGoing, person => _.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends, person));
   },
   getOtherParticipants(event){
     return _.filter(event.peopleGoing, person => !_.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends, person));
-  },
-  getPicture(username) {
-    const person = Profiles.findDoc(username);
-    return person.picture;
-  },
-  getFirstName(username) {
-    const person = Profiles.findDoc(username);
-    return person.firstName;
-  },
-  getLastName(username) {
-    const person = Profiles.findDoc(username);
-    return person.lastName;
   }
 });
 
