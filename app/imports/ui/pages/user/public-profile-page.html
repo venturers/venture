@@ -38,10 +38,17 @@
           Edit Profile
         </div>
       {{else}}
-        <div class="ui right floated button">
-          <i class="add user icon"></i>
-          Add Friend
-        </div>
+        {{#if friendsWith profile}}
+          <div class="ui right floated labeled icon positive button unfriend">
+            Friends
+            <i class="checkmark icon"></i>
+          </div>
+        {{else}}
+          <div class="ui right floated button add-friend">
+            <i class="add user icon"></i>
+            Add Friend
+          </div>
+        {{/if}}
       {{/if}}
 
       {{#if hasInfo profile}}

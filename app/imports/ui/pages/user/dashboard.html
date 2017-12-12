@@ -38,12 +38,12 @@
           {{#each friend in profile.friends}}
             {{#if getFriendPicture friend}}
               <div class="ui attached segment">
-                <a href="#"><img class="ui avatar image"
-                                 src={{getFriendPicture friend}}>{{getFriendName friend}}</a>
+                <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(getFriendID friend)}}><img class="ui avatar image"
+                                 src={{getFriendPicture friend}}>{{getFriendFirstName friend}} {{getFriendLastName friend}}</a>
               </div>
             {{else}}
-              <a href="#"><img class="ui avatar image"
-                               src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFriendName friend}}</a>
+              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(getFriendID friend)}}><img class="ui avatar image"
+                               src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFriendFirstName friend}} {{getFriendLastName friend}}</a>
             {{/if}}
           {{/each}}
         {{else}}
