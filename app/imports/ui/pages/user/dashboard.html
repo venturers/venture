@@ -16,7 +16,7 @@
 
     <div class="ui ten wide column">
       <div class="ui container dashboard-section">
-        <h3 class="ui centered dividing header">Your Events</h3>
+        <h3 class="ui center aligned dividing header">Your Events</h3>
         {{#if profile.events}}
           <div class="ui two cards">
             {{#each event in events profile}}
@@ -24,13 +24,17 @@
             {{/each}}
           </div>
         {{else}}
-          You have no events. Go <a href="{{pathFor 'Search_Events_Page' username=routeUserName}}">find</a> or
-        <a href="{{pathFor 'Create_Event_Page' username=routeUserName}}">create</a> one!
+          <div class="ui grid">
+            <div class="ui sixteen wide center aligned column">
+              You have no events. Go <a href="{{pathFor 'Search_Events_Page' username=routeUserName}}">find</a> or
+              <a href="{{pathFor 'Create_Event_Page' username=routeUserName}}">create</a> one!
+            </div>
+          </div>
         {{/if}}
       </div>
     </div>
 
-    <div class="ui six wide column">
+    <div class="ui six wide center aligned column">
       <div class="ui container dashboard-section">
         <h4 class="ui inverted attached header">
           Your Friends
