@@ -1,7 +1,12 @@
-.event-head {
-  background: url('http://img08.deviantart.net/f882/i/2015/004/3/e/hawaii_sunset_stock_low_angle_by_leeorr_stock-d8cm6ag.jpg') no-repeat center;
-  background-size: cover;
-  height: 200px;
+.create-event-head {
+  /*background: url('http://img08.deviantart.net/f882/i/2015/004/3/e/hawaii_sunset_stock_low_angle_by_leeorr_stock-d8cm6ag.jpg') no-repeat center;*/
+  /*background-size: cover;*/
+  /*height: 200px;*/
   color: white;
   font-size: 35px;
+}
+
+.create-event {
+  background: url('http://wallpoper.com/images/00/38/67/91/sunset-beach_00386791.jpg') no-repeat center;
+  height: 100%;
 }
