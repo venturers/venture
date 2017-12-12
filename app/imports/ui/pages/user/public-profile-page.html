@@ -38,10 +38,17 @@
           Edit Profile
         </div>
       {{else}}
-        <div class="ui right floated button">
-          <i class="add user icon"></i>
-          Add Friend
-        </div>
+        {{#if friendsWith profile}}
+          <div class="ui right floated labeled icon positive button unfriend">
+            Friends
+            <i class="checkmark icon"></i>
+          </div>
+        {{else}}
+          <div class="ui right floated button add-friend">
+            <i class="add user icon"></i>
+            Add Friend
+          </div>
+        {{/if}}
       {{/if}}
 
       {{#if hasInfo profile}}
@@ -114,21 +121,16 @@
       <h3 class="ui dividing header">Events</h3>
 
       {{#if profile.events}}
-        {{#each event profile.events}}
-        <div class="ui attached segment">
-          <a href="#">{{eventName event}}</a>
-        </div>
+        {{#each event in profile.events}}
+          <div class="ui attached segment">
+            <a href={{pathFor "Event_Page" username=routeUserName _id=event}}>{{eventName event}}</a>
+          </div>
         {{/each}}
       {{else}}
-      <div class="ui attached segment">
-        <p>Not attending any events.</p>
-      </div>
+        <div class="ui attached segment">
+          <p>Not attending any events.</p>
+        </div>
       {{/if}}
-
-      <!-- div class="ui attached segment">
-        <a href="#">Football game | Wed Oct 12 at 2AM</a>
-      </div -->
-
     </div>
 
   {{/if}}

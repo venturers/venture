@@ -11,6 +11,9 @@ Template.Public_Profile_Page.onCreated(function onCreated() {
 });
 
 Template.Public_Profile_Page.helpers({
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('_id'));
   },
@@ -19,6 +22,9 @@ Template.Public_Profile_Page.helpers({
       return true;
     }
     return false;
+  },
+  friendsWith(profile) {
+    return _.contains(profile.friends, FlowRouter.getParam('username'));
   },
   hasInfo(profile) {
     return profile.age || profile.location || profile.transportation;
@@ -51,6 +57,22 @@ Template.Public_Profile_Page.events({
   'click .edit-profile'() {
     const username = FlowRouter.getParam('username');
     FlowRouter.go('Profile_Page', {username});
+  },
+  'click .add-friend'(event, instance) {
+    const myUsername = FlowRouter.getParam('username');
+    const myID = Profiles.findDoc(myUsername)._id;
+    const friendUsername = Profiles.findDoc(FlowRouter.getParam('_id')).username;
+    const friendID = FlowRouter.getParam('_id');
+    Profiles.update(myID, { $push: { friends: friendUsername } });
+    Profiles.update(friendID, { $push: { friends: myUsername } });
+  },
+  'click .unfriend'(event, instance) {
+    const myUsername = FlowRouter.getParam('username');
+    const myID = Profiles.findDoc(myUsername)._id;
+    const friendUsername = Profiles.findDoc(FlowRouter.getParam('_id')).username;
+    const friendID = FlowRouter.getParam('_id');
+    Profiles.update(myID, { $pull: { friends: friendUsername } });
+    Profiles.update(friendID, { $pull: { friends: myUsername } });
   },
   'submit .ui.reply.form'(event, instance) {
     event.preventDefault();
