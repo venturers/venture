@@ -50,6 +50,14 @@ Template.Event_Page.helpers({
   },
   getOtherParticipants(event){
     return _.filter(event.peopleGoing, person => !_.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends, person));
+  },
+  creator(event)
+  {
+    // console.log(event.username);
+    if(event.username === FlowRouter.getParam('username'))
+    {
+        return 1;
+    }
   }
 });
 
@@ -67,6 +75,11 @@ Template.Event_Page.events({
     const eventID = FlowRouter.getParam('_id');
     Profiles.update(myID, { $pull: { events: eventID } });
     Events.update(eventID, { $pull: { peopleGoing: myUsername } });
+  },
+  'click .edit-event'(event, instance) {
+    const username = FlowRouter.getParam('username');
+    const myID = Profiles.findDoc(username)._id;
+    FlowRouter.go("Edit_Event_Page", {username});
   },
   'submit .ui.reply.form'(event, instance) {
     event.preventDefault();

@@ -100,6 +100,14 @@ userRoutes.route('/events/:_id', {
   },
 });
 
+export const editEventPageRouteName = 'Edit_Event_Page';
+userRoutes.route('/events/edit/:_id', {
+  name: editEventPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: editEventPageRouteName });
+  },
+});
+
 export const dashboardPageRouteName = 'Dashboard_Page';
 userRoutes.route('/dashboard', {
   name: dashboardPageRouteName,

@@ -28,6 +28,12 @@
                 Add Event
               </div>
             {{/if}}
+
+            {{#if creator event}}
+            <div class="ui button edit-event" style="margin-left: 10px">
+              Edit Event
+            </div>
+            {{/if}}
           </div>
         </div>
       </div>
@@ -141,11 +147,11 @@
         {{#each friend in getFriendParticipants event}}
           <div class="ui attached segment">
             {{#if getPicture friend}}
-              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}>
+              <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(routeId friend)}}">
                 <img class="ui avatar image" src={{getPicture friend}}>{{getFirstName friend}} {{getLastName friend}}
               </a>
             {{else}}
-              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId friend)}}>
+              <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(routeId friend)}}">
                 <img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName friend}} {{getLastName friend}}
               </a>
             {{/if}}
@@ -165,11 +171,11 @@
         {{#each person in getOtherParticipants event}}
           <div class="ui attached segment">
             {{#if getPicture person}}
-              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}>
+              <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(routeId person)}}">
                 <img class="ui avatar image" src={{getPicture person}}>{{getFirstName person}} {{getLastName person}}
               </a>
             {{else}}
-              <a href={{pathFor "Public_Profile_Page" username=routeUserName _id=(routeId person)}}>
+              <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(routeId person)}}">
                 <img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFirstName person}} {{getLastName person}}
               </a>
             {{/if}}
