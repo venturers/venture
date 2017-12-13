@@ -3,7 +3,7 @@
   {{#if Template.subscriptionsReady}}
 
     <div class="comment">
-      <a class="avatar">
+      <a class="avatar" href={{pathFor 'Public_Profile_Page' username=routeUserName _id=(routeId comment)}}>
       {{#if picture comment}}
         <img src={{picture comment}}>
       {{else}}
@@ -11,7 +11,7 @@
       {{/if}}
       </a>
       <div class="content">
-        <a class="author">{{firstName comment}} {{lastName comment}}</a>
+        <a class="author" href={{pathFor 'Public_Profile_Page' username=routeUserName _id=(routeId comment)}}>{{firstName comment}} {{lastName comment}}</a>
         <div class="metadata">
           <span class="date">{{date comment}}</span>
         </div>

@@ -69,7 +69,7 @@
       {{/if}}
 
       <div class="ui horizontal list">
-        <div class="item">
+        <a class="item" href={{pathFor 'Public_Profile_Page' username=routeUserName _id=(routeId event.username)}}>
           {{#if getPicture event.username}}
             <img class="ui mini circular image" src={{getPicture event.username}}>
           {{else}}
@@ -77,9 +77,9 @@
           {{/if}}
           <div class="content">
             <div class="ui sub header">Event Coordinator</div>
-            {{getFirstName event.username}} {{getLastName event.username}}
+            <div class="description">{{getFirstName event.username}} {{getLastName event.username}}</div>
           </div>
-        </div>
+        </a>
         {{#if event.cost}}
           <div class="item">
             <i class="ui large dollar icon"></i>

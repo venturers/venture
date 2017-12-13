@@ -5,6 +5,12 @@ Template.Comment.onCreated(function onCreated() {
 });
 
 Template.Comment.helpers({
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
+  routeId(comment) {
+    return Profiles.findDoc(comment.username)._id;
+  },
   picture(comment) {
     return Profiles.findDoc(comment.username).picture;
   },
