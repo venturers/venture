@@ -1,10 +1,10 @@
 <template name="Cas_Login">
   {{#if currentUser}}
-    <div class="ui {{size}} button cas-logout" style="background-color: #3d3e3f; color: white; font-size: 14px;">
+    <div id="cas-logout" class="ui {{size}} button cas-logout">
       Logout
     </div>
   {{else}}
-    <div class="ui {{size}} button cas-login" style="background-color: #3d3e3f; color: white; font-size: 14px;">
+    <div id="cas-login" class="ui {{size}} button cas-login">
       Login
     </div>
   {{/if}}

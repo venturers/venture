@@ -1,0 +1,9 @@
+#cas-login, #cas-logout {
+  background-color: #3d3e3f;
+  color: white;
+}
+
+#cas-login:hover, #cas-logout:hover {
+  background-color: #4d4d4d;
+  color: white;
+}
