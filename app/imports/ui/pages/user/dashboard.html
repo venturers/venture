@@ -2,59 +2,65 @@
 
   {{#if Template.subscriptionsReady}}
 
-  <div class="dashboard-page-header">
-    <div class="ui middle aligned centered grid container middle-align">
-      <div class="ui sixteen wide column">
-        <div class="ui row">
-          <h1 class="dashboard-head-text">Dashboard</h1>
+    <div class="dashboard-page-header">
+      <div class="ui middle aligned centered grid container middle-align">
+        <div class="ui sixteen wide column">
+          <div class="ui row">
+            <h1 class="dashboard-head-text">Dashboard</h1>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="ui centered grid container middle-align">
+    <div class="ui grid container middle-align">
 
-    <div class="ui ten wide column">
-      <div class="ui container dashboard-section">
-        <h3 class="ui dividing header">Your Events</h3>
-        {{#if profile.events}}
-          <div class="ui two cards">
-            {{#each event in events profile}}
-              {{> Event_Card event=event}}
-            {{/each}}
-          </div>
-        {{else}}
-          You have no events. Go <a href="{{pathFor 'Search_Events_Page' username=routeUserName}}">find</a> or
-        <a href="{{pathFor 'Create_Event_Page' username=routeUserName}}">create</a> one!
-        {{/if}}
-      </div>
-    </div>
-
-    <div class="ui six wide column">
-      <div class="ui container dashboard-section">
-        <h4 class="ui inverted attached header">
-          Your Friends
-        </h4>
-        {{#if profile.friends}}
-          {{#each friend in profile.friends}}
-            {{#if getFriendPicture friend}}
-              <div class="ui attached segment">
-                <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(getFriendID friend)}}"><img class="ui avatar image"
-                                 src={{getFriendPicture friend}}>{{getFriendFirstName friend}} {{getFriendLastName friend}}</a>
+      <div class="ui ten wide column">
+        <div class="ui container dashboard-section">
+          <h3 class="ui center aligned dividing header">Your Events</h3>
+          {{#if profile.events}}
+            <div class="ui two cards">
+              {{#each event in events profile}}
+                {{> Event_Card event=event}}
+              {{/each}}
+            </div>
+          {{else}}
+            <div class="ui grid">
+              <div class="ui sixteen wide center aligned column">
+                You have no events. Go <a href="{{pathFor 'Search_Events_Page' username=routeUserName}}">find</a> or
+                <a href="{{pathFor 'Create_Event_Page' username=routeUserName}}">create</a> one!
               </div>
-            {{else}}
-              <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(getFriendID friend)}}"><img class="ui avatar image"
-                               src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFriendFirstName friend}} {{getFriendLastName friend}}</a>
-            {{/if}}
-          {{/each}}
-        {{else}}
-          <div class="ui attached segment">
-            <a href="{{pathFor 'Search_Friends_Page' username=routeUserName}}">You have no friends. Go make some!</a>
-          </div>
-        {{/if}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="ui six wide center aligned column">
+        <div class="ui container dashboard-section">
+          <h4 class="ui inverted attached header">
+            Your Friends
+          </h4>
+          {{#if profile.friends}}
+            {{#each friend in profile.friends}}
+              {{#if getFriendPicture friend}}
+                <div class="ui attached segment">
+                  <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(getFriendId friend)}}">
+                    <img class="ui avatar image" src={{getFriendPicture friend}}>{{getFriendFirstName friend}} {{getFriendLastName friend}}
+                  </a>
+                </div>
+              {{else}}
+                <a href="{{pathFor 'Public_Profile_Page' username=routeUserName _id=(getFriendId friend)}}">
+                  <img class="ui avatar image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">{{getFriendFirstName friend}} {{getFriendLastName friend}}
+                </a>
+              {{/if}}
+            {{/each}}
+          {{else}}
+            <div class="ui attached segment">
+              <a href="{{pathFor 'Search_Friends_Page' username=routeUserName}}">You have no friends. Go make some!</a>
+            </div>
+          {{/if}}
+        </div>
       </div>
     </div>
-  </div>
 
   {{/if}}
 

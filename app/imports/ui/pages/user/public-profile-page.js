@@ -1,8 +1,8 @@
 import { Template } from 'meteor/templating';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
-import { Events } from '/imports/api/event/EventCollection';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { Events } from '/imports/api/event/EventCollection';
 
 Template.Public_Profile_Page.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
@@ -11,9 +11,6 @@ Template.Public_Profile_Page.onCreated(function onCreated() {
 });
 
 Template.Public_Profile_Page.helpers({
-  routeUserName() {
-    return FlowRouter.getParam('username');
-  },
   profile() {
     return Profiles.findDoc(FlowRouter.getParam('_id'));
   },
@@ -29,28 +26,12 @@ Template.Public_Profile_Page.helpers({
   hasInfo(profile) {
     return profile.age || profile.location || profile.transportation;
   },
-  transportationIsBus(profile) {
-    if (profile.transportation === "Bus") {
-      return true;
-    }
-    return false;
+  eventName(_id) {
+    return Events.findDoc(_id).name;
   },
-  transportationIsCar(profile) {
-    if (profile.transportation === "Car") {
-      return true;
-    }
-    return false;
+  routeUserName() {
+    return FlowRouter.getParam('username');
   },
-  transportationIsNone(profile) {
-    if (profile.transportation === "None") {
-      return true;
-    }
-    return false;
-  },
-  eventName(id) {
-    const event = Events.findDoc(id);
-    return event.name;
-  }
 });
 
 Template.Public_Profile_Page.events({

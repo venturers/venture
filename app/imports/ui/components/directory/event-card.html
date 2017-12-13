@@ -2,44 +2,44 @@
 
   {{#if Template.subscriptionsReady}}
 
-  <div class="ui card">
-    <a class="image" href="{{pathFor "Event_Page" username=routeUserName _id=event._id}}">
-      {{#if event.picture}}
-        <img src={{event.picture}}>
+    <div class="ui card">
+      <a class="image" href="{{pathFor "Event_Page" username=routeUserName _id=event._id}}">
+        {{#if event.picture}}
+          <img src={{ event.picture }}>
+        {{else}}
+          <img src="http://coreyuniform.com/media/images/event.png">
+        {{/if}}
+      </a>
+      <div class="content">
+        <a class="{{isActiveRoute "Event_Page"}} header" href="{{pathFor "Event_Page" username=routeUserName _id=event._id}}">{{ event.name }}</a>
+        <div class="meta">
+          {{ event.location }}
+        </div>
+        <div class="description">
+          {{ event.description }}
+        </div>
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+          {{ event.date }}{{#if hasDateAndTime event}} at {{/if}}{{time event}}
+        </span>
+        <span>
+          <i class="user icon"></i>
+          {{ peopleGoing event }} going
+        </span>
+      </div>
+      {{#if attending event}}
+        <div class="ui bottom attached positive button remove-event">
+          Added
+          <i class="checkmark icon"></i>
+        </div>
       {{else}}
-        <img src="http://coreyuniform.com/media/images/event.png">
+        <div class="ui bottom attached button add-event">
+          <i class="add icon"></i>
+          Add Event
+        </div>
       {{/if}}
-    </a>
-    <div class="content">
-      <a class="{{isActiveRoute "Event_Page"}} header" href="{{pathFor "Event_Page" username=routeUserName _id=event._id}}">{{event.name}}</a>
-      <div class="meta">
-        {{ event.location }}
-      </div>
-      <div class="description">
-        {{ event.description }}
-      </div>
     </div>
-    <div class="extra content">
-      <span class="right floated">
-        {{ event.date }}{{#if hasDateAndTime event}} at {{/if}}{{ time event }}
-      </span>
-      <span>
-        <i class="user icon"></i>
-        {{ peopleGoing event }} going
-      </span>
-    </div>
-    {{#if attending event}}
-      <div class="ui bottom attached positive button remove-event">
-        Added
-        <i class="checkmark icon"></i>
-      </div>
-    {{else}}
-      <div class="ui bottom attached button add-event">
-        <i class="add icon"></i>
-        Add Event
-      </div>
-    {{/if}}
-  </div>
 
   {{/if}}
 
