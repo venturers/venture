@@ -467,6 +467,138 @@
           ],
           "title": "Professor, Information and Computer Sciences",
           "picture": "/images/casanova.jpg"
+        },
+        {
+          "firstName": "Your Dad's",
+          "lastName": "Boss",
+          "username": "bossofdad",
+          "github": "",
+          "bio": "I'm literally the boss of your dad.",
+          "interests": [
+            "Shooting",
+            "Taichi"
+          ],
+          "title": "Boss, of your dad",
+          "picture": "http://www.colourbox.com/preview/4057996-255580-business-person-holding-document-file.jpg"
+        },
+        {
+          "firstName": "Thinker",
+          "lastName": "Thinkleton",
+          "username": "theguywhothinks",
+          "github": "",
+          "bio": "I overthink stuff hmu if you wanna overthink stuff with me.",
+          "interests": [
+            "Thinking"
+          ],
+          "title": "Thinker at Thinker Toys",
+          "picture": "http://image.shutterstock.com/display_pic_with_logo/93178/178307564/stock-photo-portrait-of-the-young-thinking-man-looks-up-with-hand-near-face-isolated-on-white-178307564.jpg"
+        },
+        {
+          "firstName": "Jeff",
+          "lastName": "Screamer",
+          "username": "what",
+          "github": "",
+          "bio": "dO YOU SEE THIS WHAT IN THE WORLD ARE MY EYES LOOKING AT RIGHT NOW THIS IS A MYSTERY WHAT IS GOING ON WHAT IS A PHONE WHAT EVEN IS EVERYTHING I WANT ANSWERS",
+          "interests": [
+            "Screaming"
+          ],
+          "title": "Screams at phones",
+          "picture": "http://image.shutterstock.com/z/stock-photo-closeup-isolation-photo-of-a-crazy-angry-asian-man-yelling-at-his-cellphone-84857713.jpg"
+        },
+        {
+          "firstName": "Will",
+          "lastName": "Cooke",
+          "username": "iwillcook",
+          "github": "",
+          "bio": "I Will Cooke for you... hahah get it lmao",
+          "interests": [
+            "Cooking"
+          ],
+          "title": "Master Chef",
+          "picture": "http://assets3.thrillist.com/v1/image/1299823/size/tl-horizontal_main/7-weird-stock-images-of-people-struggling-with-basic-cooking"
+        },
+        {
+          "firstName": "Brad",
+          "lastName": "Bradford",
+          "username": "computerguy",
+          "github": "",
+          "bio": "I am your typical ICS major and that's it I mean look at me",
+          "interests": [
+            "Computers"
+          ],
+          "title": "Your typical ics major",
+          "picture": "http://thumbs.dreamstime.com/z/man-portrait-face-real-people-22492477.jpg"
+        },
+        {
+          "firstName": "Susan",
+          "lastName": "Wusan",
+          "username": "soozywoozy",
+          "github": "",
+          "bio": "Mom power! Follow my blog for my latest home tips and recipes! Family is life. 1 son, 1 daughter (14 and 9) and they are the LUVS of my LIFE.",
+          "interests": [
+            "Children",
+            "Cooking",
+            "Baking",
+            "Homemaking",
+            "Sewing",
+            "Gardening"
+          ],
+          "title": "Mother of two",
+          "picture": "http://thumbs.dreamstime.com/z/person-face-5613384.jpg"
+        },
+        {
+          "firstName": "Rachel",
+          "lastName": "Achel",
+          "username": "soccerchick2000",
+          "github": "",
+          "bio": "I get, like, straight A's. Do you think you're hot because you're not, Becky.",
+          "interests": [
+            "Soccer",
+            "Photography",
+            "Beach"
+          ],
+          "title": "Straight A student, Valedictorian",
+          "picture": "http://thumbs.dreamstime.com/z/real-person-face-smiling-woman-portrait-blue-background-34700616.jpg"
+        },
+        {
+          "firstName": "Becky",
+          "lastName": "Lee",
+          "username": "grrlpowr89",
+          "github": "",
+          "bio": "Gurl, I hate when people think they're like, all that. AM I RIGHT, RACHEL? 2 cool for school. Bubblegum 4 LYf #aesthetic",
+          "interests": [
+            "Chewing Gum",
+            "Music",
+            "Fashion",
+            "Shopping"
+          ],
+          "title": "Cashier at Hot Topic",
+          "picture": "https://tse2.mm.bing.net/th?id=OIP.JFc3LzCMVbblMQ8U3CrBAgDhEs&pid=Api"
+        },
+        {
+          "firstName": "Philip",
+          "lastName": "Johnson",
+          "username": "philipjohnson",
+          "github": "",
+          "bio": "Software engineering is hands down the COOLEST thing you will ever do in school.",
+          "interests": [
+            "Software Engineering"
+          ],
+          "title": "Professor at U.H. Manoa",
+          "picture": "http://myr.altervista.org/images/PhilipJohnson.jpg"
+        },
+        {
+          "firstName": "Jimmy",
+          "lastName": "Jimbo",
+          "username": "jimmythekid",
+          "github": "",
+          "bio": "When I grow up I wanna be a hacker #lifehacks",
+          "interests": [
+            "Hacking",
+            "Gaming"
+          ],
+          "title": "Pro hacker and gamer",
+          "picture": "http://www.gnomeplanet.com/photo/251/a/C9829_a.jpg"
         }
       ]
     },
