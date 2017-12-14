@@ -26,7 +26,7 @@ Template.Search_Friends_Page.onCreated(function onCreated() {
 Template.Search_Friends_Page.helpers({
   profiles() {
     const myUsername = FlowRouter.getParam('username');
-    let matchedProfiles = _.filter(Profiles.findAll(), profile => profile.firstName && profile.firstName !== '');
+    let matchedProfiles = _.filter(Profiles.findAll(), profile => profile.firstName && profile.firstName !== '' && profile.username !== myUsername);
     const myProfile = Profiles.findDoc(myUsername);
     const searchedName = Template.instance().messageFlags.get(searchedNameKey);
     if (searchedName !== '') {
