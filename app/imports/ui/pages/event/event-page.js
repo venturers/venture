@@ -83,17 +83,16 @@ Template.Event_Page.events({
   },
   'submit .ui.reply.form'(event) {
     event.preventDefault();
-    let text = event.target.Text.value;
+    const text = event.target.Text.value;
     const username = FlowRouter.getParam('username');
     const date = new Date();
-
 
     const comment = { username, date, text };
 
     if (text.trim() !== '') {
       const docID = FlowRouter.getParam('_id');
       Events.update(docID, { $push: { comments: comment } });
-      text = '';
+      event.target.Text.value = '';
     }
   },
 });
