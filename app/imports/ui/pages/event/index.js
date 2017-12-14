@@ -4,3 +4,6 @@ import './create-event-page.js';
 import './event-page.css';
 import './event-page.html';
 import './event-page.js';
+import './edit-event-page.css';
+import './edit-event-page.html';
+import './edit-event-page.js';
