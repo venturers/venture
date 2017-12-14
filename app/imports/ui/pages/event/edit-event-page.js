@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Interests } from '/imports/api/interest/InterestCollection';
@@ -10,6 +11,7 @@ const picture = 'picture';
 Template.Edit_Event_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
+  this.messageFlags = new ReactiveDict();
   this.context = Events.getSchema().namedContext('Edit_Event_Page');
 });
 
@@ -18,6 +20,10 @@ Template.Edit_Event_Page.helpers({
     return Events.findDoc(FlowRouter.getParam('_id'));
   },
   picture() {
+    const eventPicture = Events.findDoc(FlowRouter.getParam('_id')).picture;
+    if (!Template.instance().messageFlags.get(picture) && Template.instance().messageFlags.get(picture) !== '' && eventPicture) {
+      Template.instance().messageFlags.set(picture, eventPicture);
+    }
     return Template.instance().messageFlags.get(picture);
   },
   contactDataField(fieldName) {
