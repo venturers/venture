@@ -39,9 +39,9 @@
         {{> Text_Form_Control label="Profile Picture" placeholder="URL" value=profile.picture errorMessage=(fieldError "picture")}}
 
         <div class="fields">
-          {{> Social_Network_Form_Control label="Snapchat" icon="snapchat" value=profile.snapchat errorMessage=(fieldError "snapchat")}}
-          {{> Social_Network_Form_Control label="Facebook" icon="facebook" value=profile.facebook errorMessage=(fieldError "facebook")}}
-          {{> Social_Network_Form_Control label="Instagram" icon="instagram" value=profile.instagram errorMessage=(fieldError "instagram")}}
+          {{> Social_Network_Form_Control label="Snapchat" placeholder="URL" icon="snapchat" value=profile.snapchat errorMessage=(fieldError "snapchat")}}
+          {{> Social_Network_Form_Control label="Facebook" placeholder="URL" icon="facebook" value=profile.facebook errorMessage=(fieldError "facebook")}}
+          {{> Social_Network_Form_Control label="Instagram" placeholder="URL" icon="instagram" value=profile.instagram errorMessage=(fieldError "instagram")}}
         </div>
 
         {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here" errorMessage=(fieldError "bio")}}
