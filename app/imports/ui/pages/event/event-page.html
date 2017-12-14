@@ -16,6 +16,13 @@
       <div id="profile-header" class="ui borderless menu">
         <div class="item"><h1>{{ event.name }}</h1></div>
         <div class="right menu">
+          {{#if creator event}}
+            <div class="item">
+              <div class="ui button edit-event" style="margin-right: -20px">
+                Edit Event
+              </div>
+            </div>
+          {{/if}}
           <div class="item">
             {{#if attending event}}
               <div class="ui labeled positive icon button remove-event">
@@ -27,12 +34,6 @@
                 <i class="add icon"></i>
                 Add Event
               </div>
-            {{/if}}
-
-            {{#if creator event}}
-            <div class="ui button edit-event" style="margin-left: 10px">
-              Edit Event
-            </div>
             {{/if}}
           </div>
         </div>
