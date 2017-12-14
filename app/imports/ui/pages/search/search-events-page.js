@@ -43,6 +43,10 @@ Template.Search_Events_Page.helpers({
     if (searchedTime !== '') {
       matchedEvents = _.filter(matchedEvents, event => event.time === searchedTime);
     }
+    const searchedLocation = Template.instance().messageFlags.get(searchedLocationKey);
+    if (searchedLocation !== '') {
+      matchedEvents = _.filter(matchedEvents, event => event.location.toUpperCase().indexOf(searchedLocation) >= 0);
+    }
     const searchedMinimum = Template.instance().messageFlags.get(searchedMinimumKey);
     if (searchedMinimum !== '') {
       matchedEvents = _.filter(matchedEvents, event => event.cost >= searchedMinimum);
@@ -77,6 +81,7 @@ Template.Search_Events_Page.events({
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
     instance.messageFlags.set(searchedDateKey, event.target.Date.value);
     instance.messageFlags.set(searchedTimeKey, event.target.Time.value);
+    instance.messageFlags.set(searchedLocationKey, event.target.Location.value.trim().toUpperCase());
     instance.messageFlags.set(searchedMinimumKey, event.target.Minimum.value);
     instance.messageFlags.set(searchedMaximumKey, event.target.Maximum.value);
     instance.messageFlags.set(checkedFriendsAreAttendingKey, event.target['Friends Are Attending'].checked);

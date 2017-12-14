@@ -2,9 +2,13 @@
   height: 100%;
 }
 
-.landing-page-main {
+.landing-page-background{
   background: url("http://cdn.thepointsguy.com/wp-content/uploads/2015/10/Hawaii-sunset-beach-featured-shutterstock-162636074.jpg") no-repeat center center fixed;
   background-size: cover;
+  height: 100%
+}
+
+.landing-page-main {
   height: 515px;
 }
 
@@ -15,9 +19,10 @@
 }
 
 .infobar {
-  background-color: black;
   height: 160px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
 
 .infobar-text {
   color: white;

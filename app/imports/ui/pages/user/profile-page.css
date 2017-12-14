@@ -2,10 +2,14 @@
   height: 100%;
 }
 
-.profile-head {
-  background: url('http://img08.deviantart.net/f882/i/2015/004/3/e/hawaii_sunset_stock_low_angle_by_leeorr_stock-d8cm6ag.jpg') no-repeat center;
+.profile-main{
+  background: url('https://www.walldevil.com/wallpapers/a83/sunset-beach-sea-sand.jpg') no-repeat center;
   background-size: cover;
-  height: 200px;
+  height: 100%;
+}
+
+.profile-head-blank {
+  height: 140px;
 }
 
 .events-area {
