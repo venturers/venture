@@ -1,5 +1,8 @@
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Events } from '/imports/api/event/EventCollection';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Template } from 'meteor/templating';
+import { _ } from 'meteor/underscore';
 
 Template.Event_Card.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
@@ -17,7 +20,7 @@ Template.Event_Card.helpers({
     let hours = Number(event.time.slice(0, event.time.indexOf(':')));
     let minutes = event.time.slice(event.time.indexOf(':'));
     const suffix = (hours >= 12) ? 'PM' : 'AM';
-    hours = (hours + 11) % 12 + 1;
+    hours = ((hours + 11) % 12) + 1;
     if (minutes === ':00') {
       minutes = '';
     }
@@ -28,7 +31,7 @@ Template.Event_Card.helpers({
   },
   attending(event) {
     return _.contains(event.peopleGoing, FlowRouter.getParam('username'));
-  }
+  },
 });
 
 Template.Event_Card.events({
@@ -45,5 +48,5 @@ Template.Event_Card.events({
     const eventID = instance.data.event._id;
     Profiles.update(myID, { $pull: { events: eventID } });
     Events.update(eventID, { $pull: { peopleGoing: myUsername } });
-  }
+  },
 });

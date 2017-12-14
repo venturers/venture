@@ -41,7 +41,7 @@ class ProfileCollection extends BaseCollection {
       'comments.$': { type: Object },
       'comments.$.username': { type: String },
       'comments.$.date': { type: Date },
-      'comments.$.text': { type: String }
+      'comments.$.text': { type: String },
     }, { tracker: Tracker }));
   }
 
@@ -66,8 +66,8 @@ class ProfileCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ firstName = '', lastName = '', age, location = '', transportation = '', username, bio = '', interests = [], picture = '', snapchat = '',
-      facebook = '', instagram = '', friends = [], events = [], comments = [] }) {
+  define({ firstName = '', lastName = '', age, location = '', transportation = '', username, bio = '', interests = [],
+           picture = '', snapchat = '', facebook = '', instagram = '', friends = [], events = [], comments = [] }) {
     // make sure required fields are OK.
     const checkPattern = { username: String };
     check({ username }, checkPattern);
@@ -84,8 +84,8 @@ class ProfileCollection extends BaseCollection {
       throw new Meteor.Error(`${interests} contains duplicates`);
     }
 
-    return this._collection.insert({ firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat,
-      facebook, instagram, friends, events, comments });
+    return this._collection.insert({ firstName, lastName, age, location, transportation, username, bio, interests,
+      picture, snapchat, facebook, instagram, friends, events, comments });
   }
 
   /**
@@ -110,7 +110,8 @@ class ProfileCollection extends BaseCollection {
     const friends = doc.friends;
     const events = doc.events;
     const comments = doc.comments;
-    return { firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat, facebook, instagram, friends, events, comments };
+    return { firstName, lastName, age, location, transportation, username, bio, interests, picture, snapchat, facebook,
+      instagram, friends, events, comments };
   }
 }
 

@@ -45,7 +45,7 @@ Template.Create_Event_Page.events({
   },
   'submit .create-event-form'(event, instance) {
     event.preventDefault();
-    const username = FlowRouter.getParam('username'); // schema requires username.
+    const usernameVar = FlowRouter.getParam('username'); // schema requires username.
     const name = event.target.name.value;
     const date = event.target.date.value;
     const time = event.target.time.value;
@@ -55,8 +55,9 @@ Template.Create_Event_Page.events({
     const description = event.target.description.value;
     const selectedInterests = _.filter(event.target.interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
-    const picture = event.target.picture.value;
-    const createdEvent = { name, date, time, location, cost, transportation, description, interests, picture, username };
+    const pictureVar = event.target.picture.value;
+    const createdEvent = { name, date, time, location, cost, transportation, description, interests,
+      picture: pictureVar, username: usernameVar };
 
     // Clear out any old validation errors.
     instance.context.reset();
@@ -68,10 +69,9 @@ Template.Create_Event_Page.events({
 
     if (instance.context.isValid()) {
       const _id = Events.define(eventData);
-      const username = FlowRouter.getParam('username');
-      // console.log(_id);
+      const usernameVariable = FlowRouter.getParam('username');
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go("Event_Page", {username, _id});
+      FlowRouter.go('Event_Page', { username: usernameVariable, _id: _id });
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }

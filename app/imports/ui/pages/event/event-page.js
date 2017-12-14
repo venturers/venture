@@ -30,7 +30,7 @@ Template.Event_Page.helpers({
     let hours = Number(event.time.slice(0, event.time.indexOf(':')));
     let minutes = event.time.slice(event.time.indexOf(':'));
     const suffix = (hours >= 12) ? 'PM' : 'AM';
-    hours = (hours + 11) % 12 + 1;
+    hours = ((hours + 11) % 12) + 1;
     if (minutes === ':00') {
       minutes = '';
     }
@@ -45,56 +45,55 @@ Template.Event_Page.helpers({
   getLastName(username) {
     return Profiles.findDoc(username).lastName;
   },
-  getFriendParticipants(event){
-    return _.filter(event.peopleGoing, person => _.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends, person));
+  getFriendParticipants(event) {
+    return _.filter(event.peopleGoing, person => _.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends,
+        person));
   },
-  getOtherParticipants(event){
-    return _.filter(event.peopleGoing, person => !_.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends, person));
+  getOtherParticipants(event) {
+    return _.filter(event.peopleGoing, person => !_.contains(Profiles.findDoc(FlowRouter.getParam('username')).friends,
+        person));
   },
-  creator(event)
-  {
-    // console.log(event.username);
-    if(event.username === FlowRouter.getParam('username'))
-    {
-        return 1;
+  creator(event) {
+    if (event.username === FlowRouter.getParam('username')) {
+      return 1;
     }
-  }
+    return 0;
+  },
 });
 
 Template.Event_Page.events({
-  'click .add-event'(event, instance) {
+  'click .add-event'() {
     const myUsername = FlowRouter.getParam('username');
     const myID = Profiles.findDoc(myUsername)._id;
     const eventID = FlowRouter.getParam('_id');
     Profiles.update(myID, { $push: { events: eventID } });
     Events.update(eventID, { $push: { peopleGoing: myUsername } });
   },
-  'click .remove-event'(event, instance) {
+  'click .remove-event'() {
     const myUsername = FlowRouter.getParam('username');
     const myID = Profiles.findDoc(myUsername)._id;
     const eventID = FlowRouter.getParam('_id');
     Profiles.update(myID, { $pull: { events: eventID } });
     Events.update(eventID, { $pull: { peopleGoing: myUsername } });
   },
-  'click .edit-event'(event, instance) {
+  'click .edit-event'() {
     const username = FlowRouter.getParam('username');
     const _id = FlowRouter.getParam('_id');
-    console.log(username);
-    console.log(_id);
-    FlowRouter.go("Edit_Event_Page", {username, _id});
+    FlowRouter.go('Edit_Event_Page', { username, _id });
   },
-  'submit .ui.reply.form'(event, instance) {
+  'submit .ui.reply.form'(event) {
     event.preventDefault();
+    let text = event.target.Text.value;
     const username = FlowRouter.getParam('username');
     const date = new Date();
-    const text = event.target.Text.value;
+
 
     const comment = { username, date, text };
 
     if (text.trim() !== '') {
       const docID = FlowRouter.getParam('_id');
       Events.update(docID, { $push: { comments: comment } });
-      event.target.Text.value = '';
+      text = '';
     }
-  }
+  },
 });

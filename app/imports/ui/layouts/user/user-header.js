@@ -12,5 +12,5 @@ Template.User_Header.helpers({
   },
   routeId() {
     return Profiles.findDoc(FlowRouter.getParam('username'))._id;
-  }
+  },
 });

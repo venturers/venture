@@ -37,9 +37,9 @@ Template.Public_Profile_Page.helpers({
 Template.Public_Profile_Page.events({
   'click .edit-profile'() {
     const username = FlowRouter.getParam('username');
-    FlowRouter.go('Profile_Page', {username});
+    FlowRouter.go('Profile_Page', { username });
   },
-  'click .add-friend'(event, instance) {
+  'click .add-friend'() {
     const myUsername = FlowRouter.getParam('username');
     const myID = Profiles.findDoc(myUsername)._id;
     const friendUsername = Profiles.findDoc(FlowRouter.getParam('_id')).username;
@@ -47,7 +47,7 @@ Template.Public_Profile_Page.events({
     Profiles.update(myID, { $push: { friends: friendUsername } });
     Profiles.update(friendID, { $push: { friends: myUsername } });
   },
-  'click .unfriend'(event, instance) {
+  'click .unfriend'() {
     const myUsername = FlowRouter.getParam('username');
     const myID = Profiles.findDoc(myUsername)._id;
     const friendUsername = Profiles.findDoc(FlowRouter.getParam('_id')).username;
@@ -55,18 +55,18 @@ Template.Public_Profile_Page.events({
     Profiles.update(myID, { $pull: { friends: friendUsername } });
     Profiles.update(friendID, { $pull: { friends: myUsername } });
   },
-  'submit .ui.reply.form'(event, instance) {
+  'submit .ui.reply.form'(event) {
     event.preventDefault();
     const username = FlowRouter.getParam('username');
     const date = new Date();
-    const text = event.target.Text.value;
+    let text = event.target.Text.value;
 
     const comment = { username, date, text };
 
     if (text.trim() !== '') {
       const docID = FlowRouter.getParam('_id');
       Profiles.update(docID, { $push: { comments: comment } });
-      event.target.Text.value = '';
+      text = '';
     }
-  }
+  },
 });

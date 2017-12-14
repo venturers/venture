@@ -1,4 +1,7 @@
 import { Profiles } from '/imports/api/profile/ProfileCollection';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Template } from 'meteor/templating';
+import { _ } from 'meteor/underscore';
 
 Template.Friend_Card.onCreated(function onCreated() {
   this.subscribe(Profiles.getPublicationName());
@@ -16,7 +19,7 @@ Template.Friend_Card.helpers({
   },
   notMyProfile(profile) {
     return FlowRouter.getParam('username') !== profile.username;
-  }
+  },
 });
 
 Template.Friend_Card.events({

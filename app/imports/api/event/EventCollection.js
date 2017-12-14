@@ -38,7 +38,7 @@ class EventCollection extends BaseCollection {
       'comments.$': { type: Object },
       'comments.$.username': { type: String },
       'comments.$.date': { type: Date },
-      'comments.$.text': { type: String }
+      'comments.$.text': { type: String },
     }, { tracker: Tracker }));
   }
 
@@ -63,9 +63,8 @@ class EventCollection extends BaseCollection {
    * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-
-  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '', comments = [] }) {
-
+  define({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '',
+           peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '', comments = [] }) {
     // make sure required fields are OK.
     const checkPattern = { username: String, name: String };
     check({ username, name }, checkPattern);
@@ -82,31 +81,9 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error(`${interests} contains duplicates`);
     }
 
-    return this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
-      facebook, instagram, comments });
+    return this._collection.insert({ username, name, description, date, time, location, cost, transportation,
+      peopleGoing, interests, picture, facebook, instagram, comments });
   }
-
-  // insert({ username, name = '', description = '', date = '', time = '', location = '', cost = '', transportation = '', peopleGoing = [], interests = [], picture = '', facebook = '', instagram = '' }){
-  //
-  //   // make sure required fields are OK.
-  //   const checkPattern = { username: String, name: String };
-  //   check({ username, name }, checkPattern);
-  //
-  //   if (this.find({ name }).count() > 0) {
-  //     throw new Meteor.Error(`${name} is previously defined in another Event`);
-  //   }
-  //
-  //   // Throw an error if any of the passed Interest names are not defined.
-  //   Interests.assertNames(interests);
-  //
-  //   // Throw an error if there are duplicates in the passed interest names.
-  //   if (interests.length !== _.uniq(interests).length) {
-  //     throw new Meteor.Error(`${interests} contains duplicates`);
-  //   }
-  //
-  //   this._collection.insert({ username, name, description, date, time, location, cost, transportation, peopleGoing, interests, picture,
-  //     facebook, instagram });
-  // }
 
   /**
    * Returns an object representing the Profile docID in a format acceptable to define().

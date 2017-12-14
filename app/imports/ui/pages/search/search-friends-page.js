@@ -4,6 +4,8 @@ import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 import { Events } from '/imports/api/event/EventCollection';
+import { $ } from 'meteor/jquery';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 const searchedNameKey = 'searchedName';
 const selectedInterestsKey = 'selectedInterests';
@@ -24,31 +26,38 @@ Template.Search_Friends_Page.onCreated(function onCreated() {
 Template.Search_Friends_Page.helpers({
   profiles() {
     const myUsername = FlowRouter.getParam('username');
-    let matchedProfiles = _.filter(Profiles.findAll(), profile => profile.firstName && profile.firstName !== ''/* && profile.username != myUsername*/);
+    let matchedProfiles = _.filter(Profiles.findAll(), profile => profile.firstName && profile.firstName !== '');
     const myProfile = Profiles.findDoc(myUsername);
     const searchedName = Template.instance().messageFlags.get(searchedNameKey);
     if (searchedName !== '') {
-      matchedProfiles = _.filter(matchedProfiles, profile => (profile.firstName + ' ' + profile.lastName).toUpperCase().indexOf(searchedName) >= 0);
+      matchedProfiles = _.filter(matchedProfiles, profile =>
+          (`${profile.firstName} ' ' ${profile.lastName}`).toUpperCase().indexOf(searchedName) >= 0);
     }
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
     if (selectedInterests.length > 0) {
-      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(profile.interests, selectedInterests).length > 0);
+      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(profile.interests,
+          selectedInterests).length > 0);
     }
     const searchedLocation = Template.instance().messageFlags.get(searchedLocationKey);
     if (searchedLocation !== '') {
-      matchedProfiles = _.filter(matchedProfiles, profile => profile.location && profile.location.toUpperCase().indexOf(searchedLocation) >= 0);
+      matchedProfiles = _.filter(matchedProfiles, profile =>
+          profile.location && profile.location.toUpperCase().indexOf(searchedLocation) >= 0);
     }
     const searchedTransportation = Template.instance().messageFlags.get(searchedTransportationKey);
     if (searchedTransportation !== '') {
-      matchedProfiles = _.filter(matchedProfiles, profile => (profile.transportation && profile.transportation === searchedTransportation) || (!profile.transportation && searchedTransportation === 'None'));
+      matchedProfiles = _.filter(matchedProfiles, profile =>
+          (profile.transportation && profile.transportation === searchedTransportation) ||
+          (!profile.transportation && searchedTransportation === 'None'));
     }
     const checkedHasCommonFriends = Template.instance().messageFlags.get(checkedHasCommonFriendsKey);
     if (checkedHasCommonFriends) {
-      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(myProfile.friends, profile.friends).length > 0);
+      matchedProfiles = _.filter(matchedProfiles, profile =>
+          _.intersection(myProfile.friends, profile.friends).length > 0);
     }
     const checkedAttendingCommonEvents = Template.instance().messageFlags.get(checkedAttendingCommonEventsKey);
     if (checkedAttendingCommonEvents) {
-      matchedProfiles = _.filter(matchedProfiles, profile => _.intersection(myProfile.events, profile.events).length > 0);
+      matchedProfiles = _.filter(matchedProfiles, profile =>
+          _.intersection(myProfile.events, profile.events).length > 0);
     }
     return matchedProfiles;
   },
@@ -66,7 +75,7 @@ Template.Search_Friends_Page.helpers({
         function makeTransportationObject(transportation) {
           return { label: transportation };
         });
-  }
+  },
 });
 
 Template.Search_Friends_Page.events({
@@ -90,5 +99,5 @@ Template.Search_Friends_Page.events({
     $('.results-area').hide();
     $('.results-area').removeClass('visible');
     $('.search-area').transition('slide right');
-  }
+  },
 });

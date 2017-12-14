@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Interests } from '/imports/api/interest/InterestCollection';
@@ -11,8 +10,6 @@ const picture = 'picture';
 Template.Edit_Event_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
-  // this.messageFlags = new ReactiveDict();
-  // this.messageFlags.set(displayErrorMessages, false);
   this.context = Events.getSchema().namedContext('Edit_Event_Page');
 });
 
@@ -30,16 +27,9 @@ Template.Edit_Event_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
-  // interests() {
-  //   return _.map(Interests.findAll(),
-  //       function makeInterestObject(interest) {
-  //         return { label: interest.name };
-  //       });
-  // },
   interests() {
     const event = Events.findDoc(FlowRouter.getParam('_id'));
     const selectedInterests = event.interests;
-    console.log(selectedInterests);
     return event && _.map(Interests.findAll(),
         function makeInterestObject(interest) {
           return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
@@ -58,7 +48,7 @@ Template.Edit_Event_Page.events({
   },
   'submit .edit-event-form'(event, instance) {
     event.preventDefault();
-    const username = FlowRouter.getParam('username'); // schema requires username.
+    const usernameVar = FlowRouter.getParam('username'); // schema requires username.
     const name = event.target.name.value;
     const date = event.target.date.value;
     const time = event.target.time.value;
@@ -68,8 +58,9 @@ Template.Edit_Event_Page.events({
     const description = event.target.description.value;
     const selectedInterests = _.filter(event.target.interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
-    const picture = event.target.picture.value;
-    const updatedEvent = { name, date, time, location, cost, transportation, description, interests, picture, username };
+    const pictureVar = event.target.picture.value;
+    const updatedEvent = { name, date, time, location, cost, transportation, description, interests,
+      picture: pictureVar, username: usernameVar };
 
     // Clear out any old validation errors.
     instance.context.reset();
@@ -81,10 +72,9 @@ Template.Edit_Event_Page.events({
 
     if (instance.context.isValid()) {
       const _id = FlowRouter.getParam('_id');
-      const username = FlowRouter.getParam('username');
+      const usernameVariable = FlowRouter.getParam('username');
       Events.update(FlowRouter.getParam('_id'), { $set: updatedEvent });
-      // instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go("Event_Page", {username, _id});
+      FlowRouter.go('Event_Page', { username: usernameVariable, _id: _id });
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }

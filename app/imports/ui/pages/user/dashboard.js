@@ -30,6 +30,5 @@ Template.Dashboard_Page.helpers({
   },
   getFriendId(username) {
     return Profiles.findDoc(username)._id;
-  }
-})
-;
+  },
+});

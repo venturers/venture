@@ -4,12 +4,14 @@ import { _ } from 'meteor/underscore';
 import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 import { Events } from '/imports/api/event/EventCollection';
+import { $ } from 'meteor/jquery';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 const searchedKeywordKey = 'searchedKeyword';
 const selectedInterestsKey = 'selectedInterests';
 const searchedDateKey = 'searchedDate';
 const searchedTimeKey = 'searchedTime';
-const searchedLocationKey = 'searchedLocation';
+// const searchedLocationKey = 'searchedLocation';
 const searchedMinimumKey = 'searchedMinimum';
 const searchedMaximumKey = 'searchedMaximum';
 const checkedFriendsAreAttendingKey = 'checkedFriendsAreAttending';
@@ -31,7 +33,7 @@ Template.Search_Events_Page.helpers({
     }
     const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
     if (selectedInterests.length > 0) {
-      matchedEvents = _.filter(matchedProfiles, event => _.intersection(event.interests, selectedInterests).length > 0);
+      matchedEvents = _.filter(matchedEvents, event => _.intersection(event.interests, selectedInterests).length > 0);
     }
     const searchedDate = Template.instance().messageFlags.get(searchedDateKey);
     if (searchedDate !== '') {
@@ -51,7 +53,8 @@ Template.Search_Events_Page.helpers({
     }
     const checkedFriendsAreAttending = Template.instance().messageFlags.get(checkedFriendsAreAttendingKey);
     if (checkedFriendsAreAttending) {
-      matchedEvents = _.filter(matchedEvents, event => _.intersection(event.peopleGoing, Profiles.findDoc(FlowRouter.getParam('username')).friends).length > 0);
+      matchedEvents = _.filter(matchedEvents, event => _.intersection(event.peopleGoing,
+          Profiles.findDoc(FlowRouter.getParam('username')).friends).length > 0);
     }
     return matchedEvents;
   },
@@ -88,5 +91,5 @@ Template.Search_Events_Page.events({
     $('.results-area').hide();
     $('.results-area').removeClass('visible');
     $('.search-area').transition('slide right');
-  }
+  },
 });

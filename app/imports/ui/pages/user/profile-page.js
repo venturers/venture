@@ -38,7 +38,7 @@ Template.Profile_Page.helpers({
         function makeTransportationObject(transportation) {
           return { label: transportation, selected: selectedTransportation === transportation };
         });
-  }
+  },
 });
 
 
@@ -59,7 +59,8 @@ Template.Profile_Page.events({
     const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
 
-    const updatedProfileData = { firstName, lastName, age, location, transportation, picture, snapchat, facebook, instagram, bio, interests, username };
+    const updatedProfileData = { firstName, lastName, age, location, transportation, picture, snapchat, facebook,
+      instagram, bio, interests, username };
 
     // Clear out any old validation errors.
     instance.context.reset();
@@ -70,13 +71,12 @@ Template.Profile_Page.events({
 
     if (instance.context.isValid()) {
       const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
-      const id = Profiles.update(docID, { $set: cleanData });
+      Profiles.update(docID, { $set: cleanData });
       instance.messageFlags.set(displayErrorMessages, false);
-      const username = FlowRouter.getParam('username');
-      FlowRouter.go("Public_Profile_Page", {username, _id: docID});
+      const usernameVar = FlowRouter.getParam('username');
+      FlowRouter.go('Public_Profile_Page', { username: usernameVar, _id: docID });
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
-  }
+  },
 });
-
