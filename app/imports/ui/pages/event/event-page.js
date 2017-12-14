@@ -78,8 +78,10 @@ Template.Event_Page.events({
   },
   'click .edit-event'(event, instance) {
     const username = FlowRouter.getParam('username');
-    const myID = Profiles.findDoc(username)._id;
-    FlowRouter.go("Edit_Event_Page", {username});
+    const _id = FlowRouter.getParam('_id');
+    console.log(username);
+    console.log(_id);
+    FlowRouter.go("Edit_Event_Page", {username, _id});
   },
   'submit .ui.reply.form'(event, instance) {
     event.preventDefault();

@@ -8,28 +8,41 @@ import { Events } from '/imports/api/event/EventCollection';
 const displayErrorMessages = 'displayErrorMessages';
 const picture = 'picture';
 
-Template.Create_Event_Page.onCreated(function onCreated() {
+Template.Edit_Event_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
-  this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(displayErrorMessages, false);
-  this.context = Events.getSchema().namedContext('Create_Event_Page');
+  // this.messageFlags = new ReactiveDict();
+  // this.messageFlags.set(displayErrorMessages, false);
+  this.context = Events.getSchema().namedContext('Edit_Event_Page');
 });
 
-Template.Create_Event_Page.helpers({
+Template.Edit_Event_Page.helpers({
   event() {
     return Events.findDoc(FlowRouter.getParam('_id'));
   },
   picture() {
     return Template.instance().messageFlags.get(picture);
   },
+  contactDataField(fieldName) {
+    const eventData = Events.findOne(FlowRouter.getParam('_id'));
+    return eventData && eventData[fieldName];
+  },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
+  // interests() {
+  //   return _.map(Interests.findAll(),
+  //       function makeInterestObject(interest) {
+  //         return { label: interest.name };
+  //       });
+  // },
   interests() {
-    return _.map(Interests.findAll(),
+    const event = Events.findDoc(FlowRouter.getParam('_id'));
+    const selectedInterests = event.interests;
+    console.log(selectedInterests);
+    return event && _.map(Interests.findAll(),
         function makeInterestObject(interest) {
-          return { label: interest.name };
+          return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
         });
   },
   fieldError(fieldName) {
@@ -39,11 +52,11 @@ Template.Create_Event_Page.helpers({
   },
 });
 
-Template.Create_Event_Page.events({
+Template.Edit_Event_Page.events({
   'change .picture'(event, instance) {
     instance.messageFlags.set(picture, event.target.value);
   },
-  'submit .create-event-form'(event, instance) {
+  'submit .edit-event-form'(event, instance) {
     event.preventDefault();
     const username = FlowRouter.getParam('username'); // schema requires username.
     const name = event.target.name.value;
@@ -56,21 +69,21 @@ Template.Create_Event_Page.events({
     const selectedInterests = _.filter(event.target.interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
     const picture = event.target.picture.value;
-    const createdEvent = { name, date, time, location, cost, transportation, description, interests, picture, username };
+    const updatedEvent = { name, date, time, location, cost, transportation, description, interests, picture, username };
 
     // Clear out any old validation errors.
     instance.context.reset();
     // Invoke clean so that updatedProfileData reflects what will be inserted.
-    const eventData = Events.getSchema().clean(createdEvent);
+    const eventData = Events.getSchema().clean(updatedEvent);
 
     // Determine validity.
     instance.context.validate(eventData);
 
     if (instance.context.isValid()) {
-      const _id = Events.define(eventData);
+      const _id = FlowRouter.getParam('_id');
       const username = FlowRouter.getParam('username');
-      // console.log(_id);
-      instance.messageFlags.set(displayErrorMessages, false);
+      Events.update(FlowRouter.getParam('_id'), { $set: updatedEvent });
+      // instance.messageFlags.set(displayErrorMessages, false);
       FlowRouter.go("Event_Page", {username, _id});
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
